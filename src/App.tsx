@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import MenuTabs from "./components/MenuTabs/MenuTabs";
+import Main from "./pages/Main/Main";
+import {Route, Routes} from "react-router-dom";
+import Transactions from "./pages/Transactions/Transactions";
+import Goals from "./pages/Goals/Goals";
+import Analytics from "./pages/Analytics/Analytics";
+import Settings from "./pages/Settings/Settings";
+// @ts-ignore
 
-function App() {
+const App = () => {
+
+  fetch(`http://localhost:3000/transactions`)
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Ошибка при выполнении запроса:', error));
+
+
+  const balance: number = 20000;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <MenuTabs/>
+      <Routes>
+        <Route path={'/'} element={<Main balance={balance}/>}/>
+        <Route path={'/main'} element={<Main balance={balance}/>}/>
+        <Route path={'/transactions'} element={<Transactions/>}/>
+        <Route path={'/goals'} element={<Goals/>}/>
+        <Route path={'/analytics'} element={<Analytics/>}/>
+        <Route path={'/settings'} element={<Settings/>}/>
+      </Routes>
     </div>
-  );
+  )
 }
 
 export default App;

@@ -1,0 +1,41 @@
+.root {
+  margin: 30px 10px;
+  padding: 5px;
+  font-size: 24px;
+  color: teal;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    list-style-type: none;
+
+
+    .link {
+      padding: 5px 15px;
+      border: 1px solid teal;
+      border-radius: 15px;
+      cursor: pointer;
+      text-decoration: none; /* Убираем подчеркивание ссылок */
+      color: inherit; /* Наследуем цвет текста */
+
+      &:hover {
+        background-color: rgba(0, 128, 128, 0.1);
+      }
+
+      &.active {
+        color: white;
+        background-color: teal;
+      }
+
+
+
+    }
+
+
+
+  }
+}
+
+
+

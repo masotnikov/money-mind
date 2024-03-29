@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid teal;
+  border-radius: 15px;
+  gap: 8px;
+
+  h2 {
+    font-size: 14px;
+    color: dimgrey;
+  }
+  div {
+    font-size: 28px;
+    font-weight: bold;
+  }
+}
+
