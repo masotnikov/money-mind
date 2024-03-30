@@ -6,14 +6,9 @@ import Transactions from "./pages/Transactions/Transactions";
 import Goals from "./pages/Goals/Goals";
 import Analytics from "./pages/Analytics/Analytics";
 import Settings from "./pages/Settings/Settings";
-// @ts-ignore
 
 const App = () => {
 
-  fetch(`http://localhost:3000/transactions`)
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Ошибка при выполнении запроса:', error));
 
 
   const balance: number = 20000;

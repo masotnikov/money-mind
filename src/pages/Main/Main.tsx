@@ -1,17 +1,29 @@
 import cl from './Main.module.scss'
-import {FC} from "react";
-import TransactionList from "../../components/TransactionList/TransactionList";
-// import data from "../../../db.json";
+import {FC, useEffect, useState} from "react";
+import {useFetching} from "../../hooks/useFetching";
+import PostService from "../../API/PostService";
+import TransactionList from '../../components/TransactionList/TransactionList';
+import {ITransaction} from "../../@types/types";
 
 interface MainProp {
   balance: number
 }
 
-// const transactions: any = data;
+
 
 const Main: FC<MainProp> = ({balance}) => {
-  return (
 
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [fetchTransactions, isLoading, transactionError] = useFetching(async () => {
+
+    const data = await PostService.getTransactions();
+    setTransactions(data);
+  })
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
+
+  return (
     <>
       <div className={cl.root}>
         <h2>Текущий баланс</h2>
@@ -23,7 +35,7 @@ const Main: FC<MainProp> = ({balance}) => {
       </div>
       <div>
       </div>
-      {/*<TransactionList transactions={transactions}>Последние транзакции</TransactionList>*/}
+      <TransactionList transactions={transactions}>Последние транзакции</TransactionList>
     </>
 
   )
