@@ -1,11 +1,10 @@
 import cl from './Main.module.scss'
 import {FC, useEffect, useState} from "react";
 import {useFetching} from "../../hooks/useFetching";
-import PostService from "../../API/PostService";
+import TransactionService from "../../API/TransactionService";
 import TransactionList from '../../components/TransactionList/TransactionList';
 import {ITransaction} from "../../@types/types";
 import Loader from "../../components/UI/Loader/Loader";
-
 
 
 const Main: FC = () => {
@@ -15,7 +14,7 @@ const Main: FC = () => {
   const [balance, setBalance] = useState<number>(0);
   const [fetchTransactions, isLoading, transactionError] = useFetching(async () => {
 
-    const data = await PostService.getLastTransactions(limit);
+    const data = await TransactionService.getLastTransactions(limit);
     setTransactions(data.reverse());
   })
   useEffect(() => {
@@ -24,7 +23,7 @@ const Main: FC = () => {
 
   useEffect(() => {
     const fetchBalance = async () => {
-      const data = await PostService.getCurrentBalance();
+      const data = await TransactionService.getCurrentBalance();
       setBalance(data);
     };
     fetchBalance();

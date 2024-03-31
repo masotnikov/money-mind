@@ -2,7 +2,7 @@ import axios from "axios";
 import {ITransaction} from "../@types/types";
 
 
-export default class PostService {
+export default class TransactionService {
  static async getTransactions (limit? : number) : Promise<ITransaction[]>{
     const response = await axios.get<ITransaction[]>(`http://localhost:3000/transactions`, {
       params: {
