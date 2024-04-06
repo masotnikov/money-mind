@@ -14,7 +14,14 @@
       "category": "Продукты",
       "amount": 3000,
       "date": "17-03-2024",
-      "description": "Покупка продуктов в местном супермаркете"
+      "description": "Покупка продуктов в местном супермаркете",
+      "location": {
+        "name": "Магазин 'Мир продуктов'",
+        "coordinates": {
+          "latitude": 55.7539,
+          "longitude": 37.6208
+        }
+      }
     },
     {
       "id": 3,
@@ -22,7 +29,14 @@
       "category": "Развлечения",
       "amount": 1500,
       "date": "18-03-2024",
-      "description": "Покупка билетов в кино"
+      "description": "Покупка билетов в кино",
+      "location": {
+        "name": "Кинотеатр 'Звезда'",
+        "coordinates": {
+          "latitude": 55.7704,
+          "longitude": 37.5908
+        }
+      }
     },
     {
       "id": 4,
@@ -30,7 +44,14 @@
       "category": "Продукты",
       "amount": 4500,
       "date": "20-03-2024",
-      "description": "Покупка продуктов в супермаркете"
+      "description": "Покупка продуктов в супермаркете 'Пятерочка'",
+      "location": {
+        "name": "Пятерочка",
+        "coordinates": {
+          "latitude": 55.7461,
+          "longitude": 37.6094
+        }
+      }
     },
     {
       "id": 5,
@@ -38,7 +59,14 @@
       "category": "Транспорт",
       "amount": 700,
       "date": "21-03-2024",
-      "description": "Оплата проезда в общественном транспорте"
+      "description": "Оплата проезда в общественном транспорте",
+      "location": {
+        "name": "Метро 'Красные ворота'",
+        "coordinates": {
+          "latitude": 55.7798,
+          "longitude": 37.6533
+        }
+      }
     },
     {
       "id": 6,
@@ -54,7 +82,14 @@
       "category": "Развлечения",
       "amount": 2500,
       "date": "23-03-2024",
-      "description": "Посещение киносеанса"
+      "description": "Посещение киносеанса",
+      "location": {
+        "name": "Кинотеатр 'Люксор'",
+        "coordinates": {
+          "latitude": 55.7563,
+          "longitude": 37.6185
+        }
+      }
     },
     {
       "id": 8,
@@ -62,7 +97,14 @@
       "category": "Здоровье",
       "amount": 1200,
       "date": "24-03-2024",
-      "description": "Покупка витаминов"
+      "description": "Покупка витаминов",
+      "location": {
+        "name": "Аптека 'Здоровье'",
+        "coordinates": {
+          "latitude": 55.7474,
+          "longitude": 37.6735
+        }
+      }
     },
     {
       "id": 9,
@@ -70,13 +112,20 @@
       "category": "Одежда",
       "amount": 5000,
       "date": "25-03-2024",
-      "description": "Покупка новой одежды"
+      "description": "Покупка новой одежды",
+      "location": {
+        "name": "Магазин одежды 'Модница'",
+        "coordinates": {
+          "latitude": 55.7423,
+          "longitude": 37.6481
+        }
+      }
     },
     {
       "id": 10,
       "type": "доход",
       "category": "Подарок",
-      "amount": 3000,
+      "amount": 1000,
       "date": "26-03-2024",
       "description": "Получение подарка на день рождения"
     }

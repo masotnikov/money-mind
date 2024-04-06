@@ -1,6 +1,6 @@
 import cl from './MenuTabs.module.scss'
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 interface Tab {
   category: string;
@@ -24,13 +24,13 @@ const MenuTabs = () => {
         <ul>
           {
             tabs.map((tab, index) => (
-              <Link to={`/${tab.name.toLowerCase()}`}
+              <NavLink to={`/${tab.name.toLowerCase()}`}
                 onClick={() => setCategoryId(index)}
                 className={`${cl.link} ${categoryId === index ? cl.active : ''}`}
                 key={tab.name}
               >
                 {tab.category}
-              </Link>
+              </NavLink>
             ))
           }
         </ul>

@@ -6,12 +6,10 @@ import Transactions from "./pages/Transactions/Transactions";
 import Goals from "./pages/Goals/Goals";
 import Analytics from "./pages/Analytics/Analytics";
 import Settings from "./pages/Settings/Settings";
+import TransactionDetails from "./components/TransactionDetails/TransactionDetails";
 
 const App = () => {
 
-
-
-  const balance: number = 20000;
 
   return (
     <div className='App'>
@@ -19,6 +17,7 @@ const App = () => {
       <Routes>
         <Route path={'/'} element={<Main/>}/>
         <Route path={'/main'} element={<Main/>}/>
+        <Route path={'/details/:idUser'} element={<TransactionDetails />} />
         <Route path={'/transactions'} element={<Transactions/>}/>
         <Route path={'/goals'} element={<Goals/>}/>
         <Route path={'/analytics'} element={<Analytics/>}/>

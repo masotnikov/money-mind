@@ -1,29 +1,20 @@
 import TransactionList from "../../components/TransactionList/TransactionList";
-import {useEffect, useState} from "react";
-import {ITransaction} from "../../@types/types";
-import {useFetching} from "../../hooks/useFetching";
-import TransactionService from "../../API/TransactionService";
 import Loader from "../../components/UI/Loader/Loader";
+import {useGetAllTransactionsQuery} from "../../API/TransactionService";
 
 
 const Transactions = () => {
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
-  const [limit, setLimit] = useState(10);
-  const [fetchTransactions, isLoading, transactionError] = useFetching(async () => {
-    const data = await TransactionService.getTransactions(limit);
-    setTransactions(data);
-  })
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
+
+  const {data: transactions, isLoading, error} = useGetAllTransactionsQuery(10);
 
   if (isLoading) {
-    return <Loader></Loader>
+    return <Loader/>
   }
 
   return (
     <>
       <TransactionList transactions={transactions}>Все транзакции</TransactionList>
+      {error && <h1>Произошла ошибка</h1>}
     </>
   )
 }
