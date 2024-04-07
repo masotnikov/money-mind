@@ -1,6 +1,7 @@
 import TransactionList from "../../components/TransactionList/TransactionList";
 import Loader from "../../components/UI/Loader/Loader";
 import {useGetAllTransactionsQuery} from "../../API/TransactionService";
+import MyInput from "../../components/UI/Input/MyInput";
 
 
 const Transactions = () => {
@@ -13,7 +14,7 @@ const Transactions = () => {
 
   return (
     <>
-      <TransactionList transactions={transactions}>Все транзакции</TransactionList>
+      <TransactionList searchField={<MyInput placeholder="Поиск..."/>} transactions={transactions}>Все транзакции</TransactionList>
       {error && <h1>Произошла ошибка</h1>}
     </>
   )

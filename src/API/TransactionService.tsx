@@ -35,8 +35,6 @@
 //   }
 // }
 
-
-// Need to use the React-specific entry point to import createApi
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
 
@@ -64,17 +62,18 @@ export const API = createApi({
     }),
 
     getCurrentBalance: builder.query({
-      query: () => '/transactions', // Запрос для получения всех транзакций
+      query: () => '/transactions',
       transformResponse: (response) => {
         // Вычисление текущего баланса на основе данных транзакций
-        const transactions = response as ITransaction[]; // Предположим, что у вас есть интерфейс ITransaction для типизации
-        return transactions.reduce((acc, curr) => {
+        const transactions = response as ITransaction[];
+        const balance = transactions.reduce((acc, curr) => {
           if (curr.type === 'доход') {
             return acc + curr.amount;
           } else {
             return acc - curr.amount;
           }
         }, 0);
+        return balance;
       },
     }),
   }),
