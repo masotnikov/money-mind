@@ -1,7 +1,7 @@
 import cl from './Main.module.scss'
 import {FC} from "react";
 import TransactionList from "../../components/TransactionList/TransactionList";
-import Loader from "../../components/UI/Loader/Loader";
+import Loader from "../../components/UI/loader/Loader";
 import {useGetCurrentBalanceQuery, useGetLastTransactionsQuery} from "../../API/TransactionService";
 
 
@@ -28,7 +28,7 @@ const Main: FC = () => {
         <div>8000</div>
       </div>
       <div>
-        <TransactionList transactions={transactions}>Последние транзакции</TransactionList>
+        <TransactionList title={"Последние транзакции"} transactions={transactions}></TransactionList>
         {error && <h2 style={{textAlign: 'center'}}>Извините, произошла ошибка</h2>}
       </div>
     </>
