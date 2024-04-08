@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {ITransaction} from "../../@types/types";
-import MyButton from "../UI/Button/MyButton";
+import MyButton from "../UI/button/MyButton";
 import cl from './TransactionItem.module.scss'
 import {useNavigate} from "react-router-dom";
 
