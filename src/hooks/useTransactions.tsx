@@ -5,7 +5,7 @@ const useSortedTransactions = (transactions: ITransaction[], sort: string) => {
 
   const sortedTransactions = useMemo(() => {
     if (sort) {
-      return transactions.filter(transaction => (transaction.type === sort))
+      return transactions.filter(transaction => (transaction.type === sort || transaction.category === sort))
     }
     return transactions;
   }, [sort, transactions])
