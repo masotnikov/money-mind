@@ -3,21 +3,20 @@ import cl from './MySelect.module.scss'
 interface IOption {
   name: string;
   value: string;
+  disabled?: boolean
 }
 
 interface ISelect {
   options: IOption[];
-  defaultValue: string;
   value: string;
-  onChange: (value: string) => void
+  onChange: (value: string) => void;
 }
 
-const MySelect: FC<ISelect> = ({options, defaultValue, value, onChange}) => {
+const MySelect: FC<ISelect> = ({options, value, onChange}) => {
   return (
     <select className={cl.root} value={value} onChange={e => onChange(e.target.value)}>
-      <option disabled value="">{defaultValue}</option>
       {options.map(option => (
-        <option key={option.name} value={option.value}>{option.name}</option>
+        <option disabled={option.disabled} key={option.name} value={option.value}>{option.name}</option>
       ))}
     </select>
   )
