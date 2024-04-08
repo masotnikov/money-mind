@@ -13,7 +13,19 @@ const Transactions = () => {
   const {data: transactions, isLoading, error} = useGetAllTransactionsQuery(10);
   const [query, setQuery] = useState<string>('');
   const [sort, setSort] = useState<string>('');
-  const searchedTransactions = useTransactions(transactions, query, sort)
+  const searchedTransactions = useTransactions(transactions, query, sort);
+
+  const sortOptions = [
+    { value: '', name: 'Сортировать по: ', disabled: true },
+    { value: '', name: 'По умолчанию' },
+    { value: 'доход', name: '- по доходу' },
+    { value: 'расход', name: '- по расходу' },
+    { value: '', name: 'Категориям: ', disabled: true },
+    { value: 'Продукты', name: '- продукты'},
+    { value: 'Развлечения', name: '- развлечения' },
+    { value: 'Другое', name: '- другое' },
+
+  ]
 
   if (isLoading) {
     return <Loader/>
@@ -28,11 +40,7 @@ const Transactions = () => {
         <MyInput value={query}
                  onChange={e => setQuery(e.target.value)}
                  placeholder="Поиск..."/>
-        <MySelect options={[
-          {value: 'доход', name: 'доходу'},
-          {value: 'расход', name: 'расходу'},
-        ]}
-                  defaultValue="Сортировать по: "
+        <MySelect options={sortOptions}
                   value={sort}
                   onChange={selectedSort => setSort(selectedSort)}/>
       </TransactionList>
