@@ -1,12 +1,27 @@
 import {ITransaction} from "../@types/types";
 import {useMemo} from "react";
 
-export const useTransactions = (transactions: ITransaction[], query: string) => {
-  const searchedTransactions = useMemo(() => {
-    console.log('111')
-    if (!transactions) return [];
+const useSortedTransactions = (transactions: ITransaction[], sort: string) => {
 
-    return transactions.filter(transaction =>
+  const sortedTransactions = useMemo(() => {
+    if (sort) {
+      return transactions.filter(transaction => (transaction.type === sort))
+    }
+    return transactions;
+  }, [sort, transactions])
+  return sortedTransactions
+}
+
+
+export const useTransactions = (transactions: ITransaction[], query: string, sort: string) => {
+
+  const sortedTransactions = useSortedTransactions(transactions, sort)
+
+  const sortedAndSearchedTransactions = useMemo(() => {
+
+    if (!sortedTransactions) return [];
+
+    return sortedTransactions.filter(transaction =>
       Object.values(transaction).some(item => {
         if (typeof item === 'string') {
           return item.toLowerCase().includes(query.toLowerCase());
@@ -18,7 +33,7 @@ export const useTransactions = (transactions: ITransaction[], query: string) => 
       })
     )
 
-  }, [transactions, query])
+  }, [transactions, query, sort])
 
-  return searchedTransactions
+  return sortedAndSearchedTransactions
 }
