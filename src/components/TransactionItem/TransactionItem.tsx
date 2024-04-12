@@ -3,34 +3,28 @@ import {ITransaction} from "../../@types/types";
 import MyButton from "../UI/button/MyButton";
 import cl from './TransactionItem.module.scss'
 import {useNavigate} from "react-router-dom";
+import TransactionListProps from "../TransactionListProps";
 
 interface TransactionItemProps {
   transaction: ITransaction;
+  removeTransaction: (id: number) => void;
 }
 
 
-const TransactionItem: FC<TransactionItemProps> = ({transaction}) => {
+const TransactionItem: FC<TransactionItemProps> = ({transaction, removeTransaction}) => {
 
-const navigate = useNavigate();
+  const handleClickRemove = () => {
+    removeTransaction(transaction.id)
+  }
 
-  const {id, type, category, amount, description, date} = transaction;
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <ul>
-        <li>Тип:
-          <span className={`${cl.defaultBackground} ${type === 'расход'
-            ? cl.redBackground
-            : cl.greenBackground}`}>
-          {type}
-          </span>
-        </li>
-        <li>Категория: {category}</li>
-        <li>Сумма: {amount}</li>
-        <li>Дата: {date}</li>
-        <li>Описание: {description}</li>
-      </ul>
-      <MyButton onClick={() => navigate(`/details/${id}`)}>Подробнее</MyButton>
-
+    <div className={cl.root}>
+      <TransactionListProps transaction={transaction}/>
+      <MyButton onClick={() => navigate(`/details/${transaction.id}`)}>Подробнее</MyButton>
+      <img onClick={handleClickRemove} className={cl.closeIcon} src="/close.png"
+           alt="remove-transaction"/>
       <hr style={{marginTop: 10, marginBottom: 5}}/>
     </div>
 

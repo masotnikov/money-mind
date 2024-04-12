@@ -7,19 +7,19 @@ interface TransactionListProps {
   title: string;
   children?: React.ReactNode;
   transactions: ITransaction[];
-  searchField?: any
+  removeTransaction: (id: number) => void
 }
 
 
 
-const TransactionList: FC<TransactionListProps> = ({children, transactions, title}) => {
+const TransactionList: FC<TransactionListProps> = ({children, transactions, title, removeTransaction}) => {
   return (
     <div>
       <h3 style={{textAlign: "center"}}>{title}</h3>
       {children}
       <div>
         {transactions?.map((transaction: ITransaction) => (
-          <TransactionItem key={transaction.id} transaction={transaction}/>
+          <TransactionItem removeTransaction={removeTransaction} key={transaction.id} transaction={transaction}/>
         ))}
       </div>
     </div>

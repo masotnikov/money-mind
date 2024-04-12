@@ -10,7 +10,6 @@ import TransactionDetails from "./components/TransactionDetails/TransactionDetai
 
 const App = () => {
 
-
   return (
     <div className='App'>
       <MenuTabs/>
