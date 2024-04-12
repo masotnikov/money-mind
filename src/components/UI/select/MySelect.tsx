@@ -1,6 +1,6 @@
 import {FC} from "react";
 import cl from './MySelect.module.scss'
-interface IOption {
+export interface IOption {
   name: string;
   value: string;
   disabled?: boolean
