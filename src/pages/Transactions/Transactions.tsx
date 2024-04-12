@@ -1,19 +1,24 @@
 import TransactionList from "../../components/TransactionList/TransactionList";
 import Loader from "../../components/UI/loader/Loader";
 import {useGetAllTransactionsQuery} from "../../API/TransactionService";
-import MyInput from "../../components/UI/input/MyInput";
 import {useState} from "react";
 import {useTransactions} from "../../hooks/useTransactions";
-import MySelect from "../../components/UI/select/MySelect";
+import TransactionFilter from "../../components/TransactionFilter/TransactionFilter";
 
-
+export interface IFilter {
+    sort: string;
+    query: string;
+  }
 
 const Transactions = () => {
 
   const {data: transactions, isLoading, error} = useGetAllTransactionsQuery(10);
-  const [query, setQuery] = useState<string>('');
-  const [sort, setSort] = useState<string>('');
-  const searchedTransactions = useTransactions(transactions, query, sort);
+  const [filter, setFilter] = useState<IFilter>({sort: '', query: ''});
+  const searchedAndSortedTransactions = useTransactions(transactions, filter.query, filter.sort);
+
+  const removeTransaction = (id : number) => {
+
+  }
 
   const sortOptions = [
     { value: '', name: 'Сортировать по: ', disabled: true },
@@ -31,18 +36,13 @@ const Transactions = () => {
     return <Loader/>
   }
 
-  console.log(sort)
   return (
     <>
       <TransactionList
-        transactions={searchedTransactions}
+        removeTransaction={removeTransaction}
+        transactions={searchedAndSortedTransactions}
         title={"Все транзакции"}>
-        <MyInput value={query}
-                 onChange={e => setQuery(e.target.value)}
-                 placeholder="Поиск..."/>
-        <MySelect options={sortOptions}
-                  value={sort}
-                  onChange={selectedSort => setSort(selectedSort)}/>
+        <TransactionFilter filter={filter} setFilter={setFilter} sortOptions={sortOptions}/>
       </TransactionList>
       {error && <h1>Произошла ошибка</h1>}
     </>
