@@ -19,7 +19,6 @@ const TransactionDetails = () => {
 
   const {type, category, amount, description, date, location} = transaction[0];
 
-  // @ts-ignore
   return (
     <div className={cl.root}>
       <h1>Подробности транзакции</h1>
