@@ -1,15 +1,16 @@
 {
   "transactions": [
     {
-      "id": 1,
+      "id": "1",
       "type": "доход",
       "category": "Другое",
       "amount": 40000,
       "date": "15-03-2024",
-      "description": "Ежемесячное начисление зарплаты"
+      "description": "Ежемесячное начисление зарплаты",
+      "deleted": "false"
     },
     {
-      "id": 2,
+      "id": "2",
       "type": "расход",
       "category": "Продукты",
       "amount": 3000,
@@ -21,10 +22,11 @@
           "latitude": 55.7539,
           "longitude": 37.6208
         }
-      }
+      },
+      "deleted": "false"
     },
     {
-      "id": 3,
+      "id": "3",
       "type": "расход",
       "category": "Развлечения",
       "amount": 1500,
@@ -36,10 +38,11 @@
           "latitude": 55.7704,
           "longitude": 37.5908
         }
-      }
+      },
+      "deleted": "false"
     },
     {
-      "id": 4,
+      "id": "4",
       "type": "расход",
       "category": "Продукты",
       "amount": 4500,
@@ -51,10 +54,11 @@
           "latitude": 55.7461,
           "longitude": 37.6094
         }
-      }
+      },
+      "deleted": "true"
     },
     {
-      "id": 5,
+      "id": "5",
       "type": "расход",
       "category": "Транспорт",
       "amount": 700,
@@ -66,18 +70,20 @@
           "latitude": 55.7798,
           "longitude": 37.6533
         }
-      }
+      },
+      "deleted": "false"
     },
     {
-      "id": 6,
+      "id": "6",
       "type": "доход",
       "category": "Другое",
       "amount": 1500,
       "date": "22-03-2024",
-      "description": "Оплата за выполненную работу"
+      "description": "Оплата за выполненную работу",
+      "deleted": "false"
     },
     {
-      "id": 7,
+      "id": "7",
       "type": "расход",
       "category": "Развлечения",
       "amount": 2500,
@@ -89,10 +95,11 @@
           "latitude": 55.7563,
           "longitude": 37.6185
         }
-      }
+      },
+      "deleted": "false"
     },
     {
-      "id": 8,
+      "id": "8",
       "type": "расход",
       "category": "Здоровье",
       "amount": 1200,
@@ -104,10 +111,11 @@
           "latitude": 55.7474,
           "longitude": 37.6735
         }
-      }
+      },
+      "deleted": "false"
     },
     {
-      "id": 9,
+      "id": "9",
       "type": "расход",
       "category": "Одежда",
       "amount": 5000,
@@ -119,15 +127,17 @@
           "latitude": 55.7423,
           "longitude": 37.6481
         }
-      }
+      },
+      "deleted": "false"
     },
     {
-      "id": 10,
+      "id": "10",
       "type": "доход",
       "category": "Подарок",
       "amount": 1000,
       "date": "26-03-2024",
-      "description": "Получение подарка на день рождения"
+      "description": "Получение подарка на день рождения",
+      "deleted": "true"
     }
   ]
 }
