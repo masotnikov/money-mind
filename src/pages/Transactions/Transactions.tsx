@@ -16,9 +16,7 @@ const Transactions = () => {
   const [filter, setFilter] = useState<IFilter>({sort: '', query: ''});
   const searchedAndSortedTransactions = useTransactions(transactions, filter.query, filter.sort);
 
-  const removeTransaction = (id : number) => {
 
-  }
 
   const sortOptions = [
     { value: '', name: 'Сортировать по: ', disabled: true },
@@ -39,7 +37,6 @@ const Transactions = () => {
   return (
     <>
       <TransactionList
-        removeTransaction={removeTransaction}
         transactions={searchedAndSortedTransactions}
         title={"Все транзакции"}>
         <TransactionFilter filter={filter} setFilter={setFilter} sortOptions={sortOptions}/>
