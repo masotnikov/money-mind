@@ -1,28 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
 
-
-// //получение 3 последний транзакций
-// getLastTransactions: builder.query({
-//   query: (limit = 3) => ({
-//     url: `/transactions`,
-//     params: {
-//       _limit: limit,
-//       _sort: '-id',
-//     },
-//   }),
-// }),
-
-/**
- * Сервис по работе с транзакциями:
- * получение всех транзакций (GET)
- * последних трёх транзакций (GET)
- * транзакция по id (GET)
- * удаление транзакции (PATCH)
- */
-
 const URL = 'http://localhost:3001/'
-// @ts-ignore
 export const transactionAPI = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({baseUrl: URL}),
