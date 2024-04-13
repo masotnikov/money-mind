@@ -1,65 +1,65 @@
-//  import axios from "axios";
-// import {ITransaction} from "../@types/types";
-//
-//
-// export default class TransactionService {
-//  static async getTransactions (limit? : number) : Promise<ITransaction[]>{
-//     const response = await axios.get<ITransaction[]>(`http://localhost:3000/transactions`, {
-//       params: {
-//         _limit: limit,
-//       }
-//     });
-//     return response.data
-//  }
-//
-//   static async getLastTransactions (limit = 3) : Promise<ITransaction[]>{
-//     const response = await axios.get<ITransaction[]>(`http://localhost:3000/transactions`, {
-//       params: {
-//         _limit: limit,
-//         _sort: '-id',
-//       }
-//     });
-//     return response.data
-//   }
-//
-//   static async getCurrentBalance(): Promise<number> {
-//     const transactions = await this.getTransactions();
-//     const balance = transactions.reduce((acc, curr) => {
-//       if (curr.type === 'доход') {
-//         return acc + curr?.amount;
-//       } else {
-//         return acc - curr?.amount;
-//       }
-//     }, 0);
-//     return balance;
-//   }
-// }
-
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
 
+
+// //получение 3 последний транзакций
+// getLastTransactions: builder.query({
+//   query: (limit = 3) => ({
+//     url: `/transactions`,
+//     params: {
+//       _limit: limit,
+//       _sort: '-id',
+//     },
+//   }),
+// }),
+
+/**
+ * Сервис по работе с транзакциями:
+ * получение всех транзакций (GET)
+ * последних трёх транзакций (GET)
+ * транзакция по id (GET)
+ * удаление транзакции (PATCH)
+ */
+
 const URL = 'http://localhost:3001/'
+// @ts-ignore
 export const transactionAPI = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({baseUrl: URL}),
+  tagTypes: ['Transactions'],
   endpoints: (builder) => ({
+
+    //получение всех транзакций
     getAllTransactions: builder.query({
-      query: (limit) => `/transactions?_limit=${limit}`,
+      query: (limit = 10) => `/transactions?deleted=false`,
+      providesTags: result => ['Transactions']
     }),
 
-    getLastTransactions: builder.query({
-      query: (limit = 3) => ({
-        url: `/transactions`,
-        params: {
-          _limit: limit,
-          _sort: '-id',
-        },
-      }),
-    }),
 
+    //получение транзакции по id
     getTransactionById: builder.query({
       query: (id) => `/transactions?id=${id}`,
     }),
+
+    //удаление транзакции (добавление флага deleted)
+    softDeleteTransaction: builder.mutation({
+      query:(id) => ({
+        url: `/transactions/${id}`,
+        method: 'PATCH',
+        body: {deleted: "true"},
+      }),
+      invalidatesTags: ['Transactions']
+    }),
+
+    restoreAllTransactions: builder.mutation({
+      query: () => ({
+        url: '/transactions',
+        method: 'PATCH',
+        body: { deleted: "false" },
+      }),
+      invalidatesTags: ['Transactions']
+    }),
+
 
     getCurrentBalance: builder.query({
       query: () => '/transactions',
@@ -82,7 +82,8 @@ export const transactionAPI = createApi({
 
 export const {
   useGetAllTransactionsQuery,
-  useGetLastTransactionsQuery,
+  useRestoreAllTransactionsMutation,
   useGetTransactionByIdQuery,
-  useGetCurrentBalanceQuery
+  useGetCurrentBalanceQuery,
+  useSoftDeleteTransactionMutation
 } = transactionAPI
