@@ -2,20 +2,22 @@ import cl from './Main.module.scss'
 import {FC} from "react";
 import TransactionList from "../../components/TransactionList/TransactionList";
 import Loader from "../../components/UI/loader/Loader";
-import {useGetCurrentBalanceQuery, useGetLastTransactionsQuery} from "../../API/TransactionService";
+import {useGetAllTransactionsQuery, useGetCurrentBalanceQuery} from "../../API/TransactionService";
 
 
 // @ts-ignore
 const Main: FC = () => {
   // const balance = 20000
  // @ts-ignore
-  const {data: transactions, isLoading, error} = useGetLastTransactionsQuery();
+  const {data: transactions, isLoading, error} = useGetAllTransactionsQuery();
   // @ts-ignore
   const {data: balance} = useGetCurrentBalanceQuery();
  //
   if (isLoading) {
     return <Loader/>
   }
+
+  const lastTransactions = [...transactions].reverse().slice(0,3)
 
 
   return (
@@ -28,7 +30,7 @@ const Main: FC = () => {
         <div>8000</div>
       </div>
       <div>
-        <TransactionList title={"Последние транзакции"} transactions={transactions}></TransactionList>
+        <TransactionList title="Последние транзакции" transactions={lastTransactions}></TransactionList>
         {error && <h2 style={{textAlign: 'center'}}>Извините, произошла ошибка</h2>}
       </div>
     </>
