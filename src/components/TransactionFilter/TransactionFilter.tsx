@@ -2,6 +2,7 @@ import {FC} from "react";
 import MySelect, {IOption} from "../UI/select/MySelect";
 import MyInput from "../UI/input/MyInput";
 import {IFilter} from "../../pages/Transactions/Transactions";
+import MyButton from "../UI/button/MyButton";
 
 
 
@@ -22,6 +23,7 @@ const TransactionFilter: FC<ITransactionFilter> = ({filter, setFilter, sortOptio
                 value={filter.sort}
                 onChange={selectedSort => setFilter({...filter, sort: selectedSort})}/>
     </>
+
   )
 }
 
