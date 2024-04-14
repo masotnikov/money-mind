@@ -1,7 +1,10 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
 
+
+
 const URL = 'http://localhost:3001/'
+// @ts-ignore
 export const transactionAPI = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({baseUrl: URL}),
