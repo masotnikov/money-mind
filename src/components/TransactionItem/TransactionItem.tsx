@@ -3,7 +3,7 @@ import {ITransaction} from "../../@types/types";
 import MyButton from "../UI/button/MyButton";
 import cl from './TransactionItem.module.scss'
 import {useNavigate} from "react-router-dom";
-import TransactionListProps from "../TransactionListProps";
+import TransactionUL from "../TransactionUL";
 import {useSoftDeleteTransactionMutation} from "../../API/TransactionService";
 
 interface TransactionItemProps {
@@ -28,7 +28,7 @@ const TransactionItem: FC<TransactionItemProps> = ({transaction}) => {
 
   return (
     <div className={cl.root}>
-      <TransactionListProps transaction={transaction}/>
+      <TransactionUL transaction={transaction}/>
       <MyButton onClick={() => navigate(`/details/${transaction.id}`)}>Подробнее</MyButton>
       <img onClick={handleRemove} className={cl.closeIcon} src="/close.png" title="удалить транзакцию"
            alt="remove-transaction"/>

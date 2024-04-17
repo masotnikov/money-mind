@@ -6,7 +6,7 @@ interface ITransactionProps {
   transaction: ITransaction;
 }
 
-const TransactionListProps:FC<ITransactionProps> = ({transaction}) => {
+const TransactionUL:FC<ITransactionProps> = ({transaction}) => {
   const {type, category, amount, description, date} = transaction;
 
   return (
@@ -20,10 +20,10 @@ const TransactionListProps:FC<ITransactionProps> = ({transaction}) => {
       </li>
       <li>Категория: {category}</li>
       <li>Сумма: {amount}</li>
-      <li>Дата: {date}</li>
+      <li>Дата: {date.split('-').reverse().join('-')}</li>
       <li>Описание: {description}</li>
     </ul>
   )
 }
 
-export default TransactionListProps;
+export default TransactionUL;

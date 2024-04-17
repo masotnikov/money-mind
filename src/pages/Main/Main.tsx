@@ -18,7 +18,7 @@ const Main: FC = () => {
     return <Loader/>
   }
 
-  const lastTransactions: ITransaction[] = [...transactions].reverse().slice(0,3)
+  const lastTransactions: ITransaction[] = [...transactions].slice(0,3);
 
 
   return (

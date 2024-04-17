@@ -1,10 +1,11 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
+import {BaseQueryMeta, BaseQueryResult} from "@reduxjs/toolkit/dist/query/baseQueryTypes";
 
 
 
 const URL = 'http://localhost:3001/'
-// @ts-ignore
+
 export const transactionAPI = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({baseUrl: URL}),
@@ -14,9 +15,12 @@ export const transactionAPI = createApi({
     //получение всех транзакций
     getAllTransactions: builder.query({
       query: (limit = 10) => `/transactions?deleted=false`,
-      providesTags: result => ['Transactions']
+      providesTags: result => ['Transactions'],
+      transformResponse: (res) => {
+        // @ts-ignore
+        return res.reverse();
+      }
     }),
-
 
     //получение транзакции по id
     getTransactionById: builder.query({
