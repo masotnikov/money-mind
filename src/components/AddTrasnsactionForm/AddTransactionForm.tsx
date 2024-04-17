@@ -3,6 +3,7 @@ import {IOption, ITransaction} from "../../@types/types";
 import React, {FC, useState} from "react";
 import MyButton from "../UI/button/MyButton";
 import MyInput from "../UI/input/MyInput";
+import {useAddNewTransactionMutation} from "../../API/TransactionService";
 
 interface IAddTransactionForm {
   onClose: () => void
@@ -17,7 +18,8 @@ const stateTransaction: ITransaction = {
 }
 
 const AddTransactionForm: FC<IAddTransactionForm> = ({onClose}) => {
-  const [newTransaction, setNewTransaction] = useState(stateTransaction)
+  const [newTransaction, setNewTransaction] = useState(stateTransaction);
+  const [addNewTransactionMutation] = useAddNewTransactionMutation();
 
   const typeOptions: IOption[] = [
     {value: '', name: 'Тип транзакции: ', disabled: true},
@@ -27,12 +29,12 @@ const AddTransactionForm: FC<IAddTransactionForm> = ({onClose}) => {
 
   const categoryOptions: IOption[] = [
     {value: '', name: 'Категория: ', disabled: true},
-    {value: 'продукты', name: 'продукты'},
-    {value: 'развлечения', name: 'развлечения'},
-    {value: 'транспорт', name: 'транспорт'},
-    {value: 'здоровье', name: 'здоровье'},
-    {value: 'одежда', name: 'одежда'},
-    {value: 'другое', name: 'другое'},
+    {value: 'Продукты', name: 'Продукты'},
+    {value: 'Развлечения', name: 'Развлечения'},
+    {value: 'Транспорт', name: 'Транспорт'},
+    {value: 'Здоровье', name: 'Здоровье'},
+    {value: 'Одежда', name: 'Одежда'},
+    {value: 'Другое', name: 'Другое'},
   ]
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,9 +51,9 @@ const AddTransactionForm: FC<IAddTransactionForm> = ({onClose}) => {
     }))
   }
 
-  const addNewTransaction = (e: React.FormEvent<HTMLFormElement>) => {
+  const addNewTransaction = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(newTransaction);
+    await addNewTransactionMutation(newTransaction);
     setNewTransaction(stateTransaction);
     onClose();
   }

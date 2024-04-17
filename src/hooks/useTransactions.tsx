@@ -35,5 +35,5 @@ export const useTransactions = (transactions: ITransaction[], query: string, sor
 
   }, [transactions, query, sort])
 
-  return sortedAndSearchedTransactions
+  return sortedAndSearchedTransactions.reverse()
 }

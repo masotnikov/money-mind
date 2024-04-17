@@ -3,6 +3,7 @@ import {FC} from "react";
 import TransactionList from "../../components/TransactionList/TransactionList";
 import Loader from "../../components/UI/loader/Loader";
 import {useGetAllTransactionsQuery, useGetCurrentBalanceQuery} from "../../API/TransactionService";
+import {ITransaction} from "../../@types/types";
 
 
 // @ts-ignore
@@ -17,7 +18,7 @@ const Main: FC = () => {
     return <Loader/>
   }
 
-  const lastTransactions = [...transactions].reverse().slice(0,3)
+  const lastTransactions: ITransaction[] = [...transactions].reverse().slice(0,3)
 
 
   return (

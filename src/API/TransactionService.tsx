@@ -33,15 +33,18 @@ export const transactionAPI = createApi({
       invalidatesTags: ['Transactions']
     }),
 
-    restoreAllTransactions: builder.mutation({
-      query: () => ({
-        url: '/transactions',
-        method: 'PATCH',
-        body: { deleted: "false" },
+    addNewTransaction: builder.mutation({
+      query:(newTransactions : ITransaction) => ({
+        url: `/transactions`,
+        method: 'POST',
+        body: {
+          id: Date.now().toString(),
+          ...newTransactions,
+          deleted: "false"
+        }
       }),
       invalidatesTags: ['Transactions']
     }),
-
 
     getCurrentBalance: builder.query({
       query: () => '/transactions',
@@ -64,8 +67,8 @@ export const transactionAPI = createApi({
 
 export const {
   useGetAllTransactionsQuery,
-  useRestoreAllTransactionsMutation,
   useGetTransactionByIdQuery,
   useGetCurrentBalanceQuery,
-  useSoftDeleteTransactionMutation
+  useSoftDeleteTransactionMutation,
+  useAddNewTransactionMutation
 } = transactionAPI
