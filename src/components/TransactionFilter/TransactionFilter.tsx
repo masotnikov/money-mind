@@ -1,9 +1,8 @@
 import {FC} from "react";
-import MySelect, {IOption} from "../UI/select/MySelect";
+import MySelect from "../UI/select/MySelect";
 import MyInput from "../UI/input/MyInput";
 import {IFilter} from "../../pages/Transactions/Transactions";
-import MyButton from "../UI/button/MyButton";
-
+import {IOption} from "../../@types/types";
 
 
 interface ITransactionFilter {
@@ -15,7 +14,6 @@ interface ITransactionFilter {
 const TransactionFilter: FC<ITransactionFilter> = ({filter, setFilter, sortOptions}) => {
   return (
     <>
-
       <MyInput value={filter.query}
                onChange={e => setFilter({...filter, query: e.target.value})}
                placeholder="Поиск..."/>
@@ -23,7 +21,6 @@ const TransactionFilter: FC<ITransactionFilter> = ({filter, setFilter, sortOptio
                 value={filter.sort}
                 onChange={selectedSort => setFilter({...filter, sort: selectedSort})}/>
     </>
-
   )
 }
 

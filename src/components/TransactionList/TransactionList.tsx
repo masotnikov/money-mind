@@ -15,7 +15,7 @@ const TransactionList: FC<TransactionListProps> = ({children, transactions, titl
 
   return (
     <div>
-      <h3 style={{textAlign: "center"}}>{title}</h3>
+      <h3 style={{textAlign: "center", marginBottom: 5}}>{title}</h3>
       {children}
       <div>
         {transactions?.map((transaction: ITransaction) => (

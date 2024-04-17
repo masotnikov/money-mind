@@ -1,16 +1,7 @@
 import {FC} from "react";
 import cl from './MySelect.module.scss'
-export interface IOption {
-  name: string;
-  value: string;
-  disabled?: boolean
-}
+import {ISelect} from "../../../@types/types";
 
-interface ISelect {
-  options: IOption[];
-  value: string;
-  onChange: (value: string) => void;
-}
 
 const MySelect: FC<ISelect> = ({options, value, onChange}) => {
   return (
