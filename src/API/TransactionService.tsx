@@ -1,13 +1,11 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
-import {BaseQueryMeta, BaseQueryResult} from "@reduxjs/toolkit/dist/query/baseQueryTypes";
-
 
 
 const URL = 'http://localhost:3001/'
 
 export const transactionAPI = createApi({
-  reducerPath: 'api',
+  reducerPath: 'transactionReducer',
   baseQuery: fetchBaseQuery({baseUrl: URL}),
   tagTypes: ['Transactions'],
   endpoints: (builder) => ({
@@ -18,7 +16,14 @@ export const transactionAPI = createApi({
       providesTags: result => ['Transactions'],
       transformResponse: (res) => {
         // @ts-ignore
-        return res.reverse();
+        return res.map(item => ({
+          ...item,
+          date: item.date
+            .split('-')
+            .reverse()
+            .join('-')
+        }))
+          .reverse();
       }
     }),
 
@@ -29,7 +34,7 @@ export const transactionAPI = createApi({
 
     //удаление транзакции (добавление флага deleted)
     softDeleteTransaction: builder.mutation({
-      query:(id) => ({
+      query: (id) => ({
         url: `/transactions/${id}`,
         method: 'PATCH',
         body: {deleted: "true"},
@@ -38,7 +43,7 @@ export const transactionAPI = createApi({
     }),
 
     addNewTransaction: builder.mutation({
-      query:(newTransactions : ITransaction) => ({
+      query: (newTransactions: ITransaction) => ({
         url: `/transactions`,
         method: 'POST',
         body: {
@@ -47,23 +52,10 @@ export const transactionAPI = createApi({
           deleted: "false"
         }
       }),
-      invalidatesTags: ['Transactions']
-    }),
-
-    getCurrentBalance: builder.query({
-      query: () => '/transactions',
-      transformResponse: (response) => {
-        // Вычисление текущего баланса на основе данных транзакций
-        const transactions = response as ITransaction[];
-        const balance = transactions.reduce((acc, curr) => {
-          if (curr.type === 'доход') {
-            return acc + curr.amount;
-          } else {
-            return acc - curr.amount;
-          }
-        }, 0);
-        return balance;
-      },
+      invalidatesTags: ['Transactions'],
+      transformResponse: (res) => {
+        console.log(res)
+      }
     }),
   }),
 })
@@ -72,7 +64,6 @@ export const transactionAPI = createApi({
 export const {
   useGetAllTransactionsQuery,
   useGetTransactionByIdQuery,
-  useGetCurrentBalanceQuery,
   useSoftDeleteTransactionMutation,
   useAddNewTransactionMutation
 } = transactionAPI
