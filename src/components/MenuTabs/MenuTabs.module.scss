@@ -4,6 +4,7 @@
   font-size: 24px;
   color: teal;
 
+
   ul {
     display: flex;
     justify-content: center;
@@ -13,30 +14,25 @@
 
     .link {
       padding: 5px 15px;
-      border: 2px solid rgba(0, 128, 128, 0.5);
+      box-shadow: 0 0 0 1px rgba(0, 128, 128, 0.5);
       border-radius: 15px;
       cursor: pointer;
       text-decoration: none;
       color: inherit;
 
       &:hover {
-        background-color: rgba(0, 128, 128, 0.1);
-        transition: all .2s;
+        color: white;
+        background-color: rgba(0, 128, 128, 0.4);
+        transition: background-color, color .1s;
       }
 
       &.active {
         color: white;
-        background-color: rgba(0, 128, 128, 0.6);
-        transition: all .3s;
-
+        background-color: rgba(0, 128, 128, 0.4);
+        box-shadow: 0 0 0 5px rgba(0, 128, 128, 0.4);
+        transition: background-color, color, box-shadow  .1s;
       }
-
-
-
     }
-
-
-
   }
 }
 
