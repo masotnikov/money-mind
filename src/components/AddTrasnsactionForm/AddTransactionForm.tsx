@@ -1,86 +1,103 @@
 import MySelect from "../UI/select/MySelect";
-import {IOption, ITransaction} from "../../@types/types";
-import React, {FC, useState} from "react";
+import {ITransaction} from "../../@types/types";
+import React, {FC} from "react";
 import MyButton from "../UI/button/MyButton";
-import MyInput from "../UI/input/MyInput";
+import {useForm} from 'react-hook-form';
 import {useAddNewTransactionMutation} from "../../API/TransactionService";
+import {categoryOptions, typeOptions} from "./formOptions";
+import cl from './AddTransactionForm.module.scss'
+import MyInput from "../UI/input/MyInput";
 
 interface IAddTransactionForm {
   onClose: () => void
 }
 
-const stateTransaction: ITransaction = {
-  type: '',
-  category: '',
-  description: '',
-  date: '',
-  amount: 0,
-}
-
 const AddTransactionForm: FC<IAddTransactionForm> = ({onClose}) => {
-  const [newTransaction, setNewTransaction] = useState(stateTransaction);
-  const [addNewTransactionMutation] = useAddNewTransactionMutation();
+  const [addNewTransactionMutation]: any = useAddNewTransactionMutation();
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+    reset,
+    setValue,
+    trigger
+  } = useForm<ITransaction>({
+    defaultValues: {
+      type: '',
+      category: ''
+    },
+    mode: "onChange"
+  });
 
-  const typeOptions: IOption[] = [
-    {value: '', name: 'Тип транзакции: ', disabled: true},
-    {value: 'доход', name: 'доход'},
-    {value: 'расход', name: 'расход'},
-  ]
 
-  const categoryOptions: IOption[] = [
-    {value: '', name: 'Категория: ', disabled: true},
-    {value: 'Продукты', name: 'Продукты'},
-    {value: 'Развлечения', name: 'Развлечения'},
-    {value: 'Транспорт', name: 'Транспорт'},
-    {value: 'Здоровье', name: 'Здоровье'},
-    {value: 'Одежда', name: 'Одежда'},
-    {value: 'Другое', name: 'Другое'},
-  ]
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = e.target;
-    setNewTransaction(prevState => (
-      {...prevState, [name]: name === "amount" ? +value : value}
-    ))
-  }
-
-  const handleSelectChange = (key: keyof ITransaction, type: string) => {
-    setNewTransaction(prevState => ({
-      ...prevState,
-      [key]: type
-    }))
-  }
-
-  const addNewTransaction = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    await addNewTransactionMutation(newTransaction);
-    setNewTransaction(stateTransaction);
+  const addNewTransaction = async (data: ITransaction) => {
+    data.amount = +data.amount
+    await addNewTransactionMutation(data);
     onClose();
   }
 
+  const onSubmit = (data: ITransaction) => {
+    addNewTransaction(data);
+    reset();
+    setValue("type", '');
+    setValue("category", '')
+  }
+
   return (
-    <form style={{display: "flex", flexDirection: "column"}} onSubmit={addNewTransaction}>
-      <MySelect options={typeOptions}
-                value={newTransaction.type}
-                onChange={selectedType => handleSelectChange('type', selectedType)}></MySelect>
-      <MySelect options={categoryOptions}
-                value={newTransaction.category}
-                onChange={selectedCategory => handleSelectChange('category', selectedCategory)}></MySelect>
-      <MyInput value={newTransaction.amount !== 0 ? newTransaction.amount : ''}
-               name="amount"
-               placeholder="Введите сумму"
-               onChange={handleInputChange}
-               type="number"></MyInput>
-      <MyInput type="date"
-               name="date"
-               value={newTransaction.date}
-               onChange={handleInputChange}></MyInput>
-      <MyInput placeholder="Описание..."
-               type="text"
-               name="description"
-               value={newTransaction.description}
-               onChange={handleInputChange}
-      ></MyInput>
+    <form className={cl.root} onSubmit={handleSubmit(onSubmit)}>
+      <div className={cl.fieldWrapper}>
+        <MySelect options={typeOptions}
+                  onChange={selectedType => {
+                    setValue('type', selectedType);
+                  }}
+                  register={register("type", {required: true})}
+                  name="type"
+        ></MySelect>
+        {errors.type && <span className={cl.error}>Обязательное поле</span>}
+      </div>
+      <div className={cl.fieldWrapper}>
+        <MySelect options={categoryOptions}
+                  name="category"
+                  onChange={selectedCategory => setValue("category", selectedCategory)}
+                  register={register("category", {required: true})}
+        ></MySelect>
+        {errors.category && <span className={cl.error}>Обязательное поле</span>}
+      </div>
+      <div className={cl.fieldWrapper}>
+        <MyInput
+          name="amount"
+          placeholder="Введите сумму"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setValue("amount", +e.target.value);
+            trigger("amount")
+          }}
+          type="number"
+          register={register("amount", {
+            required: "Обязательное поле",
+            min: {
+              value: 1,
+              message: "Число должно быть больше или равно 1"
+            },
+          })}
+        ></MyInput>
+        {errors.amount && <span className={cl.error}>{errors?.amount?.message}</span>}
+      </div>
+      <div className={cl.fieldWrapper}>
+        <MyInput type="date"
+                 name="date"
+                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue("date", e.target.value)}
+                 register={register("date", {required: true})}
+        ></MyInput>
+        {errors.date && <span className={cl.error}>Обязательное поле</span>}
+      </div>
+      <div className={cl.fieldWrapper}>
+        <MyInput
+          placeholder="Описание..."
+          type="text"
+          name="description"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue("description", e.target.value)}
+        ></MyInput>
+      </div>
       <MyButton type="submit">Добавить</MyButton>
     </form>
   )
