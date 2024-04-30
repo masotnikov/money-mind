@@ -23,7 +23,9 @@ export interface IOption {
 }
 
 export interface ISelect {
+  name?: string
+  register?: any
   options: IOption[];
-  value: string;
+  value?: string;
   onChange: (value: string) => void;
 }

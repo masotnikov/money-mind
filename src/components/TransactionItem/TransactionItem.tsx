@@ -29,7 +29,7 @@ const TransactionItem: FC<TransactionItemProps> = ({transaction}) => {
   return (
     <div className={cl.root}>
       <TransactionUL transaction={transaction}/>
-      <MyButton onClick={() => navigate(`/details/${transaction.id}`)}>Подробнее</MyButton>
+      <MyButton onClick={() => navigate(`/details/${transaction?.id}`)}>Подробнее</MyButton>
       <img onClick={handleRemove} className={cl.closeIcon} src="/close.png" title="удалить транзакцию"
            alt="remove-transaction"/>
       <hr style={{marginTop: 10, marginBottom: 5}}/>

@@ -2,8 +2,9 @@ import cl from './Main.module.scss'
 import {FC} from "react";
 import TransactionList from "../../components/TransactionList/TransactionList";
 import Loader from "../../components/UI/loader/Loader";
-import {useGetAllTransactionsQuery, useGetCurrentBalanceQuery} from "../../API/TransactionService";
+import {useGetAllTransactionsQuery} from "../../API/TransactionService";
 import {ITransaction} from "../../@types/types";
+import {useGetCurrentBalanceQuery} from "../../API/BalanceService";
 
 
 // @ts-ignore
