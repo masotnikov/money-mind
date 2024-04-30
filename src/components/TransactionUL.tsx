@@ -12,7 +12,7 @@ const TransactionUL:FC<ITransactionProps> = ({transaction}) => {
   return (
     <ul>
       <li>Тип:
-        <span className={`${cl.defaultBackground} ${type === 'расход'
+        <span className={`${cl.defaultBackground} ${type === 'Расход'
           ? cl.redBackground
           : cl.greenBackground}`}>
           {type}
@@ -20,7 +20,7 @@ const TransactionUL:FC<ITransactionProps> = ({transaction}) => {
       </li>
       <li>Категория: {category}</li>
       <li>Сумма: {amount}</li>
-      <li>Дата: {date.split('-').reverse().join('-')}</li>
+      <li>Дата: {date}</li>
       <li>Описание: {description}</li>
     </ul>
   )
