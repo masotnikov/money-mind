@@ -7,7 +7,7 @@ const URL = 'http://localhost:3001/'
 export const transactionAPI = createApi({
   reducerPath: 'transactionReducer',
   baseQuery: fetchBaseQuery({baseUrl: URL}),
-  tagTypes: ['Transactions'],
+  tagTypes: ['Transactions', 'BalanceAndExpenses'],
   endpoints: (builder) => ({
 
     //получение всех транзакций
@@ -52,11 +52,31 @@ export const transactionAPI = createApi({
           deleted: "false"
         }
       }),
-      invalidatesTags: ['Transactions'],
-      transformResponse: (res) => {
-        console.log(res)
-      }
+      invalidatesTags: ['Transactions', 'BalanceAndExpenses'],
     }),
+
+    getBalanceAndExpenses: builder.query({
+      query: () => '/transactions',
+      providesTags: ['BalanceAndExpenses'],
+      transformResponse: (response) => {
+        const transactions = response as ITransaction[];
+        const balance = transactions.reduce((acc, curr) => {
+          if (curr.type === 'Доход') {
+            return acc + curr.amount;
+          } else {
+            return acc - curr.amount;
+          }
+        }, 0);
+        const expenses = transactions.reduce((acc, curr) => {
+          if (curr.type === 'Расход') {
+            return acc + curr.amount;
+          } else {
+            return acc;
+          }
+        }, 0);
+        return {balance, expenses};
+      },
+    })
   }),
 })
 
@@ -65,5 +85,6 @@ export const {
   useGetAllTransactionsQuery,
   useGetTransactionByIdQuery,
   useSoftDeleteTransactionMutation,
-  useAddNewTransactionMutation
+  useAddNewTransactionMutation,
+  useGetBalanceAndExpensesQuery
 } = transactionAPI
