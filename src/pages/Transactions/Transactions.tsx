@@ -16,8 +16,8 @@ export interface IFilter {
 const sortOptions = [
   {value: '', name: 'Сортировать по: ', disabled: true},
   {value: '', name: 'По умолчанию'},
-  {value: 'доход', name: '- по доходу'},
-  {value: 'расход', name: '- по расходу'},
+  {value: 'Доход', name: '- по доходу'},
+  {value: 'Расход', name: '- по расходу'},
   {value: '', name: 'Категориям: ', disabled: true},
   {value: 'Продукты', name: '- продукты'},
   {value: 'Развлечения', name: '- развлечения'},
