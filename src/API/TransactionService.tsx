@@ -2,7 +2,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
 
 
-const URL = 'http://localhost:3001/'
+export const URL = 'http://localhost:3001/'
 
 export const transactionAPI = createApi({
   reducerPath: 'transactionReducer',
@@ -47,7 +47,6 @@ export const transactionAPI = createApi({
         url: `/transactions`,
         method: 'POST',
         body: {
-          id: Date.now().toString(),
           ...newTransactions,
           deleted: "false"
         }
@@ -60,20 +59,19 @@ export const transactionAPI = createApi({
       providesTags: ['BalanceAndExpenses'],
       transformResponse: (response) => {
         const transactions = response as ITransaction[];
-        const balance = transactions.reduce((acc, curr) => {
-          if (curr.type === 'Доход') {
-            return acc + curr.amount;
-          } else {
-            return acc - curr.amount;
+        let balance: number = 0;
+        let expenses: number = 0;
+        for (let i = 0; i < transactions.length; i++) {
+          const transaction: ITransaction = transactions[i];
+          if (transaction.type === 'Расход') {
+            expenses += transaction.amount
           }
-        }, 0);
-        const expenses = transactions.reduce((acc, curr) => {
-          if (curr.type === 'Расход') {
-            return acc + curr.amount;
+          if (transaction.type === 'Доход') {
+            balance += transaction.amount;
           } else {
-            return acc;
+            balance -= transaction.amount;
           }
-        }, 0);
+        }
         return {balance, expenses};
       },
     })
