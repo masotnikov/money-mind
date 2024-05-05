@@ -1,14 +1,15 @@
 import cl from './Main.module.scss'
-import {FC} from "react";
-import TransactionList from "../../components/TransactionList/TransactionList";
+import React, {FC} from "react";
+import RenderList from "../../components/RenderList/RenderList";
 import Loader from "../../components/UI/loader/Loader";
 import {useGetAllTransactionsQuery, useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
+import TransactionItem from "../../components/TransactionItem/TransactionItem";
 
 
 // @ts-ignore
 const Main: FC = () => {
   // @ts-ignore
-  const {data: transactionsData, transactionsLoading, error: transactionsError} = useGetAllTransactionsQuery();
+  const {data: transactionsData, isLoading: transactionsLoading, error: transactionsError} = useGetAllTransactionsQuery();
   // @ts-ignore
   const {data: balanceAndExpensesData, isLoading: balanceAndExpensesLoading} = useGetBalanceAndExpensesQuery();
 
@@ -29,7 +30,11 @@ const lastTransactions = transactionsData?.slice(0, 3);
         <div>{balanceAndExpensesData?.expenses ?? 'Расходы недоступны'}</div>
       </div>
       <div>
-        <TransactionList title="Последние транзакции" transactions={lastTransactions}></TransactionList>
+        <RenderList emptyMessage="У вас нет транзакций"
+                    title="Последние транзакции"
+                    renderData={lastTransactions}
+                    RenderItemComponent={TransactionItem}
+        ></RenderList>
         {transactionsError && <h2 style={{textAlign: 'center'}}>Извините, произошла ошибка</h2>}
       </div>
     </>
