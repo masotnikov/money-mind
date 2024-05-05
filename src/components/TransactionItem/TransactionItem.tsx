@@ -6,14 +6,14 @@ import {useNavigate} from "react-router-dom";
 import TransactionUL from "../TransactionUL";
 import {useSoftDeleteTransactionMutation} from "../../API/TransactionService";
 
-interface TransactionItemProps {
-  transaction: ITransaction;
+export interface TransactionItemProps {
+  item: ITransaction;
 }
 
 
-const TransactionItem: FC<TransactionItemProps> = ({transaction}) => {
+const TransactionItem: FC<TransactionItemProps> = ({item : transaction}) => {
 
-  const [updateTransaction] = useSoftDeleteTransactionMutation()
+  const [updateTransaction] = useSoftDeleteTransactionMutation();
   const handleRemove = async () => {
     // Отправляем запрос на сервер для обновления транзакции с флагом "удалено"
     const { error } : any = await updateTransaction(transaction.id);
