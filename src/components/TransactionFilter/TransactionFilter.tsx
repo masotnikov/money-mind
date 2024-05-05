@@ -1,8 +1,7 @@
 import {FC} from "react";
 import MySelect from "../UI/select/MySelect";
 import MyInput from "../UI/input/MyInput";
-import {IFilter} from "../../pages/Transactions/Transactions";
-import {IOption} from "../../@types/types";
+import {IFilter, IOption} from "../../@types/types";
 
 
 interface ITransactionFilter {
