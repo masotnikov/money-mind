@@ -1,0 +1,16 @@
+.progressBarContainer {
+  width: 100px;
+  height: 20px;
+  background-color: #b7b7b7;
+  border-radius: 4px;
+  //padding-left: 10px;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: teal;
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out;
+  align-items: center;
+
+}
