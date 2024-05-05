@@ -29,3 +29,17 @@ export interface ISelect {
   value?: string;
   onChange: (value: string) => void;
 }
+
+export interface IGoal {
+  id?: string
+  title: string,
+  description: string,
+  amount: number,
+  progress: number,
+  status: string
+}
+
+export interface IFilter {
+  sort: string;
+  query: string;
+}
