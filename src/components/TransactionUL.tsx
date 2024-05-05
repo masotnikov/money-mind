@@ -7,21 +7,20 @@ interface ITransactionProps {
 }
 
 const TransactionUL:FC<ITransactionProps> = ({transaction}) => {
-  const {type, category, amount, description, date} = transaction;
 
   return (
     <ul>
       <li>Тип:
-        <span className={`${cl.defaultBackground} ${type === 'Расход'
+        <span className={`${cl.defaultBackground} ${transaction?.type === 'Расход'
           ? cl.redBackground
           : cl.greenBackground}`}>
-          {type}
+          {transaction?.type}
           </span>
       </li>
-      <li>Категория: {category}</li>
-      <li>Сумма: {amount}</li>
-      <li>Дата: {date}</li>
-      <li>Описание: {description}</li>
+      <li>Категория: {transaction?.category}</li>
+      <li>Сумма: {transaction?.amount}</li>
+      <li>Дата: {transaction?.date}</li>
+      <li style={{wordWrap: 'break-word'}}>Описание: {transaction?.description}</li>
     </ul>
   )
 }
