@@ -1,4 +1,4 @@
-import TransactionList from "../../components/TransactionList/TransactionList";
+import RenderList from "../../components/RenderList/RenderList";
 import Loader from "../../components/UI/loader/Loader";
 import {useGetAllTransactionsQuery} from "../../API/TransactionService";
 import {useState} from "react";
@@ -7,22 +7,10 @@ import TransactionFilter from "../../components/TransactionFilter/TransactionFil
 import MyButton from "../../components/UI/button/MyButton";
 import MyModal from "../../components/UI/modal/MyModal";
 import AddTransactionForm from "../../components/AddTrasnsactionForm/AddTransactionForm";
+import TransactionItem from "../../components/TransactionItem/TransactionItem";
+import {sortOptions} from "./sortOptions";
+import {IFilter} from "../../@types/types";
 
-export interface IFilter {
-  sort: string;
-  query: string;
-}
-
-const sortOptions = [
-  {value: '', name: 'Сортировать по: ', disabled: true},
-  {value: '', name: 'По умолчанию'},
-  {value: 'Доход', name: '- по доходу'},
-  {value: 'Расход', name: '- по расходу'},
-  {value: '', name: 'Категориям: ', disabled: true},
-  {value: 'Продукты', name: '- продукты'},
-  {value: 'Развлечения', name: '- развлечения'},
-  {value: 'Другое', name: '- другое'},
-]
 
 
 const Transactions = () => {
@@ -31,9 +19,8 @@ const Transactions = () => {
   const [filter, setFilter] = useState<IFilter>({sort: '', query: ''});
   const [modal, setModal] = useState<boolean>(false);
   const searchedAndSortedTransactions = useTransactions(transactions, filter.query, filter.sort);
-  //
   const handleCloseModal = (): void => {
-    setModal(false)
+    setModal(false);
   }
 
 
@@ -46,12 +33,15 @@ const Transactions = () => {
       <MyModal modal={modal} setModal={setModal}>
         <AddTransactionForm onClose={handleCloseModal}/>
       </MyModal>
-      <TransactionList
-        transactions={searchedAndSortedTransactions}
-        title={"Все транзакции"}>
+      <RenderList
+        renderData={searchedAndSortedTransactions}
+        title={"Все транзакции"}
+        emptyMessage={"У вас нет транзакций"}
+        RenderItemComponent={TransactionItem}
+      >
         <TransactionFilter filter={filter} setFilter={setFilter} sortOptions={sortOptions}/>
         <MyButton onClick={() => setModal(true)}>Добавить транзакцию</MyButton>
-      </TransactionList>
+      </RenderList>
       {transactionError && <h1>Произошла ошибка</h1>}
     </>
   )
