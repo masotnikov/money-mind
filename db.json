@@ -138,42 +138,35 @@
       "date": "2024-03-26",
       "description": "Получение подарка на день рождения",
       "deleted": "false"
+    }
+  ],
+  "goals": [
+    {
+      "title": "Квартира",
+      "description": "Накопить на квартиру",
+      "amount": 15000000,
+      "progress": 20,
+      "status": "Активно",
+      "deleted": "true",
+      "id": "d538"
     },
     {
-      "id": "1714469696051",
-      "type": "Расход",
-      "category": "Продукты",
-      "amount": 3000,
-      "date": "2023-10-30",
-      "description": "wwwwwddd",
-      "deleted": "false"
+      "title": "Путешествие в Японию",
+      "description": "Посетить Японию и исследовать культуру и достопримечательности",
+      "amount": 300000,
+      "progress": 10,
+      "status": "Активно",
+      "deleted": "true",
+      "id": "c38e"
     },
     {
-      "id": "1714472172837",
-      "type": "Доход",
-      "category": "Другое",
-      "amount": 20000,
-      "date": "2021-11-29",
-      "description": "вввв",
-      "deleted": "false"
-    },
-    {
-      "id": "1714472367103",
-      "type": "Доход",
-      "category": "Другое",
-      "amount": 3000,
-      "date": "2023-10-29",
-      "description": "ммм",
-      "deleted": "false"
-    },
-    {
-      "id": "1714472416471",
-      "type": "Расход",
-      "category": "Транспорт",
-      "amount": 30000,
-      "date": "2023-11-28",
-      "description": "вввв",
-      "deleted": "false"
+      "title": "Курс по программированию",
+      "description": "Пройти онлайн-курс по разработке веб-приложений и получить сертификат",
+      "amount": 50000,
+      "progress": 40,
+      "status": "Активно",
+      "deleted": "false",
+      "id": "c375"
     }
   ]
 }
