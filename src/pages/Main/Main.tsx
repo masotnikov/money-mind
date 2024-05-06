@@ -19,7 +19,6 @@ const Main: FC = () => {
 
 const lastTransactions = transactionsData?.slice(0, 3);
 
-
   return (
     <>
       <div className={cl.root}>
