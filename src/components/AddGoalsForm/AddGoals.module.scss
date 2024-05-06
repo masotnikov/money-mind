@@ -1,3 +1,23 @@
 .root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
+  .fieldWrapper {
+    position: relative;
+
+    :nth-child(n) {
+      width: 100%;
+    }
+
+    .error {
+      position: absolute;
+      color: red;
+      font-size: 10px;
+      left: 5px;
+      top: 35px;
+    }
+  }
 }
+
+
