@@ -147,7 +147,7 @@
       "amount": 15000000,
       "progress": 20,
       "status": "Активно",
-      "deleted": "true",
+      "deleted": "false",
       "id": "d538"
     },
     {
@@ -156,7 +156,7 @@
       "amount": 300000,
       "progress": 10,
       "status": "Активно",
-      "deleted": "true",
+      "deleted": "false",
       "id": "c38e"
     },
     {
@@ -167,6 +167,22 @@
       "status": "Активно",
       "deleted": "false",
       "id": "c375"
+    },
+    {
+      "id": "381b",
+      "deleted": "true",
+      "status": "Активно",
+      "progress": 33
+    },
+    {
+      "id": "0cb7",
+      "date": "",
+      "amount": 10000,
+      "title": "dddd",
+      "description": "wwww",
+      "deleted": "true",
+      "status": "Активно",
+      "progress": 33
     }
   ]
 }
