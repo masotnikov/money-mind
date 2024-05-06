@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import {IGoal} from "../@types/types";
 
 
 export const URL = 'http://localhost:3001/'
@@ -23,10 +24,27 @@ export const goalsAPI = createApi({
       }),
       invalidatesTags: ['Goals']
     }),
+
+    addNewGoal: builder.mutation({
+      query: (newGoal: IGoal) => ({
+        url: `/goals`,
+        method: 'POST',
+        body: {
+          ...newGoal,
+          deleted: "false",
+          status: "Активно",
+          "progress": 33,
+        },
+      }),
+      invalidatesTags: ['Goals']
+    }),
+
+
   }),
 })
 
 export const {
   useGetAllGoalsQuery,
-  useSoftDeleteGoalMutation
+  useSoftDeleteGoalMutation,
+  useAddNewGoalMutation
 } = goalsAPI
