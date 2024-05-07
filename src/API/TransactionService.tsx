@@ -84,5 +84,5 @@ export const {
   useGetTransactionByIdQuery,
   useSoftDeleteTransactionMutation,
   useAddNewTransactionMutation,
-  useGetBalanceAndExpensesQuery
+  useGetBalanceAndExpensesQuery,
 } = transactionAPI
