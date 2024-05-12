@@ -12,7 +12,7 @@ export const goalsAPI = createApi({
 
     //получение всех транзакций
     getAllGoals: builder.query({
-      query: (limit = 10) => `/goals?deleted=false`,
+      query: () => `/goals?deleted=false`,
       providesTags: result => ['Goals'],
     }),
 
@@ -33,7 +33,6 @@ export const goalsAPI = createApi({
           ...newGoal,
           deleted: "false",
           status: "Активно",
-          "progress": 33,
         },
       }),
       invalidatesTags: ['Goals']
