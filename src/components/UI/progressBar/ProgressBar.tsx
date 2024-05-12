@@ -9,7 +9,7 @@ const ProgressBar: FC<ProgressBarProps> = ({progress}) => {
     <div className={cl.progressBarContainer}>
       <div
         className={cl.progressBar}
-        style={{width: `${progress}%`}}
+        style={{width: `${progress > 100 ? 100 : progress}%`}}
       />
     </div>
   )
