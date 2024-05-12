@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
+import {convertToEuropeanFormat} from "../utils/utils";
 
 
 export const URL = 'http://localhost:3001/'
@@ -12,19 +13,8 @@ export const transactionAPI = createApi({
 
     //получение всех транзакций
     getAllTransactions: builder.query({
-      query: (limit = 10) => `/transactions?deleted=false`,
+      query: () => `/transactions?deleted=false`,
       providesTags: result => ['Transactions'],
-      transformResponse: (res) => {
-        // @ts-ignore
-        return res.map(item => ({
-          ...item,
-          date: item.date
-            .split('-')
-            .reverse()
-            .join('-')
-        }))
-          .reverse();
-      }
     }),
 
     //получение транзакции по id
@@ -48,10 +38,12 @@ export const transactionAPI = createApi({
         method: 'POST',
         body: {
           ...newTransactions,
-          deleted: "false"
+          date: convertToEuropeanFormat(newTransactions.date),
+          deleted: "false",
         }
       }),
       invalidatesTags: ['Transactions', 'BalanceAndExpenses'],
+
     }),
 
     getBalanceAndExpenses: builder.query({
@@ -61,10 +53,14 @@ export const transactionAPI = createApi({
         const transactions = response as ITransaction[];
         let balance: number = 0;
         let expenses: number = 0;
+        let saving: number = 0
         for (let i = 0; i < transactions.length; i++) {
           const transaction: ITransaction = transactions[i];
           if (transaction.type === 'Расход') {
             expenses += transaction.amount
+          }
+          if (transaction.description === 'Перевод на сберегательный счёт') {
+            saving += transaction.amount
           }
           if (transaction.type === 'Доход') {
             balance += transaction.amount;
@@ -72,7 +68,8 @@ export const transactionAPI = createApi({
             balance -= transaction.amount;
           }
         }
-        return {balance, expenses};
+
+        return {balance, expenses, saving};
       },
     })
   }),
