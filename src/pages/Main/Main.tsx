@@ -21,7 +21,7 @@ const Main: FC = () => {
     return <Loader/>
   }
 
-  const lastTransactions = transactionsData?.slice(0, 3);
+  const lastTransactions = transactionsData.slice(-3);
 
   return (
     <>
