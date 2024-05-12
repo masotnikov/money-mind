@@ -5,7 +5,6 @@ import {useGetAllGoalsQuery} from "../../API/GoalsService";
 import Loader from "../../components/UI/loader/Loader";
 import RenderList from "../../components/RenderList/RenderList";
 import goalItem from "../../components/GoalItem/GoalItem";
-import AddTransactionForm from "../../components/AddTrasnsactionForm/AddTransactionForm";
 import MyModal from "../../components/UI/modal/MyModal";
 import AddGoalsForm from "../../components/AddGoalsForm/AddGoalsForm";
 
