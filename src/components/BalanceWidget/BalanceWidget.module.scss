@@ -1,21 +1,45 @@
 .root {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 20px;
   border: 1px solid teal;
-  border-radius: 15px;
+  border-radius: 0 15px 15px 15px;
   gap: 8px;
+  margin-top: 32px;
 
-  .balanceWidget {
+  .balanceRow {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
 
+  form {
+    display: flex;
+    gap: 5px;
+  }
+
+  .fieldWrapper {
+    position: relative;
+
+    .error {
+      position: absolute;
+      color: red;
+      font-size: 10px;
+      left: 5px;
+      top: 40px;
+    }
   }
 
   h2 {
     font-size: 14px;
     color: dimgrey;
   }
+
   div {
     font-size: 28px;
     font-weight: bold;
   }
 }
+
+

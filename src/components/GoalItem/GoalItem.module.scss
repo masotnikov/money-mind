@@ -8,10 +8,7 @@
   }
 
   .title {
-    background-color: rgba(0, 128, 128, 0.8);
-    color: white;
-    padding: 3px 8px;
-    border-radius: 10px;
+    font-weight: bold;
   }
 
   &:hover .closeIcon {
@@ -19,10 +16,20 @@
   }
 
   .activeStatus {
-    background-color: green;
+    background-color: #7878ce;
     padding: 3px;
     border-radius: 10px;
+    color: white;
   }
+
+  .statusDone {
+    background-color: yellowgreen;
+    padding: 3px;
+    border-radius: 10px;
+    color: white;
+  }
+
+
 
   .closeIcon {
     position: absolute;
