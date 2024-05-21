@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ITransaction} from "../@types/types";
-import {convertToEuropeanFormat} from "../utils/utils";
+import {balanceProcessing, convertToEuropeanFormat} from "../utils/utils";
 
 
 export const URL = 'http://localhost:3001/'
@@ -13,10 +13,19 @@ export const transactionAPI = createApi({
 
     //получение всех транзакций
     getAllTransactions: builder.query({
-      query: () => `/transactions?deleted=false`,
+      query: (month = '') => {
+        return {
+          url: `/transactions?deleted=false`
+        }
+      },
       providesTags: result => ['Transactions'],
+      // transformResponse: (response, meta, arg) => {
+      //   const transactions = response as ITransaction
+      //   return transactions
+      // }
     }),
 
+      // providesTags: result => ['Transactions'],
     //получение транзакции по id
     getTransactionById: builder.query({
       query: (id) => `/transactions?id=${id}`,
@@ -51,25 +60,7 @@ export const transactionAPI = createApi({
       providesTags: ['BalanceAndExpenses'],
       transformResponse: (response) => {
         const transactions = response as ITransaction[];
-        let balance: number = 0;
-        let expenses: number = 0;
-        let saving: number = 0
-        for (let i = 0; i < transactions.length; i++) {
-          const transaction: ITransaction = transactions[i];
-          if (transaction.type === 'Расход') {
-            expenses += transaction.amount
-          }
-          if (transaction.description === 'Перевод на сберегательный счёт') {
-            saving += transaction.amount
-          }
-          if (transaction.type === 'Доход') {
-            balance += transaction.amount;
-          } else {
-            balance -= transaction.amount;
-          }
-        }
-
-        return {balance, expenses, saving};
+        return balanceProcessing(transactions)
       },
     })
   }),

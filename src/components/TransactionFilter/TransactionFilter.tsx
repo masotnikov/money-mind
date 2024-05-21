@@ -1,24 +1,29 @@
 import {FC, memo} from "react";
 import MySelect from "../UI/select/MySelect";
 import MyInput from "../UI/input/MyInput";
-import {IFilter, IOption} from "../../@types/types";
+import {IFilter} from "../../@types/types";
+import {monthOptions, selectOptions} from "../../pages/Transactions/selectOptions";
 
 
-interface ITransactionFilter {
+export interface ITransactionFilter {
   filter: IFilter;
   setFilter: (filter: IFilter) => void;
-  sortOptions: IOption[];
 }
 
-const TransactionFilter: FC<ITransactionFilter> = memo(({filter, setFilter, sortOptions}) => {
+
+
+const TransactionFilter: FC<ITransactionFilter> = memo(({filter, setFilter}) => {
     return (
       <>
         <MyInput value={filter.query}
                  onChange={e => setFilter({...filter, query: e.target.value})}
                  placeholder="Поиск..."/>
-        <MySelect options={sortOptions}
+        <MySelect options={selectOptions}
                   value={filter.sort}
                   onChange={selectedSort => setFilter({...filter, sort: selectedSort})}/>
+        <MySelect options={monthOptions}
+                  value={filter.month}
+                  onChange={selectedSort => setFilter({...filter, month: selectedSort})}/>
       </>
     )
   }
