@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import {ITransaction} from "../../@types/types";
 
 
-const AddReplenishForm: FC<any> = ({onSubmit}) => {
+const ReplenishBalanceForm: FC<any> = ({onSubmit}) => {
   const {
     handleSubmit,
     setValue,
@@ -50,4 +50,4 @@ const AddReplenishForm: FC<any> = ({onSubmit}) => {
   )
 }
 
-export default AddReplenishForm;
+export default ReplenishBalanceForm;
