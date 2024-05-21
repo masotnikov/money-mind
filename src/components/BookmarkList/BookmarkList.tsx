@@ -1,13 +1,9 @@
-import React, {FC, ReactNode} from "react";
+import React, {FC} from "react";
 import cl from './BookmarkList.module.scss'
 
-interface Tab {
-  name: string;
-  component: ReactNode;
-}
 
 interface BookmarkListProps {
-  tabs: Tab[];
+  tabs: string[];
   onTabClick: (index: number) => void;
   activeTab: number;
 }
@@ -15,12 +11,12 @@ interface BookmarkListProps {
 const BookmarkList: FC<BookmarkListProps> = ({tabs, onTabClick, activeTab}) => {
   return (
     <ul className={cl.tabContainer}>
-      {tabs.map((tab: Tab, index: number) => (
-        <li key={tab.name}
+      {tabs.map((tab: string, index: number) => (
+        <li key={tab}
             className={`${cl.tab} ${activeTab === index ? `${cl.active}` : ''}`}
             onClick={() => onTabClick(index)}
         >
-          {tab.name}
+          {tab}
         </li>
       ))}
     </ul>
