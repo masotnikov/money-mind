@@ -1,23 +1,32 @@
 import {ITransaction} from "../@types/types";
 import {useMemo} from "react";
 
-const useSortedTransactions = (transactions: ITransaction[], sort: string) => {
+const useSortedTransactions = (transactions: ITransaction[], sort: string, month: string) => {
 
-  const sortedTransactions = useMemo(() => {
-    if (sort) {
-      return transactions.filter(transaction => (transaction.type === sort || transaction.category === sort))
-    }
-    return transactions;
-  }, [sort, transactions])
+  const sortedTransactions: ITransaction[] = useMemo(() => {
+    return transactions.filter(transaction => {
+      let matchesSort: boolean = true;
+      let matchesMonth: boolean = true;
+
+      if (sort) {
+        matchesSort = transaction.type === sort || transaction.category === sort;
+      }
+
+      if (month) {
+        matchesMonth = transaction.date.slice(3,5).includes(month);
+      }
+      return matchesSort && matchesMonth;
+    });
+  }, [sort, transactions, month])
   return sortedTransactions
 }
 
 
-export const useTransactions = (transactions: ITransaction[], query: string, sort: string) => {
+export const useTransactions = (transactions: ITransaction[], query: string, sort: string, month: string) => {
 
-  const sortedTransactions = useSortedTransactions(transactions, sort)
+  const sortedTransactions: ITransaction[] = useSortedTransactions(transactions, sort, month)
 
-  const sortedAndSearchedTransactions = useMemo(() => {
+  const sortedAndSearchedTransactions: ITransaction[] = useMemo(() => {
 
     if (!sortedTransactions) return [];
 
@@ -33,7 +42,7 @@ export const useTransactions = (transactions: ITransaction[], query: string, sor
       })
     )
 
-  }, [transactions, query, sort])
+  }, [transactions, query, sort, month])
 
   return sortedAndSearchedTransactions
 }
