@@ -10,7 +10,7 @@ import BalanceWidget from "../../components/BalanceWidget/BalanceWidget";
 const Main: FC = () => {
 
   const {
-    data: transactionsData,
+    data: transactionsData = [],
     isLoading: transactionsLoading,
     error: transactionsError
     // @ts-ignore
@@ -21,7 +21,7 @@ const Main: FC = () => {
     return <Loader/>
   }
 
-  const lastTransactions = transactionsData.slice(-3);
+  const lastTransactions = transactionsData?.slice(-3);
 
   return (
     <>
