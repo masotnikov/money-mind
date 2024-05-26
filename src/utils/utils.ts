@@ -28,3 +28,4 @@ export const balanceProcessing = (transactions: ITransaction[]) => {
 
   return {balance, expenses, saving, income};
 }
+
