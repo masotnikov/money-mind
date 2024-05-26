@@ -19,7 +19,8 @@ export interface IModal {
 export interface IOption {
   name: string;
   value: string;
-  disabled?: boolean
+  disabled?: boolean;
+  selected?: boolean;
 }
 
 export interface ISelect {
@@ -42,4 +43,5 @@ export interface IGoal {
 export interface IFilter {
   sort: string;
   query: string;
+  month: string
 }
