@@ -4,11 +4,14 @@ export const selectOptions: IOption[] = [
   {name: 'Сортировать по: ', value: '', disabled: true},
   {name: 'По умолчанию', value: ''},
   {name: '- по доходу', value: 'Доход'},
-  {value: 'Расход', name: '- по расходу'},
-  {value: '', name: 'Категориям: ', disabled: true},
-  {value: 'Продукты', name: '- продукты'},
+  {name: '- по расходу', value: 'Расход'},
+  {name: 'Категориям: ', value: '', disabled: true},
+  {name: '- продукты', value: 'Продукты'},
   {name: '- развлечения', value: 'Развлечения'},
-  {value: 'Другое', name: '- другое'},
+  {name: '- транспорт', value: 'Транспорт'},
+  {name: '- здоровье', value: 'Здоровье'},
+  {name: '- одежда', value: 'Одежда'},
+  {name: '- другое', value: 'Другое'},
 ]
 
 export const monthOptions: IOption[] = [
