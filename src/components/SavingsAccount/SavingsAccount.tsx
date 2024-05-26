@@ -1,5 +1,5 @@
 import cl from "../BalanceWidget/BalanceWidget.module.scss";
-import AddReplenishForm from "../AddReplenishForm/AddReplenishForm";
+import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
 import React from "react";
 import {ITransaction} from "../../@types/types";
 import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
@@ -24,7 +24,7 @@ const SavingsAccount = () => {
     <>
       <h2>Накопительный счёт</h2>
       <div className={cl.balanceRow}>{balance?.saving}
-        <AddReplenishForm onSubmit={addNewTransaction}></AddReplenishForm>
+        <ReplenishBalanceForm onSubmit={addNewTransaction}></ReplenishBalanceForm>
       </div>
       <hr/>
       <h2>Баланс</h2>
