@@ -4,7 +4,7 @@
       "id": "1",
       "type": "Доход",
       "category": "Другое",
-      "amount": 40000,
+      "amount": 60000,
       "date": "15-03-2024",
       "description": "Ежемесячное начисление зарплаты",
       "deleted": "false"
@@ -61,7 +61,7 @@
       "id": "5",
       "type": "Расход",
       "category": "Транспорт",
-      "amount": 700,
+      "amount": 7000,
       "date": "21-03-2024",
       "description": "Оплата проезда в общественном транспорте",
       "location": {
@@ -137,6 +137,421 @@
       "amount": 1000,
       "date": "26-03-2024",
       "description": "Получение подарка на день рождения",
+      "deleted": "false"
+    },
+    {
+      "id": "11",
+      "type": "Расход",
+      "category": "Продукты",
+      "amount": 3500,
+      "date": "02-04-2024",
+      "description": "Покупка продуктов в местном супермаркете",
+      "location": {
+        "name": "Магазин 'Мир продуктов'",
+        "coordinates": {
+          "latitude": 55.7539,
+          "longitude": 37.6208
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "12",
+      "type": "Расход",
+      "category": "Развлечения",
+      "amount": 1800,
+      "date": "03-04-2024",
+      "description": "Покупка билетов в кино",
+      "location": {
+        "name": "Кинотеатр 'Звезда'",
+        "coordinates": {
+          "latitude": 55.7704,
+          "longitude": 37.5908
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "13",
+      "type": "Расход",
+      "category": "Продукты",
+      "amount": 4800,
+      "date": "04-04-2024",
+      "description": "Покупка продуктов в супермаркете 'Пятерочка'",
+      "location": {
+        "name": "Пятерочка",
+        "coordinates": {
+          "latitude": 55.7461,
+          "longitude": 37.6094
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "14",
+      "type": "Расход",
+      "category": "Транспорт",
+      "amount": 800,
+      "date": "05-04-2024",
+      "description": "Оплата проезда в общественном транспорте",
+      "location": {
+        "name": "Метро 'Красные ворота'",
+        "coordinates": {
+          "latitude": 55.7798,
+          "longitude": 37.6533
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "15",
+      "type": "Доход",
+      "category": "Другое",
+      "amount": 1800,
+      "date": "06-04-2024",
+      "description": "Оплата за выполненную работу",
+      "deleted": "false"
+    },
+    {
+      "id": "16",
+      "type": "Расход",
+      "category": "Развлечения",
+      "amount": 2700,
+      "date": "07-04-2024",
+      "description": "Посещение киносеанса",
+      "location": {
+        "name": "Кинотеатр 'Люксор'",
+        "coordinates": {
+          "latitude": 55.7563,
+          "longitude": 37.6185
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "17",
+      "type": "Расход",
+      "category": "Здоровье",
+      "amount": 1500,
+      "date": "08-04-2024",
+      "description": "Покупка витаминов",
+      "location": {
+        "name": "Аптека 'Здоровье'",
+        "coordinates": {
+          "latitude": 55.7474,
+          "longitude": 37.6735
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "18",
+      "type": "Расход",
+      "category": "Одежда",
+      "amount": 5500,
+      "date": "09-04-2024",
+      "description": "Покупка новой одежды",
+      "location": {
+        "name": "Магазин одежды 'Модница'",
+        "coordinates": {
+          "latitude": 55.7423,
+          "longitude": 37.6481
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "19",
+      "type": "Доход",
+      "category": "Другое",
+      "amount": 2000,
+      "date": "10-04-2024",
+      "description": "Получение подарка на день рождения",
+      "deleted": "false"
+    },
+    {
+      "id": "20",
+      "type": "Доход",
+      "category": "Другое",
+      "amount": 2500,
+      "date": "11-04-2024",
+      "description": "Ежемесячное начисление стипендии",
+      "deleted": "false"
+    },
+    {
+      "id": "21",
+      "type": "Расход",
+      "category": "Продукты",
+      "amount": 3700,
+      "date": "12-04-2024",
+      "description": "Покупка продуктов в местном супермаркете",
+      "location": {
+        "name": "Магазин 'Мир продуктов'",
+        "coordinates": {
+          "latitude": 55.7539,
+          "longitude": 37.6208
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "22",
+      "type": "Расход",
+      "category": "Развлечения",
+      "amount": 2000,
+      "date": "13-04-2024",
+      "description": "Покупка билетов в кино",
+      "location": {
+        "name": "Кинотеатр 'Звезда'",
+        "coordinates": {
+          "latitude": 55.7704,
+          "longitude": 37.5908
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "23",
+      "type": "Расход",
+      "category": "Продукты",
+      "amount": 4100,
+      "date": "14-04-2024",
+      "description": "Покупка продуктов в супермаркете 'Пятерочка'",
+      "location": {
+        "name": "Пятерочка",
+        "coordinates": {
+          "latitude": 55.7461,
+          "longitude": 37.6094
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "24",
+      "type": "Расход",
+      "category": "Транспорт",
+      "amount": 900,
+      "date": "15-04-2024",
+      "description": "Оплата проезда в общественном транспорте",
+      "location": {
+        "name": "Метро 'Красные ворота'",
+        "coordinates": {
+          "latitude": 55.7798,
+          "longitude": 37.6533
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "25",
+      "type": "Доход",
+      "category": "Другое",
+      "amount": 60000,
+      "date": "15-05-2024",
+      "description": "Ежемесячное начисление зарплаты",
+      "deleted": "false"
+    },
+    {
+      "id": "26",
+      "type": "Расход",
+      "category": "Продукты",
+      "amount": 3200,
+      "date": "17-05-2024",
+      "description": "Покупка продуктов в местном супермаркете",
+      "location": {
+        "name": "Магазин 'Мир продуктов'",
+        "coordinates": {
+          "latitude": 55.7539,
+          "longitude": 37.6208
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "27",
+      "type": "Расход",
+      "category": "Развлечения",
+      "amount": 1600,
+      "date": "18-05-2024",
+      "description": "Покупка билетов в кино",
+      "location": {
+        "name": "Кинотеатр 'Звезда'",
+        "coordinates": {
+          "latitude": 55.7704,
+          "longitude": 37.5908
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "28",
+      "type": "Расход",
+      "category": "Продукты",
+      "amount": 4700,
+      "date": "20-05-2024",
+      "description": "Покупка продуктов в супермаркете 'Пятерочка'",
+      "location": {
+        "name": "Пятерочка",
+        "coordinates": {
+          "latitude": 55.7461,
+          "longitude": 37.6094
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "29",
+      "type": "Расход",
+      "category": "Транспорт",
+      "amount": 750,
+      "date": "21-05-2024",
+      "description": "Оплата проезда в общественном транспорте",
+      "location": {
+        "name": "Метро 'Красные ворота'",
+        "coordinates": {
+          "latitude": 55.7798,
+          "longitude": 37.6533
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "30",
+      "type": "Доход",
+      "category": "Другое",
+      "amount": 1600,
+      "date": "22-05-2024",
+      "description": "Оплата за выполненную работу",
+      "deleted": "false"
+    },
+    {
+      "id": "31",
+      "type": "Расход",
+      "category": "Развлечения",
+      "amount": 2600,
+      "date": "23-05-2024",
+      "description": "Посещение киносеанса",
+      "location": {
+        "name": "Кинотеатр 'Люксор'",
+        "coordinates": {
+          "latitude": 55.7563,
+          "longitude": 37.6185
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "32",
+      "type": "Расход",
+      "category": "Здоровье",
+      "amount": 5000,
+      "date": "24-05-2024",
+      "description": "Покупка витаминов",
+      "location": {
+        "name": "Аптека 'Здоровье'",
+        "coordinates": {
+          "latitude": 55.7474,
+          "longitude": 37.6735
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "33",
+      "type": "Расход",
+      "category": "Одежда",
+      "amount": 5200,
+      "date": "25-05-2024",
+      "description": "Покупка новой одежды",
+      "location": {
+        "name": "Магазин одежды 'Модница'",
+        "coordinates": {
+          "latitude": 55.7423,
+          "longitude": 37.6481
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "34",
+      "type": "Доход",
+      "category": "Другое",
+      "amount": 1100,
+      "date": "26-05-2024",
+      "description": "Получение подарка на день рождения",
+      "deleted": "false"
+    },
+    {
+      "id": "35",
+      "type": "Расход",
+      "category": "Продукты",
+      "amount": 3600,
+      "date": "27-05-2024",
+      "description": "Покупка продуктов в местном супермаркете",
+      "location": {
+        "name": "Магазин 'Мир продуктов'",
+        "coordinates": {
+          "latitude": 55.7539,
+          "longitude": 37.6208
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "36",
+      "type": "Расход",
+      "category": "Развлечения",
+      "amount": 2100,
+      "date": "28-05-2024",
+      "description": "Покупка билетов в кино",
+      "location": {
+        "name": "Кинотеатр 'Звезда'",
+        "coordinates": {
+          "latitude": 55.7704,
+          "longitude": 37.5908
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "37",
+      "type": "Расход",
+      "category": "Продукты",
+      "amount": 4900,
+      "date": "29-05-2024",
+      "description": "Покупка продуктов в супермаркете 'Пятерочка'",
+      "location": {
+        "name": "Пятерочка",
+        "coordinates": {
+          "latitude": 55.7461,
+          "longitude": 37.6094
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "38",
+      "type": "Расход",
+      "category": "Транспорт",
+      "amount": 820,
+      "date": "30-05-2024",
+      "description": "Оплата проезда в общественном транспорте",
+      "location": {
+        "name": "Метро 'Красные ворота'",
+        "coordinates": {
+          "latitude": 55.7798,
+          "longitude": 37.6533
+        }
+      },
+      "deleted": "false"
+    },
+    {
+      "id": "39",
+      "type": "Доход",
+      "category": "Другое",
+      "amount": 1900,
+      "date": "31-05-2024",
+      "description": "Оплата за выполненную работу",
       "deleted": "false"
     }
   ],
