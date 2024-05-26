@@ -4,12 +4,10 @@ import BookmarkList from "../BookmarkList/BookmarkList";
 import CurrentAccount from "../CurrentAccount/CurrentAccount";
 import SavingsAccount from "../SavingsAccount/SavingsAccount";
 
-const CURRENT_ACCOUNT: string = 'Текущий счёт';
-const SAVING_ACCOUNT: string = 'Накопительный счёт';
 
-const bookmarks = [
-  {name: CURRENT_ACCOUNT, component: <CurrentAccount/>},
-  {name: SAVING_ACCOUNT, component: <SavingsAccount/>}
+const bookmarks: string[] = [
+  'Текущий счёт',
+  'Накопительный счёт'
 ];
 
 const BalanceWidget = () => {
@@ -22,7 +20,11 @@ const BalanceWidget = () => {
   return (
     <div className={cl.root}>
       <BookmarkList tabs={bookmarks} activeTab={activeTab} onTabClick={handleTabClick}/>
-      {bookmarks[activeTab].component}
+      {activeTab === 0 ?
+        <CurrentAccount/>
+        :
+        <SavingsAccount/>
+      }
     </div>
   )
 }
