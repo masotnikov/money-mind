@@ -12,7 +12,6 @@ interface IAddGoalsForm {
 
 const AddGoalsForm: FC<IAddGoalsForm> = ({onClose}) => {
   const [addNewGoalMutation] = useAddNewGoalMutation();
-  // @ts-ignore
   const {handleSubmit, reset, setValue, register} = useForm<IGoal>();
 
   const addNewGoal = async (goal: IGoal) => {

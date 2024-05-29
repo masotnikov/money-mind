@@ -3,12 +3,12 @@ import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
 import React from "react";
 import {ITransaction} from "../../@types/types";
 import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
+import Loader from "../UI/loader/Loader";
 
 
 const SavingsAccount = () => {
   const [replenishSavingAccount] = useAddNewTransactionMutation();
-  // @ts-ignore
-  const {data: balance, isLoading} = useGetBalanceAndExpensesQuery();
+  const {data: balance, isLoading, error: errorBalance} = useGetBalanceAndExpensesQuery();
 
 
   const addNewTransaction = async (data: ITransaction) => {
@@ -17,6 +17,13 @@ const SavingsAccount = () => {
     data.description = "Перевод на сберегательный счёт";
     data.date = "2024-03-26";
     await replenishSavingAccount(data);
+  }
+
+  if (isLoading) {
+    return <Loader/>
+  }
+  if (errorBalance) {
+    return <h1>Извините, произошла ошибка!</h1>
   }
 
 

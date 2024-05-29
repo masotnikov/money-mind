@@ -4,8 +4,6 @@ import ChartsWidget from "../../components/ChartsWidget/ChartsWidget";
 
 
 const Analytics = () => {
-  // @ts-ignore
-
 
   return (
     <>

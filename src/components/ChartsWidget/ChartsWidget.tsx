@@ -24,11 +24,9 @@ const bookmarks: string[] = [
 const ChartsWidget: FC = memo(() => {
     const DEFAULT_MONTH: string = '05'
     const [activeTab, setActiveTab] = useState<number>(0);
-    const [selectedMonth, setSelectedMonth] = useState(DEFAULT_MONTH);
-    // @ts-ignore
-    const {data: transactions = [], isLoading, error} = useGetAllTransactionsQuery()
-    // @ts-ignore
-    const {incomeAndExpenseByMonth, expenseByCategory} = useDataForTable(transactions, selectedMonth);
+    const [selectedMonth, setSelectedMonth] = useState<string>(DEFAULT_MONTH);
+    const {data: transactions = [], isLoading, error: errorTransactions} = useGetAllTransactionsQuery()
+    const {incomeAndExpenseByMonth = [], expenseByCategory} = useDataForTable(transactions, selectedMonth);
     const handleTabClick = (index: number) => {
       setActiveTab(index);
     }
@@ -36,6 +34,10 @@ const ChartsWidget: FC = memo(() => {
     if (isLoading) {
       return <Loader/>
     }
+
+  if (errorTransactions) {
+    return <h1 className={cl.errorMessage}>Извините, произошла ошибка</h1>
+  }
 
     return (
       <div className={cl.root}>

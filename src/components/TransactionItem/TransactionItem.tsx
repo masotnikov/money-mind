@@ -3,25 +3,25 @@ import {ITransaction} from "../../@types/types";
 import MyButton from "../UI/button/MyButton";
 import cl from './TransactionItem.module.scss'
 import {useNavigate} from "react-router-dom";
-import TransactionUL from "../TransactionUL";
+import TransactionUL from "../TransactionUL/TransactionUL";
 import {useSoftDeleteTransactionMutation} from "../../API/TransactionService";
+import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 
 export interface TransactionItemProps {
-  item: ITransaction;
+  transaction: ITransaction;
 }
 
 
-const TransactionItem: FC<TransactionItemProps> = ({item : transaction}) => {
+const TransactionItem: FC<TransactionItemProps> = ({transaction}) => {
 
   const [updateTransaction] = useSoftDeleteTransactionMutation();
   const handleRemove = async () => {
-    // Отправляем запрос на сервер для обновления транзакции с флагом "удалено"
-    const { error } : any = await updateTransaction(transaction.id);
-    if (error) {
-      console.error('Произошла ошибка при обновлении транзакции', error);
-      return;
+    try {
+      await updateTransaction(transaction?.id).unwrap();
+    } catch (error) {
+      const apiError = error as FetchBaseQueryError;
+      console.error(apiError, 'Произошла ошибка при удалении транзакции')
     }
-    console.log('Транзакция успешно обновлена');
   };
 
   const navigate = useNavigate();

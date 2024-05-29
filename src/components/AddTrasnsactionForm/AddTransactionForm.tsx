@@ -13,7 +13,7 @@ interface IAddTransactionForm {
 }
 
 const AddTransactionForm: FC<IAddTransactionForm> = ({onClose}) => {
-  const [addNewTransactionMutation]: any = useAddNewTransactionMutation();
+  const [addNewTransactionMutation] = useAddNewTransactionMutation();
   const {
     register,
     handleSubmit,

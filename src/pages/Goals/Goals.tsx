@@ -11,11 +11,14 @@ import AddGoalsForm from "../../components/AddGoalsForm/AddGoalsForm";
 const Goals = () => {
   const [modal, setModal] = useState<boolean>(false);
 
-  // @ts-ignore
-  const {data: goals, isLoading: goalsLoading, error: goalsError} = useGetAllGoalsQuery();
+  const {data: goals = [], isLoading: goalsLoading, error: goalsError} = useGetAllGoalsQuery();
 
   if (goalsLoading) {
     return <Loader/>
+  }
+
+  if(goalsError) {
+    return <h1 className={cl.errorMessage}>Извините, произошла ошибка</h1>
   }
 
   const handleCloseModal = (): void => {

@@ -1,8 +1,15 @@
 import "leaflet/dist/leaflet.css"
 import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import {Icon} from "leaflet";
-// @ts-ignore
-const LeafletMap = ({popupName, latitude, longitude}) => {
+import {FC} from "react";
+
+interface ILeafletMapProps {
+  popupName: string;
+  latitude: number;
+  longitude: number;
+}
+
+const LeafletMap:FC<ILeafletMapProps> = ({popupName, latitude, longitude}) => {
 
   const customIcon = new Icon({
     iconUrl: 'https://img.icons8.com/color/marker',

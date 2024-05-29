@@ -4,26 +4,31 @@ import cl from './GoalItem.module.scss'
 import ProgressBar from "../UI/progressBar/ProgressBar";
 import {useSoftDeleteGoalMutation} from "../../API/GoalsService";
 import {useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
+import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 
 interface IGoalItemProps {
   item: IGoal;
 }
 
+interface IErrorResponse {
+  data: string;
+  error: string;
+  originalStatus: number;
+  status: string;
+}
+
 
 const GoalItem: FC<IGoalItemProps> = ({item: goal}) => {
   const [updateGoal] = useSoftDeleteGoalMutation();
-  // @ts-ignore
   const {data: balance} = useGetBalanceAndExpensesQuery();
 
 
   const handleRemove = async () => {
-    // @ts-ignore
-    const {error} = await updateGoal(goal?.id);
-    if (error) {
-      console.log(error, 'Произошла ошибка при обновлении цели');
-      return
-    }
-    console.log('Цель успешно обновлена');
+    try {
+      await updateGoal(goal?.id).unwrap();
+    } catch (error) {
+      const apiError = error as FetchBaseQueryError;
+      console.error(apiError, 'Произошла ошибка при удалении цели');    }
   }
 
   const calculateProgress = () => {
@@ -34,7 +39,7 @@ const GoalItem: FC<IGoalItemProps> = ({item: goal}) => {
     return Math.ceil(progressInPercentage)
   }
 
-  const progress : number = calculateProgress();
+  const progress: number = calculateProgress();
 
   return (
     <div className={cl.root}>
@@ -46,7 +51,8 @@ const GoalItem: FC<IGoalItemProps> = ({item: goal}) => {
           Прогресс: <ProgressBar progress={progress}/> {progress > 100 ? 100 : progress}%
         </li>
         <li>
-          Статус: <span className={progress >= 100 ? cl.statusDone : cl.activeStatus}>{progress >= 100 ? "Выполнено" : "Активно"}</span>
+          Статус: <span
+          className={progress >= 100 ? cl.statusDone : cl.activeStatus}>{progress >= 100 ? "Выполнено" : "Активно"}</span>
         </li>
       </ul>
       <img onClick={handleRemove} className={cl.closeIcon} src="/close.png" title="удалить транзакцию"

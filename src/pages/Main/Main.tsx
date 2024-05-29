@@ -1,38 +1,37 @@
 import React, {FC} from "react";
-import RenderList from "../../components/RenderList/RenderList";
 import Loader from "../../components/UI/loader/Loader";
 import {useGetAllTransactionsQuery} from "../../API/TransactionService";
-import TransactionItem from "../../components/TransactionItem/TransactionItem";
 import BalanceWidget from "../../components/BalanceWidget/BalanceWidget";
+import {ITransaction} from "../../@types/types";
+import cl from './Main.module.scss'
+import TransactionList from "../../components/TransactionList/TransactionList";
 
 
-// @ts-ignore
 const Main: FC = () => {
 
   const {
     data: transactionsData = [],
     isLoading: transactionsLoading,
     error: transactionsError
-    // @ts-ignore
   } = useGetAllTransactionsQuery();
 
 
   if (transactionsLoading) {
     return <Loader/>
   }
-
-  const lastTransactions = transactionsData?.slice(-3);
+  const SLICE_LAST_TRANSACTIONS: number = -3;
+  const lastThreeTransactions: ITransaction[] = transactionsData?.slice(SLICE_LAST_TRANSACTIONS);
 
   return (
-    <>
+    <div className={cl.root}>
       <BalanceWidget/>
-      <RenderList emptyMessage="У вас нет транзакций"
-                  title="Последние транзакции"
-                  renderData={lastTransactions}
-                  RenderItemComponent={TransactionItem}
-      ></RenderList>
-      {transactionsError && <h2 style={{textAlign: 'center'}}>Извините, произошла ошибка</h2>}
-    </>
+      <TransactionList
+        transactions={lastThreeTransactions}
+        title={"Последние транзакции"}
+        emptyMessage={"У вас нет транзакций"}>
+      </TransactionList>
+      {transactionsError && <h2 className={cl.errorMessage}>Извините, произошла ошибка</h2>}
+    </div>
 
   )
 }

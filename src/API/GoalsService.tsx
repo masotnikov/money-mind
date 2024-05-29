@@ -11,7 +11,7 @@ export const goalsAPI = createApi({
   endpoints: (builder) => ({
 
     //получение всех транзакций
-    getAllGoals: builder.query({
+    getAllGoals: builder.query<IGoal[], void>({
       query: () => `/goals?deleted=false`,
       providesTags: result => ['Goals'],
     }),

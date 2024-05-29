@@ -1,9 +1,9 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {ITransaction} from "../@types/types";
+import {IBalanceAndExpenses, ITransaction} from "../@types/types";
 import {balanceProcessing, convertToEuropeanFormat} from "../utils/utils";
 
 
-export const URL = 'http://localhost:3001/'
+export const URL: string = 'http://localhost:3001/';
 
 export const transactionAPI = createApi({
   reducerPath: 'transactionReducer',
@@ -12,23 +12,25 @@ export const transactionAPI = createApi({
   endpoints: (builder) => ({
 
     //получение всех транзакций
-    getAllTransactions: builder.query({
-      query: (month = '') => {
+    getAllTransactions: builder.query<ITransaction[], void>({
+      query: () => {
         return {
           url: `/transactions?deleted=false`
         }
       },
       providesTags: result => ['Transactions'],
-      // transformResponse: (response, meta, arg) => {
-      //   const transactions = response as ITransaction
-      //   return transactions
-      // }
     }),
 
-      // providesTags: result => ['Transactions'],
     //получение транзакции по id
-    getTransactionById: builder.query({
-      query: (id) => `/transactions?id=${id}`,
+    getTransactionById: builder.query<ITransaction, string>({
+      query: (id: string) => `/transactions?id=${id}`,
+      transformResponse: (response: ITransaction[]) => {
+        if (response.length > 0) {
+          return response[0];
+        } else {
+          throw new Error('Transaction not found');
+        }
+      }
     }),
 
     //удаление транзакции (добавление флага deleted)
@@ -41,7 +43,7 @@ export const transactionAPI = createApi({
       invalidatesTags: ['Transactions']
     }),
 
-    addNewTransaction: builder.mutation({
+    addNewTransaction: builder.mutation<ITransaction, ITransaction>({
       query: (newTransactions: ITransaction) => ({
         url: `/transactions`,
         method: 'POST',
@@ -55,12 +57,11 @@ export const transactionAPI = createApi({
 
     }),
 
-    getBalanceAndExpenses: builder.query({
+    getBalanceAndExpenses: builder.query<IBalanceAndExpenses, void>({
       query: () => '/transactions',
       providesTags: ['BalanceAndExpenses'],
-      transformResponse: (response) => {
-        const transactions = response as ITransaction[];
-        return balanceProcessing(transactions)
+      transformResponse: (response: ITransaction[]) => {
+        return balanceProcessing(response)
       },
     })
   }),
