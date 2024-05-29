@@ -1,0 +1,22 @@
+.root {
+
+  .defaultBackground {
+    background-color: lightgray;
+    border-radius: 20px;
+    margin: 2px 8px;
+    padding: 2px 8px;
+  }
+
+  .redBackground {
+    background-color: #9a9797;
+  }
+
+  .greenBackground {
+    background-color: green;
+  }
+
+  .description {
+    word-wrap: break-word;
+  }
+
+}
