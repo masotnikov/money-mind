@@ -35,14 +35,14 @@ export const useDataForTable = (transactions: ITransaction[], selectedMonth: str
 
 
   const expenseByCategory = useMemo(() => {
-    const expensesByCategory = transactions
-      .filter(transaction => transaction.date.slice(3, 5) === selectedMonth && transaction.type === 'Расход')
+    const filteredTransactions = transactions
+      .filter((transaction: ITransaction) => transaction.date.slice(3, 5) === selectedMonth && transaction.type === 'Расход')
       .reduce((acc: Record<string, number>, transaction) => {
         acc[transaction.category] = (acc[transaction.category] || 0) + transaction.amount;
         return acc;
       }, {});
 
-    return Object.entries(expensesByCategory).map(([category, amount]) => ({
+    return Object.entries(filteredTransactions).map(([category, amount]) => ({
       name: category,
       value: amount
     }));
