@@ -1,11 +1,11 @@
-import {ITransaction} from "../@types/types";
+import {IBalanceAndExpenses, ITransaction} from "../@types/types";
 
 export const convertToEuropeanFormat = (date: string) => {
   return date.split('-').reverse().join('-')
 };
 
 
-export const balanceProcessing = (transactions: ITransaction[]) => {
+export const balanceProcessing = (transactions: ITransaction[]) : IBalanceAndExpenses => {
   let income: number = 0;
   let balance: number = 0;
   let expenses: number = 0;
@@ -26,6 +26,6 @@ export const balanceProcessing = (transactions: ITransaction[]) => {
     }
   }
 
-  return {balance, expenses, saving, income};
+  return {balance, expenses, saving, income} ;
 }
 
