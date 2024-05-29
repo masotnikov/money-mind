@@ -16,7 +16,6 @@ const ReplenishBalanceForm: FC<any> = ({onSubmit}) => {
   } = useForm<ITransaction>();
 
 
-// @ts-ignore
   const handleFormSubmit = (data?: ITransaction) => {
     onSubmit(data);
     reset();
