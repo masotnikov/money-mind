@@ -1,6 +1,6 @@
-import cl from "./TransactionItem/TransactionItem.module.scss";
 import React, {FC, memo} from "react";
-import {ITransaction} from "../@types/types";
+import {ITransaction} from "../../@types/types";
+import cl from './TransactionUL.module.scss'
 
 interface ITransactionProps {
   transaction: ITransaction;
@@ -9,7 +9,7 @@ interface ITransactionProps {
 const TransactionUL: FC<ITransactionProps> = memo(({transaction}) => {
 
     return (
-      <ul>
+      <ul className={cl.root}>
         <li>Тип:
           <span className={`${cl.defaultBackground} ${transaction?.type === 'Расход'
             ? cl.redBackground
@@ -20,7 +20,7 @@ const TransactionUL: FC<ITransactionProps> = memo(({transaction}) => {
         <li>Категория: {transaction?.category}</li>
         <li>Сумма: {transaction?.amount}</li>
         <li>Дата: {transaction?.date}</li>
-        <li style={{wordWrap: 'break-word'}}>Описание: {transaction?.description}</li>
+        <li className={cl.description}>Описание: {transaction?.description}</li>
       </ul>
     )
   }
