@@ -2,11 +2,11 @@ import './App.css'
 import MenuTabs from "./components/MenuTabs/MenuTabs";
 import Main from "./pages/Main/Main";
 import {Navigate, Route, Routes} from "react-router-dom";
-import Transactions from "./pages/Transactions/Transactions";
+import TransactionsPage from "./pages/Transactions/TransactionsPage";
 import Goals from "./pages/Goals/Goals";
 import Analytics from "./pages/Analytics/Analytics";
 import Settings from "./pages/Settings/Settings";
-import TransactionDetails from "./components/TransactionDetails/TransactionDetails";
+import TransactionDetailsById from "./components/TransactionDetailsById/TransactionDetailsById";
 import {useEffect, useState} from "react";
 
 const App = () => {
@@ -25,8 +25,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/main" />} />
         <Route path={'/main'} element={<Main/>}/>
-        <Route path={'/details/:idUser'} element={<TransactionDetails />} />
-        <Route path={'/transactions'} element={<Transactions/>}/>
+        <Route path={'/details/:idUser'} element={<TransactionDetailsById />} />
+        <Route path={'/transactions'} element={<TransactionsPage/>}/>
         <Route path={'/goals'} element={<Goals/>}/>
         <Route path={'/analytics'} element={<Analytics/>}/>
         <Route path={'/settings'} element={<Settings theme={theme} setTheme={setTheme}/>}/>

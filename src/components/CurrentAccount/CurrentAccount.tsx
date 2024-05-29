@@ -9,16 +9,16 @@ import Loader from "../UI/loader/Loader";
 const CurrentAccount = () => {
 
   const [replenishBalance] = useAddNewTransactionMutation();
-  // @ts-ignore
+
   const {data: balanceAndExpensesData, isLoading: balanceAndExpensesLoading} = useGetBalanceAndExpensesQuery();
 
 
-  const addReplenishTransaction = async (data: ITransaction) => {
-    data.type = "Доход";
-    data.category = "Другое";
-    data.description = "Пополнение счёта";
-    data.date = "2024-03-26";
-    await replenishBalance(data);
+  const addReplenishTransaction = async (transaction: ITransaction) => {
+    transaction.type = "Доход";
+    transaction.category = "Другое";
+    transaction.description = "Пополнение счёта";
+    transaction.date = "2024-03-26";
+    await replenishBalance(transaction);
   }
 
   if (balanceAndExpensesLoading) {
