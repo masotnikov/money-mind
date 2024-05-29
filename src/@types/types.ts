@@ -7,6 +7,12 @@ export interface ITransaction {
   amount: number;
   date: string;
   description: string;
+  location?: ITransactionLocation
+}
+
+export interface ITransactionLocation {
+  name: string;
+  coordinates: {latitude : number, longitude: number}
 }
 
 export interface IModal {
@@ -44,4 +50,11 @@ export interface IFilter {
   sort: string;
   query: string;
   month: string
+}
+
+export interface IBalanceAndExpenses {
+  balance: number;
+  expenses: number;
+  saving: number;
+  income: number;
 }
