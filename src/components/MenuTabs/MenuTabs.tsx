@@ -1,22 +1,19 @@
 import cl from './MenuTabs.module.scss'
-import {useState} from "react";
 import {NavLink} from "react-router-dom";
+import {ITab} from "../../@types/types";
+import {useActiveTab} from "../../hooks/useActiveTabe";
 
-interface Tab {
-  category: string;
-  name: string;
-}
 
 const MenuTabs = () => {
-  const tabs: Tab[] = [
-    { category: "Главная", name: "main" },
-    { category: "Транзакции", name: "transactions" },
-    { category: "Цели", name: "goals" },
-    { category: "Аналитика", name: "analytics" },
-    { category: "Настройки", name: "settings" }
+  const tabs: ITab[] = [
+    {category: "Главная", name: "main"},
+    {category: "Транзакции", name: "transactions"},
+    {category: "Цели", name: "goals"},
+    {category: "Аналитика", name: "analytics"},
+    {category: "Настройки", name: "settings"}
   ];
 
-  const [categoryId, setCategoryId] = useState<number>(0);
+  const [categoryId, setCategoryId] = useActiveTab(tabs);
 
   return (
     <div className={cl.root}>
@@ -25,9 +22,9 @@ const MenuTabs = () => {
           {
             tabs.map((tab, index) => (
               <NavLink to={`/${tab.name.toLowerCase()}`}
-                onClick={() => setCategoryId(index)}
-                className={`${cl.link} ${categoryId === index ? cl.active : ''}`}
-                key={tab.name}
+                       onClick={() => setCategoryId(index)}
+                       className={`${cl.link} ${categoryId === index ? cl.active : ''}`}
+                       key={tab.name}
               >
                 {tab.category}
               </NavLink>
