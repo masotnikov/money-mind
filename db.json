@@ -553,6 +553,24 @@
       "date": "31-05-2024",
       "description": "Оплата за выполненную работу",
       "deleted": "false"
+    },
+    {
+      "id": "23cd",
+      "amount": 500,
+      "type": "Расход",
+      "category": "Другое",
+      "description": "Перевод на сберегательный счёт",
+      "date": "26-03-2024",
+      "deleted": "true"
+    },
+    {
+      "id": "9e6c",
+      "amount": 1000,
+      "type": "Расход",
+      "category": "Другое",
+      "description": "Перевод на сберегательный счёт",
+      "date": "31-05-2024",
+      "deleted": "true"
     }
   ],
   "goals": [
@@ -593,6 +611,14 @@
       "amount": 33,
       "title": "11",
       "description": "22",
+      "deleted": "true",
+      "status": "Активно"
+    },
+    {
+      "id": "47da",
+      "amount": 50000,
+      "title": "ss",
+      "description": "wwc",
       "deleted": "true",
       "status": "Активно"
     }
