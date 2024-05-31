@@ -30,14 +30,14 @@ const AddTransactionForm: FC<IAddTransactionForm> = ({onClose}) => {
   });
 
 
-  const addNewTransaction = async (data: ITransaction) => {
+  const handleTransactionSubmit = async (data: ITransaction) => {
     data.amount = +data.amount
     await addNewTransactionMutation(data);
     onClose();
   }
 
   const onSubmit = (data: ITransaction) => {
-    addNewTransaction(data);
+    handleTransactionSubmit(data);
     reset();
     setValue("type", '');
     setValue("category", '')
