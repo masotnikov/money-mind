@@ -7,12 +7,6 @@ import {useDataForTable} from "../../hooks/useDataForTable";
 import {useGetAllTransactionsQuery} from "../../API/TransactionService";
 import Loader from "../UI/loader/Loader";
 
-export interface IDataForTable {
-  name: string,
-  income: number,
-  expense: number,
-  category?: string
-}
 
 
 const bookmarks: string[] = [

@@ -1,11 +1,12 @@
 import {CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis} from "recharts";
 import React, {FC} from "react";
+import {ITableData} from "../../@types/types";
 
-// interface IGeneralTableProps {
-//     data: IDataGeneralTable[];
-//   }
+interface IGeneralTableProps {
+    data: ITableData[];
+  }
 
-  const GeneralAnalyticTable: FC<any> = ({data}) => {
+  const GeneralAnalyticTable: FC<IGeneralTableProps> = ({data}) => {
     console.log('general', data)
     return (
       <>
