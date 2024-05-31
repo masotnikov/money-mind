@@ -1,13 +1,13 @@
 import React, {FC} from "react";
 import MySelect from "../UI/select/MySelect";
-import {IOption} from "../../@types/types";
+import {IOption, ITableData} from "../../@types/types";
 import {Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
 
 interface ITableExpensesByCategoryProps {
   value: string;
   onChange: (selectedOptions: string) => void;
-  data: any;
+  data: ITableData[];
 }
 
 const monthOptions: IOption[] = [
@@ -28,7 +28,6 @@ const monthOptions: IOption[] = [
 
 
 const TableExpensesByCategory: FC<ITableExpensesByCategoryProps> = ({value, onChange, data}) => {
-  console.log('byCat', data)
 
   return (
     <div style={{width: 600, height: 300}}>
