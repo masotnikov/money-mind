@@ -32,7 +32,7 @@ const TransactionsPage = memo(() => {
           <AddTransactionForm onClose={handleCloseModal}/>
         </MyModal>
         <TransactionList
-          transactions={searchedAndSortedTransactions}
+          renderList={searchedAndSortedTransactions}
           title={"Все транзакции"}
           emptyMessage={"У вас нет транзакций"}>
           <TransactionFilter filter={filter} setFilter={setFilter}/>
