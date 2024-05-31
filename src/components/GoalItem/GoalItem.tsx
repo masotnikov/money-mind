@@ -7,18 +7,11 @@ import {useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 
 interface IGoalItemProps {
-  item: IGoal;
-}
-
-interface IErrorResponse {
-  data: string;
-  error: string;
-  originalStatus: number;
-  status: string;
+  goal: IGoal;
 }
 
 
-const GoalItem: FC<IGoalItemProps> = ({item: goal}) => {
+const GoalItem: FC<IGoalItemProps> = ({goal}) => {
   const [updateGoal] = useSoftDeleteGoalMutation();
   const {data: balance} = useGetBalanceAndExpensesQuery();
 
@@ -28,7 +21,8 @@ const GoalItem: FC<IGoalItemProps> = ({item: goal}) => {
       await updateGoal(goal?.id).unwrap();
     } catch (error) {
       const apiError = error as FetchBaseQueryError;
-      console.error(apiError, 'Произошла ошибка при удалении цели');    }
+      console.error(apiError, 'Произошла ошибка при удалении цели');
+    }
   }
 
   const calculateProgress = () => {
