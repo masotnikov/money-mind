@@ -5,8 +5,11 @@ import MyButton from "../UI/button/MyButton";
 import {useForm} from "react-hook-form";
 import {ITransaction} from "../../@types/types";
 
+interface IReplenishBalanceFormProps {
+  onSubmit: (data: ITransaction) => void | Promise<void>;
+}
 
-const ReplenishBalanceForm: FC<any> = ({onSubmit}) => {
+const ReplenishBalanceForm: FC<IReplenishBalanceFormProps> = ({onSubmit}) => {
   const {
     handleSubmit,
     setValue,
@@ -17,7 +20,9 @@ const ReplenishBalanceForm: FC<any> = ({onSubmit}) => {
 
 
   const handleFormSubmit = (data?: ITransaction) => {
-    onSubmit(data);
+    if (data) {
+      onSubmit(data);
+    }
     reset();
   }
 
