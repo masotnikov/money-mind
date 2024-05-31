@@ -3,10 +3,9 @@ import MyButton from "../../components/UI/button/MyButton";
 import {useState} from "react";
 import {useGetAllGoalsQuery} from "../../API/GoalsService";
 import Loader from "../../components/UI/loader/Loader";
-import RenderList from "../../components/RenderList/RenderList";
-import goalItem from "../../components/GoalItem/GoalItem";
 import MyModal from "../../components/UI/modal/MyModal";
 import AddGoalsForm from "../../components/AddGoalsForm/AddGoalsForm";
+import GoalList from "../../components/GoalList/GoalList";
 
 const Goals = () => {
   const [modal, setModal] = useState<boolean>(false);
@@ -17,7 +16,7 @@ const Goals = () => {
     return <Loader/>
   }
 
-  if(goalsError) {
+  if (goalsError) {
     return <h1 className={cl.errorMessage}>Извините, произошла ошибка</h1>
   }
 
@@ -29,13 +28,9 @@ const Goals = () => {
     <div className={cl.root}>
       <MyButton onClick={() => setModal(true)}>Создайте цель</MyButton>
       <MyModal modal={modal} setModal={setModal}>
-          <AddGoalsForm onClose={handleCloseModal}/>
+        <AddGoalsForm onClose={handleCloseModal}/>
       </MyModal>
-      <RenderList
-        emptyMessage={"Цели отсутствуют..."}
-        renderData={goals}
-        RenderItemComponent={goalItem}
-      ></RenderList>
+      <GoalList renderList={goals} emptyMessage={"Цели отсутствуют..."}/>
     </div>
   )
 }
