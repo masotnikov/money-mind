@@ -1,0 +1,21 @@
+.root {
+
+
+  .list {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 3px;
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+
+}
