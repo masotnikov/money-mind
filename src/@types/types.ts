@@ -58,3 +58,28 @@ export interface IBalanceAndExpenses {
   saving: number;
   income: number;
 }
+
+export interface ITableData {
+  name: string;
+  value?: number;
+}
+
+export interface IListProps {
+  renderList: ITransaction[];
+  title: string;
+  emptyMessage: string;
+  children?: React.ReactNode;
+}
+
+export interface IGoalList {
+  renderList: IGoal[];
+  title?: string;
+  emptyMessage: string;
+  children?: React.ReactNode;
+}
+
+
+export interface ITab {
+  category: string;
+  name: string;
+}
