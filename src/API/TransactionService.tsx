@@ -54,7 +54,6 @@ export const transactionAPI = createApi({
         }
       }),
       invalidatesTags: ['Transactions', 'BalanceAndExpenses'],
-
     }),
 
     getBalanceAndExpenses: builder.query<IBalanceAndExpenses, void>({
