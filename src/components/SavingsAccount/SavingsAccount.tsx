@@ -11,12 +11,21 @@ const SavingsAccount = () => {
   const {data: balance, isLoading, error: errorBalance} = useGetBalanceAndExpensesQuery();
 
 
-  const addNewTransaction = async (data: ITransaction) => {
-    data.type = "Расход";
-    data.category = "Другое";
-    data.description = "Перевод на сберегательный счёт";
-    data.date = "2024-03-26";
-    await replenishSavingAccount(data);
+  const today: string = new Date().toISOString().split('T')[0];
+  console.log(today);
+  const addDefaultValue = (data: ITransaction): ITransaction => {
+    return {
+      ...data,
+      type: "Расход",
+      category: "Другое",
+      description: "Перевод на сберегательный счёт",
+      date: today,
+    }
+  }
+
+  const submitReplenishForm = async (data: ITransaction) => {
+
+    await replenishSavingAccount(addDefaultValue(data));
   }
 
   if (isLoading) {
@@ -31,7 +40,7 @@ const SavingsAccount = () => {
     <>
       <h2>Накопительный счёт</h2>
       <div className={cl.balanceRow}>{balance?.saving}
-        <ReplenishBalanceForm onSubmit={addNewTransaction}></ReplenishBalanceForm>
+        <ReplenishBalanceForm onSubmit={submitReplenishForm}></ReplenishBalanceForm>
       </div>
       <hr/>
       <h2>Баланс</h2>
