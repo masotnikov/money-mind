@@ -26,7 +26,7 @@ const Main: FC = () => {
     <div className={cl.root}>
       <BalanceWidget/>
       <TransactionList
-        transactions={lastThreeTransactions}
+        renderList={lastThreeTransactions}
         title={"Последние транзакции"}
         emptyMessage={"У вас нет транзакций"}>
       </TransactionList>
