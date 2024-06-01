@@ -1,32 +1,30 @@
 import cl from "../BalanceWidget/BalanceWidget.module.scss";
 import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
-import React from "react";
+import React, {FC} from "react";
 import {ITransaction} from "../../@types/types";
 import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
 import Loader from "../UI/loader/Loader";
+import {getTodayDate} from "../../utils/utils";
 
 
-const SavingsAccount = () => {
+const SavingsAccount: FC = () => {
   const [replenishSavingAccount] = useAddNewTransactionMutation();
   const {data: balance, isLoading, error: errorBalance} = useGetBalanceAndExpensesQuery();
 
+  const submitReplenishSavingAccount = async (transaction: ITransaction) => {
+    await replenishSavingAccount(addDefaultTransactionValues(transaction));
+  }
 
-  const today: string = new Date().toISOString().split('T')[0];
-  console.log(today);
-  const addDefaultValue = (data: ITransaction): ITransaction => {
+  const addDefaultTransactionValues = (transaction: ITransaction): ITransaction => {
     return {
-      ...data,
+      ...transaction,
       type: "Расход",
       category: "Другое",
       description: "Перевод на сберегательный счёт",
-      date: today,
+      date: getTodayDate(),
     }
   }
 
-  const submitReplenishForm = async (data: ITransaction) => {
-
-    await replenishSavingAccount(addDefaultValue(data));
-  }
 
   if (isLoading) {
     return <Loader/>
@@ -40,7 +38,7 @@ const SavingsAccount = () => {
     <>
       <h2>Накопительный счёт</h2>
       <div className={cl.balanceRow}>{balance?.saving}
-        <ReplenishBalanceForm onSubmit={submitReplenishForm}></ReplenishBalanceForm>
+        <ReplenishBalanceForm onSubmit={submitReplenishSavingAccount}></ReplenishBalanceForm>
       </div>
       <hr/>
       <h2>Баланс</h2>

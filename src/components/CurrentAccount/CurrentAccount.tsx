@@ -1,24 +1,30 @@
 import cl from "../BalanceWidget/BalanceWidget.module.scss";
 import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
-import React from "react";
+import React, {FC} from "react";
 import {ITransaction} from "../../@types/types";
 import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
 import Loader from "../UI/loader/Loader";
+import {getTodayDate} from "../../utils/utils";
 
 
-const CurrentAccount = () => {
+const CurrentAccount: FC = () => {
 
   const [replenishBalance] = useAddNewTransactionMutation();
-
   const {data: balanceAndExpensesData, isLoading: balanceAndExpensesLoading} = useGetBalanceAndExpensesQuery();
 
 
-  const addReplenishTransaction = async (transaction: ITransaction) => {
-    transaction.type = "Доход";
-    transaction.category = "Другое";
-    transaction.description = "Пополнение счёта";
-    transaction.date = "2024-03-26";
-    await replenishBalance(transaction);
+  const submitReplenishCurrentAccount = async (transaction: ITransaction) => {
+    await replenishBalance(addDefaultTransactionValues(transaction));
+  }
+
+  const addDefaultTransactionValues = (transaction: ITransaction): ITransaction => {
+    return {
+      ...transaction,
+      type: "Доход",
+      category: "Другое",
+      description: "Пополнение счёта",
+      date: getTodayDate(),
+    }
   }
 
   if (balanceAndExpensesLoading) {
@@ -30,7 +36,7 @@ const CurrentAccount = () => {
     <>
       <h2>Баланс</h2>
       <div className={cl.balanceRow}>{balanceAndExpensesData?.balance ?? 'Баланс недоступен'}
-        <ReplenishBalanceForm onSubmit={addReplenishTransaction}></ReplenishBalanceForm>
+        <ReplenishBalanceForm onSubmit={submitReplenishCurrentAccount}></ReplenishBalanceForm>
       </div>
       <hr/>
       <h2>Расходы</h2>
