@@ -4,6 +4,7 @@ export const convertToEuropeanFormat = (date: string) => {
   return date.split('-').reverse().join('-')
 };
 
+export const getTodayDate = () : string => new Date().toISOString().split('T')[0];
 
 export const balanceProcessing = (transactions: ITransaction[]) : IBalanceAndExpenses => {
   let income: number = 0;
