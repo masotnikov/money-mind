@@ -6,20 +6,26 @@ import TransactionFilter from "../../components/TransactionFilter/TransactionFil
 import MyButton from "../../components/UI/button/MyButton";
 import MyModal from "../../components/UI/modal/MyModal";
 import AddTransactionForm from "../../components/AddTrasnsactionForm/AddTransactionForm";
-import {IFilter} from "../../@types/types";
+import {IFilter, ITransaction} from "../../@types/types";
 import cl from './TransactionsPage.module.scss'
 import TransactionList from "../../components/TransactionList/TransactionList";
+import restoreTransactions from "../../utils/restoreTransactions";
 
 
 const TransactionsPage = memo(() => {
 
-    const {data: transactions = [], isLoading, error: transactionError} = useGetAllTransactionsQuery();
+    const {data: transactions = [], isLoading, error: transactionError, refetch} = useGetAllTransactionsQuery();
     const [filter, setFilter] = useState<IFilter>({sort: '', query: '', month: ''});
     const [modal, setModal] = useState<boolean>(false);
 
-    const searchedAndSortedTransactions = useTransactions(transactions, filter.query, filter.sort, filter.month);
+    const searchedAndSortedTransactions: ITransaction[] = useTransactions(transactions, filter.query, filter.sort, filter.month);
     const handleCloseModal = (): void => {
       setModal(false);
+    }
+
+    const remoteDeletedTransactionsAndRefetch = async () => {
+      await restoreTransactions();
+      refetch();
     }
 
     if (isLoading) {
@@ -37,6 +43,7 @@ const TransactionsPage = memo(() => {
           emptyMessage={"У вас нет транзакций"}>
           <TransactionFilter filter={filter} setFilter={setFilter}/>
           <MyButton onClick={() => setModal(true)}>Добавить транзакцию</MyButton>
+          <MyButton onClick={remoteDeletedTransactionsAndRefetch}>Восстановить транзакции</MyButton>
         </TransactionList>
         {transactionError && <h1 className={cl.errorMessage}>Произошла ошибка</h1>}
       </div>
