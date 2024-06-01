@@ -10,7 +10,6 @@ export const useActiveTab = (tabs: ITab[]) => {
   const findCurrentTabIndex = useCallback(() => {
     return tabs.findIndex((tab: ITab) => `/${tab.name.toLowerCase()}` === location.pathname)
   }, [location.pathname, tabs]);
-  console.log(location)
 
   useEffect(() => {
     const currentTabIndex: number = findCurrentTabIndex();
