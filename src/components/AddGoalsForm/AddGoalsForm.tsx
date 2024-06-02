@@ -19,8 +19,8 @@ const AddGoalsForm: FC<IAddGoalsForm> = ({onClose}) => {
     onClose();
   }
 
-  const onSubmit = (data: IGoal) => {
-    addNewGoal(data);
+  const onSubmit = (goal: IGoal) => {
+    addNewGoal(goal);
     reset();
   }
 

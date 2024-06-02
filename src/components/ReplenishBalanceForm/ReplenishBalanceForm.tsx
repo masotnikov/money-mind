@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import {ITransaction} from "../../@types/types";
 
 interface IReplenishBalanceFormProps {
-  onSubmit: (data: ITransaction) => void | Promise<void>;
+  onSubmit: (transaction: ITransaction) => void | Promise<void>;
 }
 
 const ReplenishBalanceForm: FC<IReplenishBalanceFormProps> = ({onSubmit}) => {
@@ -19,9 +19,9 @@ const ReplenishBalanceForm: FC<IReplenishBalanceFormProps> = ({onSubmit}) => {
   } = useForm<ITransaction>();
 
 
-  const handleFormSubmit = (data?: ITransaction) => {
-    if (data) {
-      onSubmit(data);
+  const handleFormSubmit = (transaction?: ITransaction) => {
+    if (transaction) {
+      onSubmit(transaction);
     }
     reset();
   }
