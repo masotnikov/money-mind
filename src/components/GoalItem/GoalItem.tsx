@@ -5,6 +5,7 @@ import ProgressBar from "../UI/progressBar/ProgressBar";
 import {useSoftDeleteGoalMutation} from "../../API/GoalsService";
 import {useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
+import Hr from "../UI/hr/hr";
 
 interface IGoalItemProps {
   goal: IGoal;
@@ -37,7 +38,7 @@ const GoalItem: FC<IGoalItemProps> = ({goal}) => {
 
   return (
     <div className={cl.root}>
-      <ul>
+      <ul className={cl.list}>
         <li>Цель: <span className={cl.title}>{goal?.title}</span></li>
         <li>Описание: <span>{goal?.description}</span></li>
         <li>Сумма: <span>{goal?.amount} руб.</span></li>
@@ -51,7 +52,7 @@ const GoalItem: FC<IGoalItemProps> = ({goal}) => {
       </ul>
       <img onClick={handleRemove} className={cl.closeIcon} src="/close.png" title="удалить транзакцию"
            alt="remove-transaction"/>
-      <hr style={{margin: '10px 0'}}/>
+      <Hr/>
     </div>
   )
 }

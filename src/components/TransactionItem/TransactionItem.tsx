@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import TransactionUL from "../TransactionUL/TransactionUL";
 import {useSoftDeleteTransactionMutation} from "../../API/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
+import Hr from "../UI/hr/hr";
 
 export interface TransactionItemProps {
   transaction: ITransaction;
@@ -32,7 +33,7 @@ const TransactionItem: FC<TransactionItemProps> = ({transaction}) => {
       <MyButton onClick={() => navigate(`/details/${transaction?.id}`)}>Подробнее</MyButton>
       <img onClick={handleRemove} className={cl.closeIcon} src="/close.png" title="удалить транзакцию"
            alt="remove-transaction"/>
-      <hr style={{marginTop: 2, marginBottom: 5}}/>
+      <Hr/>
     </div>
 
 
