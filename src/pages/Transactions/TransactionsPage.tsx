@@ -1,6 +1,6 @@
 import Loader from "../../components/UI/loader/Loader";
 import {useGetAllTransactionsQuery} from "../../API/TransactionService";
-import {memo, useState} from "react";
+import React, {memo, useState} from "react";
 import {useTransactions} from "../../hooks/useTransactions";
 import TransactionFilter from "../../components/TransactionFilter/TransactionFilter";
 import MyButton from "../../components/UI/button/MyButton";
@@ -9,7 +9,9 @@ import AddTransactionForm from "../../components/AddTrasnsactionForm/AddTransact
 import {IFilter, ITransaction} from "../../@types/types";
 import cl from './TransactionsPage.module.scss'
 import TransactionList from "../../components/TransactionList/TransactionList";
-import restoreTransactions from "../../utils/restoreTransactions";
+import restoreDeletedTransactions from "../../utils/restoreDeletedTransactions";
+import {ErrorEnum} from "../../constants/enums";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 
 const TransactionsPage = memo(() => {
@@ -24,12 +26,16 @@ const TransactionsPage = memo(() => {
     }
 
     const remoteDeletedTransactionsAndRefetch = async () => {
-      await restoreTransactions();
+      await restoreDeletedTransactions();
       refetch();
     }
 
     if (isLoading) {
       return <Loader/>
+    }
+
+    if (transactionError || !transactions) {
+      return <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>;
     }
 
     return (
@@ -45,7 +51,7 @@ const TransactionsPage = memo(() => {
           <MyButton onClick={() => setModal(true)}>Добавить транзакцию</MyButton>
           <MyButton onClick={remoteDeletedTransactionsAndRefetch}>Восстановить транзакции</MyButton>
         </TransactionList>
-        {transactionError && <h1 className={cl.errorMessage}>Произошла ошибка</h1>}
+        {transactionError && <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>}
       </div>
     )
   }

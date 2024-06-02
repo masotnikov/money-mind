@@ -5,20 +5,27 @@ import BalanceWidget from "../../components/BalanceWidget/BalanceWidget";
 import {ITransaction} from "../../@types/types";
 import cl from './Main.module.scss'
 import TransactionList from "../../components/TransactionList/TransactionList";
+import {ErrorEnum} from "../../constants/enums";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 
 const Main: FC = () => {
 
   const {
     data: transactionsData = [],
-    isLoading: transactionsLoading,
+    isLoading,
     error: transactionsError
   } = useGetAllTransactionsQuery();
 
 
-  if (transactionsLoading) {
+  if (isLoading) {
     return <Loader/>
   }
+
+  if (transactionsError || !transactionsData) {
+    return <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>
+  }
+
   const SLICE_LAST_TRANSACTIONS: number = -3;
   const lastThreeTransactions: ITransaction[] = transactionsData?.slice(SLICE_LAST_TRANSACTIONS);
 
@@ -30,7 +37,7 @@ const Main: FC = () => {
         title={"Последние транзакции"}
         emptyMessage={"У вас нет транзакций"}>
       </TransactionList>
-      {transactionsError && <h2 className={cl.errorMessage}>Извините, произошла ошибка</h2>}
+      {transactionsError && <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>}
     </div>
 
   )

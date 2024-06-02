@@ -1,11 +1,13 @@
 import cl from './Goals.module.scss'
 import MyButton from "../../components/UI/button/MyButton";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useGetAllGoalsQuery} from "../../API/GoalsService";
 import Loader from "../../components/UI/loader/Loader";
 import MyModal from "../../components/UI/modal/MyModal";
 import AddGoalsForm from "../../components/AddGoalsForm/AddGoalsForm";
 import GoalList from "../../components/GoalList/GoalList";
+import {ErrorEnum} from "../../constants/enums";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 const Goals = () => {
   const [modal, setModal] = useState<boolean>(false);
@@ -16,9 +18,10 @@ const Goals = () => {
     return <Loader/>
   }
 
-  if (goalsError) {
-    return <h1 className={cl.errorMessage}>Извините, произошла ошибка</h1>
+  if (goalsError || !goals) {
+    return <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>
   }
+
 
   const handleCloseModal = (): void => {
     setModal(false);
