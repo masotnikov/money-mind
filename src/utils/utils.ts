@@ -1,4 +1,5 @@
 import {IBalanceAndExpenses, ITransaction} from "../@types/types";
+import {TransactionDescription, TransactionType} from "../constants/enums";
 
 export const convertToEuropeanFormat = (date: string) => {
   return date.split('-').reverse().join('-')
@@ -13,13 +14,13 @@ export const balanceProcessing = (transactions: ITransaction[]) : IBalanceAndExp
   let saving: number = 0;
   for (let i = 0; i < transactions.length; i++) {
     const transaction: ITransaction = transactions[i];
-    if (transaction.type === 'Расход') {
+    if (transaction.type === TransactionType.EXPENSE) {
       expenses += transaction.amount
     }
-    if (transaction.description === 'Перевод на сберегательный счёт') {
+    if (transaction.description === TransactionDescription.REPLENISHMENT_SAVING_ACCOUNT) {
       saving += transaction.amount
     }
-    if (transaction.type === 'Доход') {
+    if (transaction.type === TransactionType.INCOME) {
       balance += transaction.amount;
       income += transaction.amount
     } else {

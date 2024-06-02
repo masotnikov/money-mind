@@ -5,12 +5,15 @@ import {ITransaction} from "../../@types/types";
 import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
 import Loader from "../UI/loader/Loader";
 import {getTodayDate} from "../../utils/utils";
+import {ErrorEnum, TransactionCategory, TransactionDescription, TransactionType} from "../../constants/enums";
+import Hr from "../UI/hr/hr";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 
 const CurrentAccount: FC = () => {
 
   const [replenishBalance] = useAddNewTransactionMutation();
-  const {data: balanceAndExpensesData, isLoading: balanceAndExpensesLoading} = useGetBalanceAndExpensesQuery();
+  const {data: balanceAndExpensesData, isLoading, error} = useGetBalanceAndExpensesQuery();
 
 
   const submitReplenishCurrentAccount = async (transaction: ITransaction) => {
@@ -20,15 +23,19 @@ const CurrentAccount: FC = () => {
   const addDefaultTransactionValues = (transaction: ITransaction): ITransaction => {
     return {
       ...transaction,
-      type: "Доход",
-      category: "Другое",
-      description: "Пополнение счёта",
+      type: TransactionType.INCOME,
+      category: TransactionCategory.OTHER,
+      description: TransactionDescription.REPLENISHMENT_CURRENT_ACCOUNT,
       date: getTodayDate(),
     }
   }
 
-  if (balanceAndExpensesLoading) {
+  if (isLoading) {
     return <Loader/>
+  }
+
+  if (error || !balanceAndExpensesData) {
+    return <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>
   }
 
 
@@ -38,11 +45,9 @@ const CurrentAccount: FC = () => {
       <div className={cl.balanceRow}>{balanceAndExpensesData?.balance ?? 'Баланс недоступен'}
         <ReplenishBalanceForm onSubmit={submitReplenishCurrentAccount}></ReplenishBalanceForm>
       </div>
-      <hr/>
+      <Hr/>
       <h2>Расходы</h2>
-      <div>
-        <span>{balanceAndExpensesData?.expenses ?? 'Расходы недоступны'}</span>
-      </div>
+      <div>{balanceAndExpensesData?.expenses ?? 'Расходы недоступны'}</div>
     </>
   )
 }

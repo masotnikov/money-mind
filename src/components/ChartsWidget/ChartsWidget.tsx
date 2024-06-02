@@ -6,6 +6,8 @@ import GeneralAnalyticTable from '../GeneralAnalyticTable/GeneralAnalyticTable';
 import {useDataForTable} from "../../hooks/useDataForTable";
 import {useGetAllTransactionsQuery} from "../../API/TransactionService";
 import Loader from "../UI/loader/Loader";
+import {ErrorEnum} from "../../constants/enums";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 
 
@@ -29,8 +31,8 @@ const ChartsWidget: FC = memo(() => {
       return <Loader/>
     }
 
-  if (errorTransactions) {
-    return <h1 className={cl.errorMessage}>Извините, произошла ошибка</h1>
+  if (errorTransactions || !transactions) {
+    return <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>;
   }
 
     return (
