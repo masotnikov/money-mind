@@ -5,6 +5,7 @@ import GoalItem from "../GoalItem/GoalItem";
 
 
 const GoalList: FC<IGoalList> = ({title, children, renderList, emptyMessage}) => {
+
   return (
     <div className={cl.root}>
       <h3>{title}</h3>

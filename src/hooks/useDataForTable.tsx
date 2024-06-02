@@ -1,5 +1,6 @@
 import {ITableData, ITransaction} from "../@types/types";
 import {useMemo} from "react";
+import {TransactionType} from "../constants/enums";
 
 const monthsName: Record<string, string> = {
   "01": "Январь",
@@ -29,8 +30,8 @@ export const useDataForTable = (transactions: ITransaction[], selectedMonth: str
         if (!acc[month]) {
           acc[month] = {name: month, income: 0, expense: 0};
         }
-        if (transaction.type === 'Доход') acc[month].income += transaction.amount;
-        if (transaction.type === 'Расход') acc[month].expense += transaction.amount;
+        if (transaction.type === TransactionType?.INCOME) acc[month].income += transaction.amount;
+        if (transaction.type === TransactionType?.EXPENSE) acc[month].expense += transaction.amount;
         return acc
       }, {});
 
@@ -41,7 +42,7 @@ export const useDataForTable = (transactions: ITransaction[], selectedMonth: str
 
   const expenseByCategory: ITableData[] = useMemo(() => {
     const filteredTransactions = transactions
-      .filter((transaction: ITransaction) => transaction.date.slice(3, 5) === selectedMonth && transaction.type === 'Расход')
+      .filter((transaction: ITransaction) => transaction.date.slice(3, 5) === selectedMonth && transaction.type === TransactionType?.EXPENSE)
       .reduce((acc: Record<string, number>, transaction) => {
         acc[transaction.category] = (acc[transaction.category] || 0) + transaction.amount;
         return acc;

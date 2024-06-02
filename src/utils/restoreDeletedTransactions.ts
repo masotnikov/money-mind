@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { ITransaction } from '../@types/types';
 
-const restoreTransactions = async () => {
+const restoreDeletedTransactions = async () => {
   try {
     const response: AxiosResponse<ITransaction[]> = await axios.get('http://localhost:3001/transactions?deleted=true');
     const deletedTransactions: ITransaction[] = response.data;
@@ -17,4 +17,4 @@ const restoreTransactions = async () => {
   }
 };
 
-export default restoreTransactions;
+export default restoreDeletedTransactions;
