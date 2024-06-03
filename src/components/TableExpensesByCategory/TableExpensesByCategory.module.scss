@@ -1,0 +1,14 @@
+.root {
+  width: 600px;
+  height: 300px;
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .emptyList {
+    text-align: center;
+  }
+
+}

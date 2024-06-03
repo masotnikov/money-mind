@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import MySelect from "../UI/select/MySelect";
 import {IOption, ITableData} from "../../@types/types";
 import {Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
-
+import cl from './TableExpensesByCategory.module.scss'
 
 interface ITableExpensesByCategoryProps {
   value: string;
@@ -30,12 +30,12 @@ const monthOptions: IOption[] = [
 const TableExpensesByCategory: FC<ITableExpensesByCategoryProps> = ({value, onChange, data}) => {
 
   return (
-    <div style={{width: 600, height: 300}}>
-      <div style={{display: "flex", justifyContent: "center"}}>
+    <div className={cl.root}>
+      <div className={cl.buttonContainer}>
         <MySelect options={monthOptions} onChange={selectedOption => onChange(selectedOption)} value={value}/>
       </div>
       {!data?.length ?
-        <h1 style={{textAlign: "center"}}>Транзакций за этот месяц нет</h1>
+        <h1 className={cl.emptyList}>Транзакций за этот месяц нет</h1>
         :
         <ResponsiveContainer width="100%" height="80%">
           <BarChart data={data}>
@@ -47,7 +47,6 @@ const TableExpensesByCategory: FC<ITableExpensesByCategoryProps> = ({value, onCh
           </BarChart>
         </ResponsiveContainer>
       }
-
     </div>
   )
 }
