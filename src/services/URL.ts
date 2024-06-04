@@ -1,0 +1,1 @@
+export const URL: string = `http://money-mind-zeta.vercel.app/`
