@@ -1,1 +1,1 @@
-export const URL: string = `/api/`
+export const URL: string = `/api`
