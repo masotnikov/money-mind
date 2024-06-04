@@ -3,7 +3,7 @@ import {IBalanceAndExpenses, ITransaction} from "../@types/types";
 import {balanceProcessing, convertToEuropeanFormat} from "../utils/utils";
 
 
-export const URL: string = 'http://money-mind.vercel.app/';
+export const URL: string = 'http://money-mind-zeta.vercel.app/';
 
 export const transactionAPI = createApi({
   reducerPath: 'transactionReducer',
