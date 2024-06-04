@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { transactionAPI } from '../API/TransactionService';
-import { goalsAPI } from "../API/GoalsService";
+import { transactionAPI } from '../services/TransactionService';
+import { goalsAPI } from "../services/GoalsService";
 
 const store = configureStore({
   reducer: {
