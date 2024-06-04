@@ -1,9 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {IBalanceAndExpenses, ITransaction} from "../@types/types";
 import {balanceProcessing, convertToEuropeanFormat} from "../utils/utils";
+import {URL} from "./URL";
 
-
-export const URL: string = 'http://money-mind-zeta.vercel.app/';
 
 export const transactionAPI = createApi({
   reducerPath: 'transactionReducer',

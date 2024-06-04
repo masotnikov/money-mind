@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { ITransaction } from '../@types/types';
-
-const URL = 'http://money-mind-zeta.vercel.app/';
+import {URL} from '../services/URL'
 
 const restoreDeletedTransactions = async () => {
   try {
