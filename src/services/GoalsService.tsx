@@ -2,7 +2,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {IGoal} from "../@types/types";
 
 
-export const URL = 'http://money-mind-zeta.vercel.app/'
+export const URL = 'http://money-mind-zeta.vercel.app/';
 
 export const goalsAPI = createApi({
   reducerPath: 'goalsReducer',
