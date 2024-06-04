@@ -1,1 +1,1 @@
-export const URL: string = `http://money-mind-rust.vercel.app/`
+export const URL: string = `http://localhost:3000/`
