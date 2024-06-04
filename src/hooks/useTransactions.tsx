@@ -3,7 +3,7 @@ import {useMemo} from "react";
 
 const useSortedTransactions = (transactions: ITransaction[], sort: string, month: string) => {
 
-  const sortedTransactions: ITransaction[] = useMemo(() => {
+  return useMemo(() => {
     return transactions.filter(transaction => {
       let matchesSort: boolean = true;
       let matchesMonth: boolean = true;
@@ -13,12 +13,11 @@ const useSortedTransactions = (transactions: ITransaction[], sort: string, month
       }
 
       if (month) {
-        matchesMonth = transaction.date.slice(3,5).includes(month);
+        matchesMonth = transaction.date.slice(3, 5).includes(month);
       }
       return matchesSort && matchesMonth;
     });
   }, [sort, transactions, month])
-  return sortedTransactions
 }
 
 
@@ -42,7 +41,7 @@ export const useTransactions = (transactions: ITransaction[], query: string, sor
       })
     )
 
-  }, [transactions, query, sort, month])
+  }, [sortedTransactions, query])
 
   return sortedAndSearchedTransactions
 }
