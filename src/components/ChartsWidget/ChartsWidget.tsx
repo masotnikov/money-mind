@@ -4,7 +4,7 @@ import BookmarkList from "../BookmarkList/BookmarkList";
 import TableExpensesByCategory from '../TableExpensesByCategory/TableExpensesByCategory';
 import GeneralAnalyticTable from '../GeneralAnalyticTable/GeneralAnalyticTable';
 import {useDataForTable} from "../../hooks/useDataForTable";
-import {useGetAllTransactionsQuery} from "../../API/TransactionService";
+import {useGetAllTransactionsQuery} from "../../services/TransactionService";
 import Loader from "../UI/loader/Loader";
 import {ErrorEnum} from "../../constants/enums";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";

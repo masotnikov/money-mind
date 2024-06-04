@@ -3,7 +3,7 @@ import MyInput from "../UI/input/MyInput";
 import cl from "./AddGoals.module.scss"
 import MyButton from "../UI/button/MyButton";
 import {IGoal} from "../../@types/types";
-import {useAddNewGoalMutation} from "../../API/GoalsService";
+import {useAddNewGoalMutation} from "../../services/GoalsService";
 import {useForm} from "react-hook-form";
 
 interface IAddGoalsForm {

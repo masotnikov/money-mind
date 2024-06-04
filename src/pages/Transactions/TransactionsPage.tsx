@@ -1,5 +1,5 @@
 import Loader from "../../components/UI/loader/Loader";
-import {useGetAllTransactionsQuery} from "../../API/TransactionService";
+import {useGetAllTransactionsQuery} from "../../services/TransactionService";
 import React, {memo, useState} from "react";
 import {useTransactions} from "../../hooks/useTransactions";
 import TransactionFilter from "../../components/TransactionFilter/TransactionFilter";

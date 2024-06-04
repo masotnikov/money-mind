@@ -1,6 +1,6 @@
 import React from "react";
 import Loader from "../UI/loader/Loader";
-import {useGetTransactionByIdQuery} from "../../API/TransactionService";
+import {useGetTransactionByIdQuery} from "../../services/TransactionService";
 import {useParams} from "react-router-dom";
 import cl from './TransactionDetailsById.module.scss'
 import LeafletMap from "../LeafletMap/LeafletMap";

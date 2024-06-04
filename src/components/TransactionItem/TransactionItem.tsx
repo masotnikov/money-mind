@@ -4,7 +4,7 @@ import MyButton from "../UI/button/MyButton";
 import cl from './TransactionItem.module.scss'
 import {useNavigate} from "react-router-dom";
 import TransactionUL from "../TransactionUL/TransactionUL";
-import {useSoftDeleteTransactionMutation} from "../../API/TransactionService";
+import {useSoftDeleteTransactionMutation} from "../../services/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 import Hr from "../UI/hr/hr";
 

@@ -2,8 +2,8 @@ import {IGoal} from "../../@types/types";
 import React, {FC} from "react";
 import cl from './GoalItem.module.scss'
 import ProgressBar from "../UI/progressBar/ProgressBar";
-import {useSoftDeleteGoalMutation} from "../../API/GoalsService";
-import {useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
+import {useSoftDeleteGoalMutation} from "../../services/GoalsService";
+import {useGetBalanceAndExpensesQuery} from "../../services/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 import Hr from "../UI/hr/hr";
 

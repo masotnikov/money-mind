@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import Loader from "../../components/UI/loader/Loader";
-import {useGetAllTransactionsQuery} from "../../API/TransactionService";
+import {useGetAllTransactionsQuery} from "../../services/TransactionService";
 import BalanceWidget from "../../components/BalanceWidget/BalanceWidget";
 import {ITransaction} from "../../@types/types";
 import cl from './Main.module.scss'

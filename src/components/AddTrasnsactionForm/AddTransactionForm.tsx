@@ -3,7 +3,7 @@ import {ITransaction} from "../../@types/types";
 import React, {FC} from "react";
 import MyButton from "../UI/button/MyButton";
 import {useForm} from 'react-hook-form';
-import {useAddNewTransactionMutation} from "../../API/TransactionService";
+import {useAddNewTransactionMutation} from "../../services/TransactionService";
 import {categoryOptions, typeOptions} from "./formOptions";
 import cl from './AddTransactionForm.module.scss'
 import MyInput from "../UI/input/MyInput";

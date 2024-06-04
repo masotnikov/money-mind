@@ -1,7 +1,7 @@
 import cl from './Goals.module.scss'
 import MyButton from "../../components/UI/button/MyButton";
 import React, {useState} from "react";
-import {useGetAllGoalsQuery} from "../../API/GoalsService";
+import {useGetAllGoalsQuery} from "../../services/GoalsService";
 import Loader from "../../components/UI/loader/Loader";
 import MyModal from "../../components/UI/modal/MyModal";
 import AddGoalsForm from "../../components/AddGoalsForm/AddGoalsForm";

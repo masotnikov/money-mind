@@ -2,7 +2,7 @@ import cl from "../BalanceWidget/BalanceWidget.module.scss";
 import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
 import React, {FC} from "react";
 import {ITransaction} from "../../@types/types";
-import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../API/TransactionService";
+import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../services/TransactionService";
 import Loader from "../UI/loader/Loader";
 import {getTodayDate} from "../../utils/utils";
 import {ErrorEnum, TransactionCategory, TransactionDescription, TransactionType} from "../../constants/enums";
