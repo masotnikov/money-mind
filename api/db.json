@@ -579,30 +579,6 @@
       "status": "Активно",
       "deleted": "false",
       "id": "c375"
-    },
-    {
-      "id": "2c06",
-      "amount": 5000,
-      "title": "www",
-      "description": "wwww",
-      "deleted": "true",
-      "status": "Активно"
-    },
-    {
-      "id": "40ba",
-      "amount": 33,
-      "title": "11",
-      "description": "22",
-      "deleted": "true",
-      "status": "Активно"
-    },
-    {
-      "id": "47da",
-      "amount": 50000,
-      "title": "ss",
-      "description": "wwc",
-      "deleted": "true",
-      "status": "Активно"
     }
   ]
 }
