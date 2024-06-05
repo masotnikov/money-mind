@@ -1,11 +1,11 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {IGoal} from "../@types/types";
-import {Config} from '../config'
+import {URL} from '../URL'
 
 
 export const goalsAPI = createApi({
   reducerPath: 'goalsReducer',
-  baseQuery: fetchBaseQuery({baseUrl: Config}),
+  baseQuery: fetchBaseQuery({baseUrl: URL}),
   tagTypes: ['Goals'],
   endpoints: (builder) => ({
 

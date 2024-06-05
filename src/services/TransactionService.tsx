@@ -1,12 +1,12 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {IBalanceAndExpenses, ITransaction} from "../@types/types";
 import {balanceProcessing, convertToEuropeanFormat} from "../utils/utils";
-import {Config} from "../config";
+import {URL} from "../URL";
 
 
 export const transactionAPI = createApi({
   reducerPath: 'transactionReducer',
-  baseQuery: fetchBaseQuery({baseUrl: Config}),
+  baseQuery: fetchBaseQuery({baseUrl: URL}),
   tagTypes: ['Transactions', 'BalanceAndExpenses'],
   endpoints: (builder) => ({
 
