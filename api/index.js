@@ -1,5 +1,5 @@
 const server = require('./server');
 
-export default async function handler(req, res) {
-  await server(req, res);
-}
+module.exports = (req, res) => {
+  server(req, res);
+};
