@@ -1,1 +1,1 @@
-export const URL: string = `https://money-mind-five.vercel.app/`
+export const URL: string = `/api`;
