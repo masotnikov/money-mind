@@ -30,8 +30,8 @@ export const useDataForTable = (transactions: ITransaction[], selectedMonth: str
         if (!acc[month]) {
           acc[month] = {name: month, income: 0, expense: 0};
         }
-        if (transaction.type === TransactionType?.INCOME) acc[month].income += transaction.amount;
-        if (transaction.type === TransactionType?.EXPENSE) acc[month].expense += transaction.amount;
+        if (transaction.type === TransactionType.INCOME) acc[month].income += transaction.amount;
+        if (transaction.type === TransactionType.EXPENSE) acc[month].expense += transaction.amount;
         return acc
       }, {});
 
