@@ -28,11 +28,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "concurrently \"react-scripts start\" \"json-server --watch db.json --port 3001\"",
+    "start": "concurrently \"react-scripts start\" \"node api/index.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "node api/server.js"
+    "serve": "node api/index.js"
   },
   "eslintConfig": {
     "extends": [
