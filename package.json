@@ -33,8 +33,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "node api/index.js"
-  },
+    "serve": "node api/index.js",
+    "postinstall": "npm install --prefix ./api"
+  }
+,
   "eslintConfig": {
     "extends": [
       "react-app",
