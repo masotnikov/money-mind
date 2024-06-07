@@ -14,7 +14,6 @@
     "@types/react": "^18.2.69",
     "@types/react-dom": "^18.2.22",
     "axios": "^1.7.2",
-    "http-proxy-middleware": "^3.0.0",
     "json-server": "^1.0.0-alpha.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,7 +25,8 @@
     "recharts": "^2.12.7",
     "sass": "^1.72.0",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "http-proxy-middleware": "^2.0.0"
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"node api/index.js\"",
