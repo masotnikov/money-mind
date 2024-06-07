@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {IGoal} from "../@types/types";
-import {URL} from '../URL'
+import {URL} from './URL'
 
 
 export const goalsAPI = createApi({

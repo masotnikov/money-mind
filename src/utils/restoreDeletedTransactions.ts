@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { ITransaction } from '../@types/types';
-import {URL} from '../URL'
+import {URL} from '../services/URL'
 
 const restoreDeletedTransactions = async () => {
   try {
