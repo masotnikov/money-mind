@@ -8,7 +8,7 @@ const restoreDeletedTransactions = async () => {
     const deletedTransactions: ITransaction[] = response.data;
 
     const restorePromises: Promise<AxiosResponse<ITransaction>>[] = deletedTransactions.map((transaction: ITransaction) => {
-      return axios.patch(`${URL}transactions/${transaction.id}`, { deleted: 'false' });
+      return axios.put(`${URL}transactions/${transaction.id}`, { deleted: 'false' });
     });
 
     await Promise.all(restorePromises);

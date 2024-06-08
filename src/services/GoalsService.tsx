@@ -18,7 +18,7 @@ export const goalsAPI = createApi({
     softDeleteGoal: builder.mutation({
       query: (id) => ({
         url: `/goals/${id}`,
-        method: 'PATCH',
+        method: 'PUT',
         body: {deleted: "true"},
       }),
       invalidatesTags: ['Goals']

@@ -36,7 +36,7 @@ export const transactionAPI = createApi({
     softDeleteTransaction: builder.mutation({
       query: (id) => ({
         url: `/transactions/${id}`,
-        method: 'PATCH',
+        method: 'PUT',
         body: {deleted: "true"},
       }),
       invalidatesTags: ['Transactions']
