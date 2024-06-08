@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/money-mind/static/css/main.f33e1819.css",
+    "main.js": "/money-mind/static/js/main.0df95553.js",
+    "index.html": "/money-mind/index.html",
+    "main.f33e1819.css.map": "/money-mind/static/css/main.f33e1819.css.map",
+    "main.0df95553.js.map": "/money-mind/static/js/main.0df95553.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f33e1819.css",
+    "static/js/main.0df95553.js"
+  ]
+}
