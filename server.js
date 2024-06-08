@@ -1,23 +1,19 @@
-const express = require("express");
 const jsonServer = require("json-server");
-const path = require("path");
+const server = jsonServer.create();
+const router = jsonServer.router("db.json");
+const middlewares = jsonServer.defaults({
+  static: "./build",
+});
 
-const app = express();
-const jsonServerRouter = jsonServer.router("db.json");
-const jsonServerMiddlewares = jsonServer.defaults();
 const port = process.env.PORT || 3001;
+server.use(middlewares);
+server.use(
+  jsonServer.rewrites({
+    "/api/*": "/$1",
+  })
+);
 
-app.use("/api", jsonServerMiddlewares); // Применяем мидлвары json-server для пути /api
-app.use("/api", jsonServerRouter); // Подключаем json-server для пути /api
-
-// Обслуживание статических файлов React приложения из папки build
-app.use(express.static(path.join(__dirname, "build")));
-
-// При запросе на любой путь, кроме /api, отдаем статический файл index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+server.use(router);
+server.listen(port, () => {
+  console.log(`${port}`)
+})
