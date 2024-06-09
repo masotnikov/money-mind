@@ -1,5 +1,5 @@
 import cl from './MenuTabs.module.scss'
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {ITab} from "../../@types/types";
 import {useActiveTab} from "../../hooks/useActiveTabe";
 
@@ -21,13 +21,13 @@ const MenuTabs = () => {
         <ul>
           {
             tabs.map((tab, index) => (
-              <NavLink to={`/${tab.name.toLowerCase()}`}
+              <Link to={`/${tab.name.toLowerCase()}`}
                        onClick={() => setCategoryId(index)}
                        className={`${cl.link} ${categoryId === index ? cl.active : ''}`}
                        key={tab.name}
               >
                 {tab.category}
-              </NavLink>
+              </Link>
             ))
           }
         </ul>
