@@ -1,12 +1,14 @@
 import React from "react";
 import cl from './CloseIcon.module.scss'
+// @ts-ignore
+import closeIcon from '../../../assets/icons/close-Icon.svg'
 
 const CloseIcon = ({...props}) => {
   return (
 
     <img {...props}
          className={cl.closeIcon}
-         src='../../../assets/icons/close-Icon.svg'
+         src={closeIcon}
          title="удалить транзакцию"
          alt="remove-transaction"/>
   )
