@@ -23,13 +23,18 @@ const App = () => {
     <div className='App'>
       <MenuTabs/>
       <Routes>
-        <Route path="/" element={<Navigate to="money-mind/main" />} />
-        <Route path={'money-mind/main'} element={<Main/>}/>
-        <Route path={'money-mind/details/:idUser'} element={<TransactionDetailsById />} />
-        <Route path={'money-mind/transactions'} element={<TransactionsPage/>}/>
-        <Route path={'money-mind/goals'} element={<Goals/>}/>
-        <Route path={'money-mind/analytics'} element={<Analytics/>}/>
-        <Route path={'money-mind/settings'} element={<Settings theme={theme} setTheme={setTheme}/>}/>
+        <Route path="/" element={<Navigate to="/main"/>}/>
+
+        <Route path={'/money-mind'}>
+          <Route path={'/main'} element={<Main/>}/>
+          <Route path={'/details/:idUser'} element={<TransactionDetailsById/>}/>
+          <Route path={'/transactions'} element={<TransactionsPage/>}/>
+          <Route path={'/goals'} element={<Goals/>}/>
+          <Route path={'/analytics'} element={<Analytics/>}/>
+          <Route path={'/settings'} element={<Settings theme={theme} setTheme={setTheme}/>}/>
+        </Route>
+
+        <Route path={"*"} element={<h1>Такой страницы не существует</h1>}/>
       </Routes>
     </div>
   )
