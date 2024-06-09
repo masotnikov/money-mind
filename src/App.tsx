@@ -8,6 +8,7 @@ import Analytics from "./pages/Analytics/Analytics";
 import Settings from "./pages/Settings/Settings";
 import TransactionDetailsById from "./components/TransactionDetailsById/TransactionDetailsById";
 import {useEffect, useState} from "react";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 const App = () => {
   const LIGHT_THEME: string = 'light';
@@ -31,7 +32,7 @@ const App = () => {
           <Route path={'/goals'} element={<Goals/>}/>
           <Route path={'/analytics'} element={<Analytics/>}/>
           <Route path={'/settings'} element={<Settings theme={theme} setTheme={setTheme}/>}/>
-          <Route path={"*"} element={<h1>Такой страницы не существует</h1>}/>
+          <Route path={"*"} element={<ErrorPage/>}/>
         </Routes>
       </HashRouter>
     </div>
