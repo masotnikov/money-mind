@@ -2,21 +2,6 @@
   position: relative;
 }
 
-.closeIcon {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  height: 20px;
-  width: 20px;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.root:hover .closeIcon {
-  opacity: 1;
-}
-
 .defaultBackground {
   background-color: lightgray;
   border-radius: 15px; /* пример закруглений */
