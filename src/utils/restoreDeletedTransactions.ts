@@ -4,11 +4,11 @@ import {backendURL} from '../services/BackendURL'
 
 const restoreDeletedTransactions = async () => {
   try {
-    const response: AxiosResponse<ITransaction[]> = await axios.get(`${backendURL}transactions?deleted=true`);
+    const response: AxiosResponse<ITransaction[]> = await axios.get(`${backendURL}/transactions?deleted=true`);
     const deletedTransactions: ITransaction[] = response.data;
 
     const restorePromises: Promise<AxiosResponse<ITransaction>>[] = deletedTransactions.map((transaction: ITransaction) => {
-      return axios.put(`${backendURL}transactions/${transaction.id}`, { deleted: 'false' });
+      return axios.put(`${backendURL}/transactions/${transaction.id}`, { deleted: 'false' });
     });
 
     await Promise.all(restorePromises);
