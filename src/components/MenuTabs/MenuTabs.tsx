@@ -21,9 +21,9 @@ const MenuTabs = () => {
         <ul>
           {
             tabs.map((tab, index) => (
-              <NavLink to={`${tab.name.toLowerCase()}`}
+              <NavLink to={`#/${tab.name.toLowerCase()}`}
                        onClick={() => setCategoryId(index)}
-                       className={`${cl.link} ${categoryId === index ? cl.active : ''}` }
+                       className={`${cl.link} ${categoryId === index ? cl.active : ''}`}
                        key={tab.name}
               >
                 {tab.category}
@@ -33,7 +33,6 @@ const MenuTabs = () => {
         </ul>
       </nav>
     </div>
-  )
+  );
 }
-
 export default MenuTabs;
