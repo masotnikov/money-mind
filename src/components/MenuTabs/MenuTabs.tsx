@@ -23,7 +23,7 @@ const MenuTabs = () => {
             tabs.map((tab, index) => (
               <NavLink to={`/money-mind/${tab.name.toLowerCase()}`}
                        onClick={() => setCategoryId(index)}
-                       className={`${cl.link} ${categoryId === index ? cl.active : ''}`}
+                       className={`${cl.link} ${categoryId === index ? cl.active : ''}` }
                        key={tab.name}
               >
                 {tab.category}
