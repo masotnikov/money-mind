@@ -1,6 +1,5 @@
 import React from "react";
 import cl from './CloseIcon.module.scss'
-// @ts-ignore
 import closeIcon from '../../../assets/icons/close-Icon.svg'
 
 const CloseIcon = ({...props}) => {
