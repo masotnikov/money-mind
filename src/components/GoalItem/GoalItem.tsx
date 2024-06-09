@@ -6,6 +6,7 @@ import {useSoftDeleteGoalMutation} from "../../services/GoalsService";
 import {useGetBalanceAndExpensesQuery} from "../../services/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 import Hr from "../UI/hr/hr";
+import CloseIcon from "../UI/closeIcon/CloseIcon";
 
 interface IGoalItemProps {
   goal: IGoal;
@@ -50,8 +51,7 @@ const GoalItem: FC<IGoalItemProps> = ({goal}) => {
           className={progress >= 100 ? cl.statusDone : cl.activeStatus}>{progress >= 100 ? "Выполнено" : "Активно"}</span>
         </li>
       </ul>
-      <img onClick={handleRemove} className={cl.closeIcon} src={`https://masotnikov.github.io/money-mind/img/close.png`} title="удалить транзакцию"
-           alt="remove-transaction"/>
+      <CloseIcon onClick={handleRemove}/>
       <Hr/>
     </div>
   )
