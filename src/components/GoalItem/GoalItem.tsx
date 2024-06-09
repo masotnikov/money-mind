@@ -50,7 +50,7 @@ const GoalItem: FC<IGoalItemProps> = ({goal}) => {
           className={progress >= 100 ? cl.statusDone : cl.activeStatus}>{progress >= 100 ? "Выполнено" : "Активно"}</span>
         </li>
       </ul>
-      <img onClick={handleRemove} className={cl.closeIcon} src="/close.png" title="удалить транзакцию"
+      <img onClick={handleRemove} className={cl.closeIcon} src={`https://masotnikov.github.io/money-mind/close.png`} title="удалить транзакцию"
            alt="remove-transaction"/>
       <Hr/>
     </div>
