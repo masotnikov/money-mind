@@ -7,6 +7,7 @@ import TransactionUL from "../TransactionUL/TransactionUL";
 import {useSoftDeleteTransactionMutation} from "../../services/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 import Hr from "../UI/hr/hr";
+import CloseIcon from "../UI/closeIcon/CloseIcon";
 
 export interface TransactionItemProps {
   transaction: ITransaction;
@@ -31,8 +32,7 @@ const TransactionItem: FC<TransactionItemProps> = ({transaction}) => {
     <div className={cl.root}>
       <TransactionUL transaction={transaction}/>
       <MyButton onClick={() => navigate(`/details/${transaction?.id}`)}>Подробнее</MyButton>
-      <img onClick={handleRemove} className={cl.closeIcon} src={`https://masotnikov.github.io/money-mind/img/close.png`} title="удалить транзакцию"
-           alt="remove-transaction"/>
+      <CloseIcon onClick={handleRemove}/>
       <Hr/>
     </div>
 
