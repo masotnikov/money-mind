@@ -1,7 +1,7 @@
 import './App.css'
 import MenuTabs from "./components/MenuTabs/MenuTabs";
 import Main from "./pages/Main/Main";
-import {Navigate, Route, Routes} from "react-router-dom";
+import {HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import TransactionsPage from "./pages/Transactions/TransactionsPage";
 import Goals from "./pages/Goals/Goals";
 import Analytics from "./pages/Analytics/Analytics";
@@ -21,17 +21,19 @@ const App = () => {
 
   return (
     <div className='App'>
-      <MenuTabs/>
-      <Routes>
-        <Route path="/" element={<Navigate to="/main" />} />
-        <Route path={'/main'} element={<Main/>}/>
-        <Route path={'/details/:idUser'} element={<TransactionDetailsById />} />
-        <Route path={'/transactions'} element={<TransactionsPage/>}/>
-        <Route path={'/goals'} element={<Goals/>}/>
-        <Route path={'/analytics'} element={<Analytics/>}/>
-        <Route path={'/settings'} element={<Settings theme={theme} setTheme={setTheme}/>}/>
-        <Route path={"*"} element={<h1>Такой страницы не существует</h1>}/>
-      </Routes>
+      <HashRouter>
+        <MenuTabs/>
+        <Routes>
+          <Route path="/" element={<Navigate to="/main"/>}/>
+          <Route path={'/main'} element={<Main/>}/>
+          <Route path={'/details/:idUser'} element={<TransactionDetailsById/>}/>
+          <Route path={'/transactions'} element={<TransactionsPage/>}/>
+          <Route path={'/goals'} element={<Goals/>}/>
+          <Route path={'/analytics'} element={<Analytics/>}/>
+          <Route path={'/settings'} element={<Settings theme={theme} setTheme={setTheme}/>}/>
+          <Route path={"*"} element={<h1>Такой страницы не существует</h1>}/>
+        </Routes>
+      </HashRouter>
     </div>
   )
 }
