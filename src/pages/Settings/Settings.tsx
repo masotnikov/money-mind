@@ -1,13 +1,12 @@
 import ThemeToggle, {IThemeToggleProps} from "../../components/ThemeToggle/ThemeToggle";
 import {FC} from "react";
-
+import cl from './Settings.module.scss'
 
 const Settings: FC<IThemeToggleProps> = ({theme, setTheme}) => {
   return (
-    <>
-      <h2>Настройки</h2>
+    <div className={cl.root}>
       <ThemeToggle theme={theme} setTheme={setTheme}/>
-    </>
+    </div>
   )
 }
 

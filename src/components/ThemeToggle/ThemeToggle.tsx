@@ -23,7 +23,7 @@ const ThemeToggle: FC<IThemeToggleProps> = ({theme, setTheme}) => {
 
   return (
     <div>
-      <MyButton onClick={toggleTheme}>Переключить на {theme === LIGHT_THEME ? 'тёмную' : 'светлую'} тему</MyButton>
+      <MyButton style={{marginTop: 20}} onClick={toggleTheme}>Переключить на {theme === LIGHT_THEME ? 'тёмную' : 'светлую'} тему</MyButton>
     </div>
   )
 }
