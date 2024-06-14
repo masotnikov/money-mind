@@ -4,11 +4,10 @@ import {ITransaction} from "../../@types/types";
 import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../services/TransactionService";
 import Loader from "../UI/loader/Loader";
 import {getTodayDate} from "../../utils/utils";
-import {TransactionCategory, TransactionDescription, TransactionType, ErrorEnum} from "../../constants/enums";
-import cl from "../BalanceWidget/BalanceWidget.module.scss";
+import {ErrorEnum, TransactionCategory, TransactionDescription, TransactionType} from "../../constants/enums";
 import Hr from "../UI/hr/hr";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-
+import cl from './SavingsAccount.module.scss'
 
 
 const SavingsAccount: FC = () => {
@@ -38,16 +37,16 @@ const SavingsAccount: FC = () => {
   }
 
   return (
-    <>
-      <h2>Накопительный счёт</h2>
-      <div className={cl.balanceRow}>
-        {balance?.saving}
+    <div className={cl.root}>
+      <h2 className={cl.titleAccount}>Накопительный счёт</h2>
+      <div className={cl.balanceContainer}>
+        <span className={cl.balanceCount}>{balance?.saving}</span>
         <ReplenishBalanceForm onSubmit={submitReplenishSavingAccount}></ReplenishBalanceForm>
       </div>
       <Hr/>
-      <h2>Баланс</h2>
-      <div>{balance?.balance}</div>
-    </>
+      <h2 className={cl.titleAccount}>Баланс</h2>
+      <span className={cl.balanceCount}>{balance?.balance}</span>
+    </div>
 
   )
 }

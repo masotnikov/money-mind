@@ -31,7 +31,7 @@ const TransactionDetailsById = () => {
 
   return (
     <div className={cl.root}>
-      <h1>Подробности транзакции</h1>
+      <h1 className={cl.titleDescription}>Подробности транзакции</h1>
       <TransactionUL transaction={transaction}/>
       {transaction?.location?.name &&
         <>

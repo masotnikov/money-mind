@@ -5,7 +5,7 @@
   color: teal;
 
 
-  ul {
+  .list {
     display: flex;
     justify-content: center;
     gap: 24px;
@@ -30,7 +30,7 @@
         color: white;
         background-color: rgba(0, 128, 128, 0.4);
         box-shadow: 0 0 0 5px rgba(0, 128, 128, 0.4);
-        transition: background-color, color, box-shadow  .1s;
+        transition: background-color, color, box-shadow .1s;
       }
     }
   }

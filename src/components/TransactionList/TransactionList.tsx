@@ -7,9 +7,9 @@ import TransactionItem from "../TransactionItem/TransactionItem";
 const TransactionList: FC<IListProps> = ({title, children, renderList, emptyMessage}) => {
   return (
     <div className={cl.root}>
-      <h3>{title}</h3>
+      <h3 className={cl.title}>{title}</h3>
       {children}
-      {renderList?.length === 0 && <h2>{emptyMessage}</h2>}
+      {renderList?.length === 0 && <h2 className={cl.emptyMessage}>{emptyMessage}</h2>}
       <ul className={cl.list}>
         {renderList.map(transaction => (
           <TransactionItem transaction={transaction} key={transaction?.id}/>

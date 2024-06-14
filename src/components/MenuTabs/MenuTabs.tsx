@@ -18,7 +18,7 @@ const MenuTabs = () => {
   return (
     <div className={cl.root}>
       <nav>
-        <ul>
+        <ul className={cl.list}>
           {
             tabs.map((tab, index) => (
               <Link to={`/${tab.name.toLowerCase()}`}

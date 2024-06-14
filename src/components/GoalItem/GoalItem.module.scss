@@ -12,10 +12,6 @@
     font-weight: bold;
   }
 
-  &:hover .closeIcon {
-    opacity: 1;
-  }
-
   .activeStatus {
     background-color: #7878ce;
     padding: 3px;
@@ -29,8 +25,6 @@
     border-radius: 10px;
     color: white;
   }
-
-
 
   .closeIcon {
     position: absolute;

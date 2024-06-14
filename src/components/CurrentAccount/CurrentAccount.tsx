@@ -1,4 +1,4 @@
-import cl from "../BalanceWidget/BalanceWidget.module.scss";
+import cl from './CurrentAccount.module.scss';
 import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
 import React, {FC} from "react";
 import {ITransaction} from "../../@types/types";
@@ -40,15 +40,16 @@ const CurrentAccount: FC = () => {
 
 
   return (
-    <>
-      <h2>Баланс</h2>
-      <div className={cl.balanceRow}>{balanceAndExpensesData?.balance ?? 'Баланс недоступен'}
+    <div className={cl.root}>
+      <h2 className={cl.titleAccount}>Баланс</h2>
+      <div className={cl.balanceContainer}>
+        <span className={cl.balanceCount}>{balanceAndExpensesData?.balance ?? 'Баланс недоступен'}</span>
         <ReplenishBalanceForm onSubmit={submitReplenishCurrentAccount}></ReplenishBalanceForm>
       </div>
       <Hr/>
-      <h2>Расходы</h2>
-      <div>{balanceAndExpensesData?.expenses ?? 'Расходы недоступны'}</div>
-    </>
+      <h2 className={cl.titleAccount}>Расходы</h2>
+      <div className={cl.balanceCount}>{balanceAndExpensesData?.expenses ?? 'Расходы недоступны'}</div>
+    </div>
   )
 }
 
