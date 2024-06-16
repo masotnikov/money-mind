@@ -1,4 +1,4 @@
-import {IOption} from "../../@types/types";
+import {IOption} from "../../@types/IOption";
 
 export const selectOptions: IOption[] = [
   {name: 'Сортировать по: ', value: '', disabled: true},

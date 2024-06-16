@@ -1,4 +1,3 @@
-import {IGoal} from "../../@types/types";
 import React, {FC} from "react";
 import cl from './GoalItem.module.scss'
 import ProgressBar from "../UI/progressBar/ProgressBar";
@@ -7,6 +6,7 @@ import {useGetBalanceAndExpensesQuery} from "../../services/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 import Hr from "../UI/hr/hr";
 import CloseIcon from "../UI/closeIcon/CloseIcon";
+import {IGoal} from "../../@types/IGoal";
 
 interface IGoalItemProps {
   goal: IGoal;

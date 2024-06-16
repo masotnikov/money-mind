@@ -1,8 +1,14 @@
 import cl from './TransactionList.module.scss'
-import {IListProps} from "../../@types/types";
-import {FC} from "react";
+import React, {FC} from "react";
 import TransactionItem from "../TransactionItem/TransactionItem";
+import {ITransaction} from "../../@types/ITransaction";
 
+export interface IListProps {
+  renderList: ITransaction[];
+  title: string;
+  emptyMessage: string;
+  children?: React.ReactNode;
+}
 
 const TransactionList: FC<IListProps> = ({title, children, renderList, emptyMessage}) => {
   return (

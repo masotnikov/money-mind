@@ -1,7 +1,7 @@
 import cl from './MenuTabs.module.scss'
 import {Link} from "react-router-dom";
-import {ITab} from "../../@types/types";
 import {useActiveTab} from "../../hooks/useActiveTabe";
+import {ITab} from "../../@types/ITab";
 
 
 const MenuTabs = () => {

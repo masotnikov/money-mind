@@ -1,8 +1,8 @@
 import {FC, memo} from "react";
 import MySelect from "../UI/select/MySelect";
 import MyInput from "../UI/input/MyInput";
-import {IFilter} from "../../@types/types";
 import {monthOptions, selectOptions} from "../../pages/Transactions/selectOptions";
+import {IFilter} from "../../@types/IFilter";
 
 
 export interface ITransactionFilter {

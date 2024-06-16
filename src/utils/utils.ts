@@ -1,5 +1,6 @@
-import {IBalanceAndExpenses, ITransaction} from "../@types/types";
 import {TransactionDescription, TransactionType} from "../constants/enums";
+import {ITransaction} from "../@types/ITransaction";
+import {IBalanceAndExpenses} from "../@types/IBalanceAndExpenses";
 
 export const convertToEuropeanFormat = (date: string) => {
   return date.split('-').reverse().join('-')

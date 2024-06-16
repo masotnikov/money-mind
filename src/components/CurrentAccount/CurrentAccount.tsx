@@ -1,13 +1,13 @@
 import cl from './CurrentAccount.module.scss';
 import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
 import React, {FC} from "react";
-import {ITransaction} from "../../@types/types";
 import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../services/TransactionService";
 import Loader from "../UI/loader/Loader";
 import {getTodayDate} from "../../utils/utils";
 import {ErrorEnum, TransactionCategory, TransactionDescription, TransactionType} from "../../constants/enums";
 import Hr from "../UI/hr/hr";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import {ITransaction} from "../../@types/ITransaction";
 
 
 const CurrentAccount: FC = () => {

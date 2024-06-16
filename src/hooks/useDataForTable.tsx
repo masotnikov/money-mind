@@ -1,6 +1,7 @@
-import {ITableData, ITransaction} from "../@types/types";
 import {useMemo} from "react";
 import {TransactionType} from "../constants/enums";
+import {ITransaction} from "../@types/ITransaction";
+import {ITableData} from "../@types/ITableData";
 
 const monthsName: Record<string, string> = {
   "01": "Январь",

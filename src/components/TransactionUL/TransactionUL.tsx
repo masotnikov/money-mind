@@ -1,6 +1,6 @@
 import React, {FC, memo} from "react";
-import {ITransaction} from "../../@types/types";
 import cl from './TransactionUL.module.scss'
+import {ITransaction} from "../../@types/ITransaction";
 
 interface ITransactionProps {
   transaction: ITransaction;

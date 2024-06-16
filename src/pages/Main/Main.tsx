@@ -2,11 +2,11 @@ import React, {FC} from "react";
 import Loader from "../../components/UI/loader/Loader";
 import {useGetAllTransactionsQuery} from "../../services/TransactionService";
 import BalanceWidget from "../../components/BalanceWidget/BalanceWidget";
-import {ITransaction} from "../../@types/types";
 import cl from './Main.module.scss'
 import TransactionList from "../../components/TransactionList/TransactionList";
 import {ErrorEnum} from "../../constants/enums";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import {ITransaction} from "../../@types/ITransaction";
 
 
 const Main: FC = () => {

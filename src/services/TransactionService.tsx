@@ -1,7 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {IBalanceAndExpenses, ITransaction} from "../@types/types";
 import {balanceProcessing, convertToEuropeanFormat} from "../utils/utils";
 import {backendURL} from "./BackendURL";
+import {ITransaction} from "../@types/ITransaction";
+import {IBalanceAndExpenses} from "../@types/IBalanceAndExpenses";
 
 
 export const transactionAPI = createApi({

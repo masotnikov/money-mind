@@ -1,5 +1,6 @@
 import axios, {AxiosResponse} from 'axios';
-import {ITransaction} from '../@types/types';
+
+import {ITransaction} from "../@types/ITransaction";
 
 
 const restoreDeletedTransactions = async () => {

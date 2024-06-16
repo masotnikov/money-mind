@@ -1,6 +1,6 @@
-import {ITab} from "../@types/types";
 import {useLocation} from "react-router-dom";
 import {useCallback, useEffect, useState} from "react";
+import {ITab} from "../@types/ITab";
 
 
 export const useActiveTab = (tabs: ITab[]) => {

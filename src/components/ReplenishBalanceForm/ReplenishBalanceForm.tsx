@@ -2,8 +2,8 @@ import MyInput from "../UI/input/MyInput";
 import React, {FC} from "react";
 import MyButton from "../UI/button/MyButton";
 import {useForm} from "react-hook-form";
-import {ITransaction} from "../../@types/types";
 import cl from './ReplenishBalanceForm.module.scss'
+import {ITransaction} from "../../@types/ITransaction";
 
 interface IReplenishBalanceFormProps {
   onSubmit: (transaction: ITransaction) => void | Promise<void>;

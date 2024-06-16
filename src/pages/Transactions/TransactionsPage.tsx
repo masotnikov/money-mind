@@ -6,12 +6,13 @@ import TransactionFilter from "../../components/TransactionFilter/TransactionFil
 import MyButton from "../../components/UI/button/MyButton";
 import MyModal from "../../components/UI/modal/MyModal";
 import AddTransactionForm from "../../components/AddTrasnsactionForm/AddTransactionForm";
-import {IFilter, ITransaction} from "../../@types/types";
 import cl from './TransactionsPage.module.scss'
 import TransactionList from "../../components/TransactionList/TransactionList";
 import restoreDeletedTransactions from "../../utils/restoreDeletedTransactions";
 import {ErrorEnum} from "../../constants/enums";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import {ITransaction} from "../../@types/ITransaction";
+import {IFilter} from "../../@types/IFilter";
 
 
 const TransactionsPage = memo(() => {

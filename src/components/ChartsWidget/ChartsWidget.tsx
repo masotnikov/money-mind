@@ -35,6 +35,7 @@ const ChartsWidget: FC = memo(() => {
     return <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>;
   }
 
+
     return (
       <div className={cl.root}>
         <BookmarkList tabs={bookmarks} activeTab={activeTab} onTabClick={handleTabClick}/>

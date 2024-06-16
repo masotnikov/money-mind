@@ -1,5 +1,5 @@
-import {ITransaction} from "../@types/types";
 import {useMemo} from "react";
+import {ITransaction} from "../@types/ITransaction";
 
 const useSortedTransactions = (transactions: ITransaction[], sort: string, month: string) => {
 

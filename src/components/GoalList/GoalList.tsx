@@ -1,8 +1,14 @@
 import {FC} from "react";
-import {IGoalList} from "../../@types/types";
 import cl from "../TransactionList/TransactionList.module.scss";
 import GoalItem from "../GoalItem/GoalItem";
+import {IGoal} from "../../@types/IGoal";
 
+export interface IGoalList {
+  renderList: IGoal[];
+  title?: string;
+  emptyMessage: string;
+  children?: React.ReactNode;
+}
 
 const GoalList: FC<IGoalList> = ({title, children, renderList, emptyMessage}) => {
 

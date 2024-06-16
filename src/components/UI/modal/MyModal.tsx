@@ -1,6 +1,6 @@
 import React, {FC} from "react";
-import {IModal} from "../../../@types/types";
 import cl from './MyModal.module.css'
+import {IModal} from "../../../@types/IModal";
 const MyModal: FC<IModal> = ({children, setModal, modal}) => {
 
 const rootClasses = [cl.MyModal];

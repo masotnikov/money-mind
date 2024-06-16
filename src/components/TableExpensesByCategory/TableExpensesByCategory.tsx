@@ -1,8 +1,9 @@
 import React, {FC} from "react";
 import MySelect from "../UI/select/MySelect";
-import {IOption, ITableData} from "../../@types/types";
 import {Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import cl from './TableExpensesByCategory.module.scss'
+import {IOption} from "../../@types/IOption";
+import {ITableData} from "../../@types/ITableData";
 
 interface ITableExpensesByCategoryProps {
   value: string;

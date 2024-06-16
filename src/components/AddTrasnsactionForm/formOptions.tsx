@@ -1,4 +1,4 @@
-import {IOption} from "../../@types/types";
+import {IOption} from "../../@types/IOption";
 
 export const typeOptions: IOption[] = [
   {value: '', name: 'Тип транзакции: ', disabled: true},
