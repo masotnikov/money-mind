@@ -1,0 +1,12 @@
+@import "reset";
+@import "leaflet";
+@import "themes/light";
+@import "themes/dark";
+
+.app {
+    font-family: "Open Sans", serif;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
