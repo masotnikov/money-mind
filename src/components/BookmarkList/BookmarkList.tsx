@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import cl from './BookmarkList.module.scss'
 
 
@@ -8,7 +8,7 @@ interface BookmarkListProps {
   activeTab: number;
 }
 
-const BookmarkList: FC<BookmarkListProps> = ({tabs, onTabClick, activeTab}) => {
+const BookmarkList: FC<BookmarkListProps> = ({ tabs, onTabClick, activeTab }) => {
   return (
     <ul className={cl.tabContainer}>
       {tabs.map((tab: string, index: number) => (
