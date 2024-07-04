@@ -1,25 +1,33 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {balanceProcessing, convertToEuropeanFormat} from "../utils/utils";
-import {backendURL} from "./BackendURL";
-import {ITransaction} from "../@types/ITransaction";
-import {IBalanceAndExpenses} from "../@types/IBalanceAndExpenses";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { balanceProcessing, convertToEuropeanFormat } from "../utils/utils";
+import { backendURL } from "./BackendURL";
+import { ITransaction } from "../@types/ITransaction";
+import { IBalanceAndExpenses } from "../@types/IBalanceAndExpenses";
+import { IFilter } from "../@types/IFilter";
 
 
 export const transactionAPI = createApi({
   reducerPath: 'transactionReducer',
-  baseQuery: fetchBaseQuery({baseUrl: backendURL}),
+  baseQuery: fetchBaseQuery({ baseUrl: backendURL }),
   tagTypes: ['Transactions', 'BalanceAndExpenses'],
   endpoints: (builder) => ({
 
-    //получение всех транзакций
-    getAllTransactions: builder.query<ITransaction[], void>({
-      query: () => {
-        return {
-          url: `/transactions?deleted=false`
+// Получение всех транзакций с возможностью фильтрации по типу и месяцу
+    getAllTransactions: builder.query<ITransaction[], IFilter>({
+      query: ({ sort = '', month = '' }) => {
+        let url = `/transactions?deleted=false`;
+        if (sort) {
+          url += (sort === 'Доход' || sort === 'Расход') ? `&type=${sort}` : `&category=${sort}`;
         }
+        if (month) {
+          url += `&date=${month}`;
+        }
+        return { url };
       },
+      transformResponse: (response: ITransaction[]) => response.length ? response : [],
       providesTags: result => ['Transactions'],
     }),
+
 
     //получение транзакции по id
     getTransactionById: builder.query<ITransaction, string>({
@@ -33,12 +41,12 @@ export const transactionAPI = createApi({
       }
     }),
 
-    //удаление транзакции (добавление флага deleted)
+    //"мягкое" удаление транзакции (добавление флага deleted)
     softDeleteTransaction: builder.mutation({
-      query: (id) => ({
+      query: (id: number) => ({
         url: `/transactions/${id}`,
         method: 'PUT',
-        body: {deleted: "true"},
+        body: { deleted: "true" },
       }),
       invalidatesTags: ['Transactions']
     }),
@@ -64,8 +72,6 @@ export const transactionAPI = createApi({
       },
     })
   }),
-
-
 
 
 })

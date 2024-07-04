@@ -15,7 +15,7 @@ const Main: FC = () => {
     data: transactionsData = [],
     isLoading,
     error: transactionsError
-  } = useGetAllTransactionsQuery();
+  } = useGetAllTransactionsQuery({});
 
 
   if (isLoading) {

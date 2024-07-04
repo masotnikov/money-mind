@@ -1,5 +1,5 @@
 export interface IFilter {
-  sort: string;
-  query: string;
-  month: string
+  sort?: string;
+  query?: string;
+  month?: string
 }

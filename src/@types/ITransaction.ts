@@ -1,5 +1,5 @@
 export interface ITransaction {
-  id?: number;
+  id: number;
   type: string;
   category: string;
   amount: number;
