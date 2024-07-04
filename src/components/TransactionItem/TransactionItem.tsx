@@ -19,7 +19,7 @@ const TransactionItem: FC<TransactionItemProps> = memo(({transaction}) => {
     const [updateTransaction] = useSoftDeleteTransactionMutation();
     const handleRemove = async () => {
       try {
-        await updateTransaction(transaction?.id).unwrap();
+        await updateTransaction(transaction.id).unwrap();
       } catch (error) {
         const apiError = error as FetchBaseQueryError;
         console.error(apiError, 'Произошла ошибка при удалении транзакции')
