@@ -1,18 +1,18 @@
 import cl from './Goals.module.scss'
 import MyButton from "../../components/UI/button/MyButton";
-import React, {useState} from "react";
-import {useGetAllGoalsQuery} from "../../services/GoalsService";
+import React, { useState } from "react";
+import { useGetAllGoalsQuery } from "../../services/GoalsService";
 import Loader from "../../components/UI/loader/Loader";
 import MyModal from "../../components/UI/modal/MyModal";
 import AddGoalsForm from "../../components/AddGoalsForm/AddGoalsForm";
 import GoalList from "../../components/GoalList/GoalList";
-import {ErrorEnum} from "../../constants/enums";
+import { ErrorEnum } from "../../constants/enums";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 const Goals = () => {
   const [modal, setModal] = useState<boolean>(false);
 
-  const {data: goals = [], isLoading: goalsLoading, error: goalsError} = useGetAllGoalsQuery();
+  const { data: goals = [], isLoading: goalsLoading, error: goalsError } = useGetAllGoalsQuery();
 
   if (goalsLoading) {
     return <Loader/>

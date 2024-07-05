@@ -36,7 +36,7 @@ const TransactionDetailsById = () => {
       {transaction?.location?.name &&
         <>
           <h2 className={cl.locationName}>{transaction?.location?.name}</h2>
-          <LeafletMap popupName={transaction?.location?.name} {...transaction?.location?.coordinates}/>
+          <LeafletMap popupName={transaction.location?.name} {...transaction?.location?.coordinates}/>
         </>
       }
     </div>

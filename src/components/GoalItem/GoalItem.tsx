@@ -20,7 +20,7 @@ const GoalItem: FC<IGoalItemProps> = ({goal}) => {
 
   const handleRemove = async () => {
     try {
-      await updateGoal(goal?.id).unwrap();
+      await updateGoal(goal.id).unwrap();
     } catch (error) {
       const apiError = error as FetchBaseQueryError;
       console.error(apiError, 'Произошла ошибка при удалении цели');

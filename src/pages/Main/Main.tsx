@@ -27,7 +27,7 @@ const Main: FC = () => {
   }
 
   const SLICE_LAST_TRANSACTIONS: number = -3;
-  const lastThreeTransactions: ITransaction[] = transactionsData?.slice(SLICE_LAST_TRANSACTIONS);
+  const lastThreeTransactions: ITransaction[] = transactionsData.slice(SLICE_LAST_TRANSACTIONS);
 
   return (
     <div className={cl.root}>

@@ -1,5 +1,5 @@
 export interface IGoal {
-  id?: string
+  id: number
   title: string,
   description: string,
   amount: number,

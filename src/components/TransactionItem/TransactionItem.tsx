@@ -31,7 +31,7 @@ const TransactionItem: FC<TransactionItemProps> = memo(({transaction}) => {
     return (
       <div className={cl.root}>
         <TransactionUL transaction={transaction}/>
-        <MyButton onClick={() => navigate(`/details/${transaction?.id}`)}>Подробнее</MyButton>
+        <MyButton onClick={() => navigate(`/details/${transaction.id}`)}>Подробнее</MyButton>
         <CloseIcon onClick={handleRemove}/>
         <Hr/>
       </div>
