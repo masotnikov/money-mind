@@ -18,12 +18,16 @@ const bookmarks: string[] = [
 
 const ChartsWidget: FC = memo(() => {
     const DEFAULT_MONTH: string = '05'
-    const [activeTab, setActiveTab] = useState<number>(0);
     const [selectedMonth, setSelectedMonth] = useState<string>(DEFAULT_MONTH);
-
+    const [activeTab, setActiveTab] = useState<number>(0);
 
     const { data: transactions = [], isLoading, error: errorTransactions } = useGetAllTransactionsQuery({})
     const { incomeAndExpenseByMonth = [], expenseByCategory } = useDataForTable(transactions, selectedMonth);
+
+    const bookmarkElements = [
+      <GeneralAnalyticTable data={incomeAndExpenseByMonth}/>,
+      <TableExpensesByCategory data={expenseByCategory} value={selectedMonth} onChange={setSelectedMonth}/>
+    ]
 
     const handleTabClick = (index: number) => {
       setActiveTab(index);
@@ -37,15 +41,10 @@ const ChartsWidget: FC = memo(() => {
       return <ErrorMessage>{ErrorEnum.STANDARD_ERROR_MESSAGE}</ErrorMessage>;
     }
 
-
     return (
       <div className={cl.root}>
         <BookmarkList tabs={bookmarks} activeTab={activeTab} onTabClick={handleTabClick}/>
-        {activeTab === 0 ?
-          <GeneralAnalyticTable data={incomeAndExpenseByMonth}/>
-          :
-          <TableExpensesByCategory data={expenseByCategory} value={selectedMonth} onChange={setSelectedMonth}/>
-        }
+        {bookmarkElements[activeTab]}
       </div>
     )
   }
