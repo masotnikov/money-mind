@@ -17,8 +17,10 @@ import { ITransaction } from "../../@types/ITransaction";
 const TransactionsPage = memo(() => {
 
     const [filter, setFilter] = useState<IFilter>({ sort: '', query: '', month: '' });
-    const { data: transactions = [], isLoading, error: transactionError, refetch } = useGetAllTransactionsQuery(filter);
     const [modal, setModal] = useState<boolean>(false);
+
+    const { data: transactions = [], isLoading, error: transactionError, refetch } = useGetAllTransactionsQuery(filter);
+
     const searchedTransactions: ITransaction[] = useTransactions(transactions, filter.query || '');
     const handleCloseModal = (): void => {
       setModal(false);

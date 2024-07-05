@@ -11,11 +11,7 @@ import {ITransaction} from "../../@types/ITransaction";
 
 const Main: FC = () => {
 
-  const {
-    data: transactionsData = [],
-    isLoading,
-    error: transactionsError
-  } = useGetAllTransactionsQuery({});
+  const { data: transactionsData = [], isLoading, error: transactionsError } = useGetAllTransactionsQuery({});
 
 
   if (isLoading) {
