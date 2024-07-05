@@ -16,7 +16,7 @@ export const goalsAPI = createApi({
     }),
 
     softDeleteGoal: builder.mutation({
-      query: (id) => ({
+      query: (id: number) => ({
         url: `/goals/${id}`,
         method: 'PUT',
         body: {deleted: "true"},
