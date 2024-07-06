@@ -2,10 +2,10 @@ import cl from './ChartsWidget.module.scss'
 import React, { FC, memo, useState } from "react";
 import BookmarkList from "../BookmarkList/BookmarkList";
 import TableExpensesByCategory from '../TableExpensesByCategory/TableExpensesByCategory';
-import GeneralAnalyticTable from '../GeneralAnalyticTable/GeneralAnalyticTable';
+import GeneralTable from '../GeneralTable/GeneralTable';
 import { useDataForTable } from "../../hooks/useDataForTable";
 import { useGetAllTransactionsQuery } from "../../services/TransactionService";
-import Loader from "../UI/loader/Loader";
+import Loader from "../../shared/ui/Loader/Loader";
 import { ErrorEnum } from "../../constants/enums";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
@@ -25,7 +25,7 @@ const ChartsWidget: FC = memo(() => {
     const { incomeAndExpenseByMonth = [], expenseByCategory } = useDataForTable(transactions, selectedMonth);
 
     const bookmarkElements = [
-      <GeneralAnalyticTable data={incomeAndExpenseByMonth}/>,
+      <GeneralTable data={incomeAndExpenseByMonth}/>,
       <TableExpensesByCategory data={expenseByCategory} value={selectedMonth} onChange={setSelectedMonth}/>
     ]
 

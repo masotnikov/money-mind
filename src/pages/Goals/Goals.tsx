@@ -1,9 +1,9 @@
 import cl from './Goals.module.scss'
-import MyButton from "../../components/UI/button/MyButton";
+import MyButton from "../../shared/ui/Button/MyButton";
 import React, { useState } from "react";
 import { useGetAllGoalsQuery } from "../../services/GoalsService";
-import Loader from "../../components/UI/loader/Loader";
-import MyModal from "../../components/UI/modal/MyModal";
+import Loader from "../../shared/ui/Loader/Loader";
+import MyModal from "../../shared/ui/Modal/MyModal";
 import AddGoalsForm from "../../components/AddGoalsForm/AddGoalsForm";
 import GoalList from "../../components/GoalList/GoalList";
 import { ErrorEnum } from "../../constants/enums";

@@ -1,12 +1,12 @@
 import React, {FC, memo} from "react";
-import MyButton from "../UI/button/MyButton";
+import MyButton from "../../shared/ui/Button/MyButton";
 import cl from './TransactionItem.module.scss'
 import {useNavigate} from "react-router-dom";
 import TransactionUL from "../TransactionUL/TransactionUL";
 import {useSoftDeleteTransactionMutation} from "../../services/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
-import Hr from "../UI/hr/hr";
-import CloseIcon from "../UI/closeIcon/CloseIcon";
+import Hr from "../../shared/ui/Hr/hr";
+import CloseIcon from "../../shared/ui/CloseIcon/CloseIcon";
 import {ITransaction} from "../../@types/ITransaction";
 
 export interface TransactionItemProps {

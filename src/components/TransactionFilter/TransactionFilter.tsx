@@ -1,6 +1,6 @@
 import {FC, memo} from "react";
-import MySelect from "../UI/select/MySelect";
-import MyInput from "../UI/input/MyInput";
+import MySelect from "../../shared/ui/Select/MySelect";
+import MyInput from "../../shared/ui/Input/MyInput";
 import {monthOptions, selectOptions} from "../../pages/Transactions/selectOptions";
 import {IFilter} from "../../@types/IFilter";
 

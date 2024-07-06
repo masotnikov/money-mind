@@ -1,10 +1,10 @@
 import React, {FC} from "react";
-import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
+import ReplenishForm from "../ReplenishForm/ReplenishForm";
 import {useAddNewTransactionMutation, useGetBalanceAndExpensesQuery} from "../../services/TransactionService";
-import Loader from "../UI/loader/Loader";
+import Loader from "../../shared/ui/Loader/Loader";
 import {getTodayDate} from "../../utils/utils";
 import {ErrorEnum, TransactionCategory, TransactionDescription, TransactionType} from "../../constants/enums";
-import Hr from "../UI/hr/hr";
+import Hr from "../../shared/ui/Hr/hr";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import cl from './SavingsAccount.module.scss'
 import {ITransaction} from "../../@types/ITransaction";
@@ -41,7 +41,7 @@ const SavingsAccount: FC = () => {
       <h2 className={cl.titleAccount}>Накопительный счёт</h2>
       <div className={cl.balanceContainer}>
         <span className={cl.balanceCount}>{balance?.saving}</span>
-        <ReplenishBalanceForm onSubmit={submitReplenishSavingAccount}></ReplenishBalanceForm>
+        <ReplenishForm onSubmit={submitReplenishSavingAccount}></ReplenishForm>
       </div>
       <Hr/>
       <h2 className={cl.titleAccount}>Баланс</h2>

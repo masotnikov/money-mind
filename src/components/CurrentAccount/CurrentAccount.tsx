@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import cl from './CurrentAccount.module.scss';
-import ReplenishBalanceForm from "../ReplenishBalanceForm/ReplenishBalanceForm";
+import ReplenishForm from "../ReplenishForm/ReplenishForm";
 import { useAddNewTransactionMutation, useGetBalanceAndExpensesQuery } from "../../services/TransactionService";
-import Loader from "../UI/loader/Loader";
+import Loader from "../../shared/ui/Loader/Loader";
 import { getTodayDate } from "../../utils/utils";
 import { ErrorEnum, TransactionCategory, TransactionDescription, TransactionType } from "../../constants/enums";
-import Hr from "../UI/hr/hr";
+import Hr from "../../shared/ui/Hr/hr";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { ITransaction } from "../../@types/ITransaction";
 
@@ -43,7 +43,7 @@ const CurrentAccount: FC = () => {
       <h2 className={cl.titleAccount}>Баланс</h2>
       <div className={cl.balanceContainer}>
         <span className={cl.balanceCount}>{balanceAndExpensesData?.balance ?? 'Баланс недоступен'}</span>
-        <ReplenishBalanceForm onSubmit={submitReplenishCurrentAccount}></ReplenishBalanceForm>
+        <ReplenishForm onSubmit={submitReplenishCurrentAccount}></ReplenishForm>
       </div>
       <Hr/>
       <h2 className={cl.titleAccount}>Расходы</h2>

@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import Loader from "../../components/UI/loader/Loader";
+import Loader from "../../shared/ui/Loader/Loader";
 import {useGetAllTransactionsQuery} from "../../services/TransactionService";
 import BalanceWidget from "../../components/BalanceWidget/BalanceWidget";
 import cl from './Main.module.scss'

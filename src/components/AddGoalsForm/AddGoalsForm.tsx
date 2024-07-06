@@ -1,7 +1,7 @@
 import React, {FC} from "react";
-import MyInput from "../UI/input/MyInput";
+import MyInput from "../../shared/ui/Input/MyInput";
 import cl from "./AddGoals.module.scss"
-import MyButton from "../UI/button/MyButton";
+import MyButton from "../../shared/ui/Button/MyButton";
 import {useAddNewGoalMutation} from "../../services/GoalsService";
 import {useForm} from "react-hook-form";
 import {IGoal} from "../../@types/IGoal";

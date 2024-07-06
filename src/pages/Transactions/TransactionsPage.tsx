@@ -2,9 +2,9 @@ import React, { memo, useState } from "react";
 import cl from './TransactionsPage.module.scss'
 import { useGetAllTransactionsQuery } from "../../services/TransactionService";
 import TransactionFilter from "../../components/TransactionFilter/TransactionFilter";
-import MyButton from "../../components/UI/button/MyButton";
-import MyModal from "../../components/UI/modal/MyModal";
-import Loader from "../../components/UI/loader/Loader";
+import MyButton from "../../shared/ui/Button/MyButton";
+import MyModal from "../../shared/ui/Modal/MyModal";
+import Loader from "../../shared/ui/Loader/Loader";
 import AddTransactionForm from "../../components/AddTrasnsactionForm/AddTransactionForm";
 import TransactionList from "../../components/TransactionList/TransactionList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";

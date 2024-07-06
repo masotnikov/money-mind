@@ -1,11 +1,11 @@
 import React, {FC} from "react";
 import cl from './GoalItem.module.scss'
-import ProgressBar from "../UI/progressBar/ProgressBar";
+import ProgressBar from "../../shared/ui/ProgressBar/ProgressBar";
 import {useSoftDeleteGoalMutation} from "../../services/GoalsService";
 import {useGetBalanceAndExpensesQuery} from "../../services/TransactionService";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
-import Hr from "../UI/hr/hr";
-import CloseIcon from "../UI/closeIcon/CloseIcon";
+import Hr from "../../shared/ui/Hr/hr";
+import CloseIcon from "../../shared/ui/CloseIcon/CloseIcon";
 import {IGoal} from "../../@types/IGoal";
 
 interface IGoalItemProps {

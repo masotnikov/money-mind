@@ -1,11 +1,11 @@
-import MySelect from "../UI/select/MySelect";
+import MySelect from "../../shared/ui/Select/MySelect";
 import React, {FC} from "react";
-import MyButton from "../UI/button/MyButton";
+import MyButton from "../../shared/ui/Button/MyButton";
 import {useForm} from 'react-hook-form';
 import {useAddNewTransactionMutation} from "../../services/TransactionService";
 import {categoryOptions, typeOptions} from "./formOptions";
 import cl from './AddTransactionForm.module.scss'
-import MyInput from "../UI/input/MyInput";
+import MyInput from "../../shared/ui/Input/MyInput";
 import {ITransaction} from "../../@types/ITransaction";
 
 interface IAddTransactionForm {

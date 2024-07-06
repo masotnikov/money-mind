@@ -1,5 +1,5 @@
 import React from "react";
-import Loader from "../UI/loader/Loader";
+import Loader from "../../shared/ui/Loader/Loader";
 import {useGetTransactionByIdQuery} from "../../services/TransactionService";
 import {useParams} from "react-router-dom";
 import cl from './TransactionDetailsById.module.scss'

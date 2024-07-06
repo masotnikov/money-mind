@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import MySelect from "../UI/select/MySelect";
+import MySelect from "../../shared/ui/Select/MySelect";
 import {Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import cl from './TableExpensesByCategory.module.scss'
 import {IOption} from "../../@types/IOption";

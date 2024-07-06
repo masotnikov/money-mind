@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cl from './Settings.module.scss'
 import useTheme from "../../hooks/useTheme";
-import MyButton from "../../components/UI/button/MyButton";
+import MyButton from "../../shared/ui/Button/MyButton";
 import { Theme } from "../../redux/theme/types";
 
 const Settings: FC = () => {
