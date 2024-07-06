@@ -7,8 +7,7 @@ interface IGeneralTableProps {
     data: ITableData[];
   }
 
-  const GeneralAnalyticTable: FC<IGeneralTableProps> = ({data}) => {
-    console.log('render')
+  const GeneralTable: FC<IGeneralTableProps> = ({data}) => {
 
     return (
       <>
@@ -24,4 +23,4 @@ interface IGeneralTableProps {
     )
   }
 
-  export default GeneralAnalyticTable;
+  export default GeneralTable;

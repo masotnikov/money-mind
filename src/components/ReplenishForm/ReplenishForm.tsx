@@ -1,15 +1,15 @@
-import MyInput from "../UI/input/MyInput";
+import MyInput from "../../shared/ui/Input/MyInput";
 import React, {FC} from "react";
-import MyButton from "../UI/button/MyButton";
+import MyButton from "../../shared/ui/Button/MyButton";
 import {useForm} from "react-hook-form";
-import cl from './ReplenishBalanceForm.module.scss'
+import cl from './ReplenishForm.module.scss'
 import {ITransaction} from "../../@types/ITransaction";
 
 interface IReplenishBalanceFormProps {
   onSubmit: (transaction: ITransaction) => void | Promise<void>;
 }
 
-const ReplenishBalanceForm: FC<IReplenishBalanceFormProps> = ({onSubmit}) => {
+const ReplenishForm: FC<IReplenishBalanceFormProps> = ({onSubmit}) => {
   const {
     handleSubmit,
     setValue,
@@ -51,4 +51,4 @@ const ReplenishBalanceForm: FC<IReplenishBalanceFormProps> = ({onSubmit}) => {
   )
 }
 
-export default ReplenishBalanceForm;
+export default ReplenishForm;
