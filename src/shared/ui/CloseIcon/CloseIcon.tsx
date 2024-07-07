@@ -1,6 +1,6 @@
 import React from "react";
 import cl from './CloseIcon.module.scss'
-import closeIconSVG from '../../../assets/icons/close-Icon.svg'
+import closeIconSVG from '../../assets/icons/close-Icon.svg'
 
 const CloseIcon = ({...props}) => {
   return (
