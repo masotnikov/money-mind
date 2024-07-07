@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/money-mind/static/css/main.53c8afe9.css",
-    "main.js": "/money-mind/static/js/main.a872e436.js",
+    "main.css": "/money-mind/static/css/main.69d05baa.css",
+    "main.js": "/money-mind/static/js/main.891ed1e0.js",
     "index.html": "/money-mind/index.html",
     "static/media/close-Icon.svg": "/money-mind/static/media/close-Icon.d3724015a28ada69681849cfbfcf9f21.svg",
-    "main.53c8afe9.css.map": "/money-mind/static/css/main.53c8afe9.css.map",
-    "main.a872e436.js.map": "/money-mind/static/js/main.a872e436.js.map"
+    "main.69d05baa.css.map": "/money-mind/static/css/main.69d05baa.css.map",
+    "main.891ed1e0.js.map": "/money-mind/static/js/main.891ed1e0.js.map"
   },
   "entrypoints": [
-    "static/css/main.53c8afe9.css",
-    "static/js/main.a872e436.js"
+    "static/css/main.69d05baa.css",
+    "static/js/main.891ed1e0.js"
   ]
 }
