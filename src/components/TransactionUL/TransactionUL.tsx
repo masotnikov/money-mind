@@ -1,6 +1,7 @@
 import React, {FC, memo} from "react";
 import cl from './TransactionUL.module.scss'
 import {ITransaction} from "../../@types/ITransaction";
+import { TransactionType } from "../../constants/enums";
 
 interface ITransactionProps {
   transaction: ITransaction;
@@ -11,9 +12,9 @@ const TransactionUL: FC<ITransactionProps> = memo(({transaction}) => {
     return (
       <ul className={cl.root}>
         <li>Тип:
-          <span className={`${cl.defaultBackground} ${transaction?.type === 'Расход'
-            ? cl.redBackground
-            : cl.greenBackground}`}>
+          <span className={`${cl.defaultBackground} ${transaction?.type === TransactionType.EXPENSE
+            ? cl.expenseBackground
+            : cl.incomeBackground}`}>
           {transaction?.type}
           </span>
         </li>
