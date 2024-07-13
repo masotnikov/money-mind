@@ -1,14 +1,12 @@
 .root {
-  margin: 30px 10px 10px;
-  padding: 5px;
-  font-size: 24px;
-  color: teal;
-
+  margin: 25px 10px;
+  font-size: 26px;
+  color: var(--primary-color);
 
   .list {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 24px;
+    justify-content: space-between;
     list-style-type: none;
 
 
