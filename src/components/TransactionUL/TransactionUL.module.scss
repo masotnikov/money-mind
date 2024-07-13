@@ -13,11 +13,11 @@
   }
 
   .expenseBackground {
-    background-color: rgba(154, 151, 151, 0.8);
+    background-color: var(--expense-background);
   }
 
   .incomeBackground {
-    background-color: rgba(0, 128, 0, 0.8);
+    background-color: var(--income-background);
   }
 
   .description {
