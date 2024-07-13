@@ -6,8 +6,12 @@
 
 .app {
   font-family: "Consolas", "Open Sans", serif;
-  width: 800px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+  justify-content: center;
+}
+
+.pageContainer {
+  width: 850px;
+  padding: 0 20px;
 }

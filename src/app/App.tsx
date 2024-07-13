@@ -13,19 +13,22 @@ const App = () => {
 
   return (
     <div className='app'>
-      <HashRouter>
-        <MenuTabs/>
-        <Routes>
-          <Route path="/" element={<Navigate to="/main"/>}/>
-          <Route path={'/main'} element={<Main/>}/>
-          <Route path={'/details/:idUser'} element={<TransactionDetailsById/>}/>
-          <Route path={'/transactions'} element={<TransactionsPage/>}/>
-          <Route path={'/goals'} element={<Goals/>}/>
-          <Route path={'/analytics'} element={<Analytics/>}/>
-          <Route path={'/settings'} element={<Settings/>}/>
-          <Route path={"*"} element={<ErrorPage/>}/>
-        </Routes>
-      </HashRouter>
+      <div className='pageContainer'>
+        <HashRouter>
+          <MenuTabs/>
+          <Routes>
+            <Route path="/" element={<Navigate to="/main"/>}/>
+            <Route path={'/main'} element={<Main/>}/>
+            <Route path={'/details/:idUser'} element={<TransactionDetailsById/>}/>
+            <Route path={'/transactions'} element={<TransactionsPage/>}/>
+            <Route path={'/goals'} element={<Goals/>}/>
+            <Route path={'/analytics'} element={<Analytics/>}/>
+            <Route path={'/settings'} element={<Settings/>}/>
+            <Route path={"*"} element={<ErrorPage/>}/>
+          </Routes>
+        </HashRouter>
+
+      </div>
     </div>
   )
 }

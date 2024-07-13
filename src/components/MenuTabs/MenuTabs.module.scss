@@ -1,5 +1,6 @@
 .root {
-  margin: 25px 10px;
+  margin: 25px 0 0 0;
+  padding-bottom: 20px;
   font-size: 26px;
   color: var(--primary-color);
 
@@ -7,8 +8,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    list-style-type: none;
-
 
     .link {
       padding: 5px 15px;
