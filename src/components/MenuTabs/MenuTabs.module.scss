@@ -15,7 +15,7 @@
       border-radius: 15px;
       cursor: pointer;
       text-decoration: none;
-      color: inherit;
+      color: var(--primary-color);
 
       &:hover {
         color: white;
@@ -33,5 +33,30 @@
   }
 }
 
+@media screen and (max-width: 1400px) {
+ .root {
+   font-size: 16px;
 
+
+   .list {
+    width: auto;
+   }
+
+ }
+}
+
+@media screen and (max-width: 1000px) {
+  .root {
+
+
+
+    .list {
+     flex-direction: column;
+      width: fit-content;
+      gap: 10px;
+
+    }
+
+  }
+}
 

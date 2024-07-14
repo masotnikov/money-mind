@@ -12,6 +12,13 @@
 }
 
 .pageContainer {
-  width: 850px;
+  width: 55%;
   padding: 0 20px;
+
+}
+//
+@media screen and (max-width: 780px) {
+  .pageContainer {
+    width: 100%;
+  }
 }

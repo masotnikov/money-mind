@@ -1,13 +1,14 @@
 html {
-    scrollbar-gutter: stable;
+  scrollbar-gutter: stable;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  //outline: 2px solid red;
 }
 
 ul {
-    list-style-type:  none;
+  list-style-type: none;
 }
