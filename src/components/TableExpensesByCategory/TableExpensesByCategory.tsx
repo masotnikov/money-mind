@@ -41,10 +41,10 @@ const TableExpensesByCategory: FC<ITableExpensesByCategoryProps> = ({value, onCh
         <ResponsiveContainer width="100%" height="80%">
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3"/>
-            <XAxis dataKey="name"/>
-            <YAxis/>
+            <XAxis dataKey="name" angle={-12} textAnchor="end" interval={0} dx={25} dy={0} fontSize={12} />
+            <YAxis />
             <Tooltip/>
-            <Bar dataKey="value" fill="#8884d8"/>
+            <Bar barSize={50} dataKey="value" fill="teal"/>
           </BarChart>
         </ResponsiveContainer>
       }

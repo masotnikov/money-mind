@@ -1,26 +1,26 @@
-import {CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis} from "recharts";
-import React, {FC} from "react";
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import React, { FC } from "react";
 
-import {ITableData} from "../../@types/ITableData";
+import { ITableData } from "../../@types/ITableData";
 
 interface IGeneralTableProps {
-    data: ITableData[];
-  }
+  data: ITableData[];
+}
 
-  const GeneralTable: FC<IGeneralTableProps> = ({data}) => {
+const GeneralTable: FC<IGeneralTableProps> = ({ data }) => {
 
-    return (
-      <>
-        <LineChart width={600} height={300} data={data}>
-          <Line type="monotone" dataKey="income" stroke="green"/>
-          <Line type="monotone" dataKey="expense" stroke="red"/>
-          <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
-          <XAxis dataKey="name"/>
-          <YAxis/>
-          <Tooltip/>
-        </LineChart>
-      </>
-    )
-  }
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart data={data}>
+        <Line type="monotone" dataKey="income" stroke="green"/>
+        <Line type="monotone" dataKey="expense" stroke="red"/>
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
+        <XAxis dataKey="name"/>
+        <YAxis/>
+        <Tooltip/>
+      </LineChart>
+    </ResponsiveContainer>
+  )
+}
 
-  export default GeneralTable;
+export default GeneralTable;
