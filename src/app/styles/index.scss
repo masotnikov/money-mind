@@ -3,9 +3,10 @@
 @import "themes/light";
 @import "themes/dark";
 @import "variables/global";
+@import "../../shared/assets/fonts/index";
 
 .app {
-  font-family: "Consolas", "Open Sans", serif;
+  font-family: "MyConsolas", "Open Sans", serif;
   width: 100%;
   display: flex;
   justify-content: center;
